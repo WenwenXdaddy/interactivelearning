@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "learning-lab",
+  "name": "interactivelearning",
   "compatibility_date": "2026-09-15",
   "workers_dev": false,
   "preview_urls": false,

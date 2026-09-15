@@ -1,6 +1,6 @@
 # Learning Lab project contract
 
-Fixed public domain: **learning.jiadi.ai**. Intended repository: **WenwenXdaddy/interactivelearning**.
+Fixed public domain: **learning.jiadi.ai**. Existing repository: **WenwenXdaddy/interactivelearning** (public; preserve the user's visibility setting).
 This is independent of Macro Liquidity Terminal and little-math-kitchen. Do not modify those repositories, DNS names, routes or secrets.
 
 ## Architecture
@@ -15,7 +15,7 @@ This is independent of Macro Liquidity Terminal and little-math-kitchen. Do not 
 ## Edit / verification workflow
 1. Read the exact current course and take calculation/default/state snapshots before modifying it.
 2. For presentation/integration-only changes keep course scripts byte-identical. If the user requests calculation changes, document them and add domain-specific tests.
-3. Run `npm test`. The checker covers content integrity, configuration and links, not full financial correctness.
+3. Run `npm test`. The checker covers content integrity, configuration and links, not full financial correctness. `site-checks.yml` repeats this for pushes and pull requests; it does not deploy.
 4. Test real HTTP(S) in Chromium and, when available, Safari/mobile; verify glossary, sliders, quiz, exports, navigation, CSP, persistent storage and 404 responses.
 5. Browser tests with a storage shim or in-memory DOM do not count as native persistence or production HTTP tests. Report coverage precisely.
 6. Run `npm run verify:live` only after deployment. A local build or successful Git commit is not proof of a live website.
@@ -23,12 +23,14 @@ This is independent of Macro Liquidity Terminal and little-math-kitchen. Do not 
 ## State and privacy
 - Preserve `au-lab-*` and `interactive-learning-lab:uu-investing:v1` unless a migration is explicitly implemented.
 - Do not read user memo contents into the portal. No `localStorage.clear()` across the domain.
-- Access-controlled hosting is separate from a private GitHub repository. Do not add homemade front-end passwords.
+- Access-controlled hosting is separate from repository visibility. Do not add homemade front-end passwords.
 - No credentials in source, output, logs or chat. Use official interactive logins or platform secret storage.
 
 ## Publishing
-- Initial helper: `node scripts/publish.mjs --all`. It refuses a non-empty remote repository or unexpected local origin; never force-push.
+- The repository and imported courses already exist. Do not create `learning-lab` or run the old `--all` / `--github` paths. Never force-push.
+- Prefer connecting `WenwenXdaddy/interactivelearning`, branch `main`, to Cloudflare Workers Builds: Worker name `learning-lab`, build command `npm test`, deploy command `npx wrangler deploy`, Node.js 22+.
+- For an authorized local CLI, use `node scripts/publish.mjs --cloudflare` or `Publish.ps1`. This does not create or modify a GitHub repository.
 - Domain binding is declared in `wrangler.jsonc`, but that does not mean it has happened.
 - Do not substitute Pages or another domain unless the user agrees. If an existing `learning.jiadi.ai` mapping is found, inspect it before replacing anything.
-- Cloudflare Git Builds linking requires account access; do not claim automatic deployments are connected until verified.
+- Cloudflare Git Builds linking requires account access; do not claim automatic deployments are connected until verified. GitHub CI only validates; avoid duplicate deployment pipelines.
 - The project currently has no license grant beyond retained source permissions. Do not add an open-source license for the user's content without asking.

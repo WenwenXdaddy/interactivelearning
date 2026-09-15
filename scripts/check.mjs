@@ -10,12 +10,26 @@ for(const c of courses){const original=read(`content/courses/${c.slug}/index.htm
  test(c.slug+': original JavaScript byte-identical',()=>assert.deepEqual(scripts(published),scripts(original)));
  test(c.slug+': download is the unchanged, self-contained source',()=>assert.equal(read(`public/downloads/${c.slug}.html`),original));
  test(c.slug+': notes are unchanged',()=>assert.equal(read(`public/courses/${c.slug}/study-notes.md`),read(`content/courses/${c.slug}/study-notes.md`)));
- test(c.slug+': chapters and DOM IDs retained',()=>{const ids=s=>[...s.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.deepEqual(ids(original),ids(published));assert.equal((original.match(/<section class="lesson(?: active)?"/g)||[]).length,c.chapters)});
- test(c.slug+': original storage namespace retained',()=>assert(original.includes(c.storage)&&published.includes(c.storage)));
+ test(c.slug+': chapters and DOM IDs retained',()=>{const ids=s=>[...s.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.deepEqual(ids(original),ids(published));if(c.format==='dc-fieldguide'){
+   const context={window:{}};vm.createContext(context);
+   for(const name of ['data.js','content.js','reading.js']){const marker='<script data-course-module="'+name+'">';assert(original.includes(marker));vm.runInContext(original.split(marker)[1].split('</script>')[0],context);}
+   const {DC_DATA:D,DC_CONTENT:C,DC_READING:R}=context.window;
+   assert.equal(R.length,c.chapters);assert.equal(C.glossary.length,c.terms);assert.equal(R.reduce((n,ch)=>n+ch.sections.length,0),27);
+   for(const ch of R)for(const s of ch.sections)for(const id of s.sources)assert(D.sections[id],'Missing source '+id);
+   const provenance=JSON.parse(read('content/courses/'+c.slug+'/import-manifest.json'));
+   assert.equal(provenance.scripts.length,scripts(original).length);
+   for(const asset of provenance.scripts){const marker='<script data-course-module="'+asset.name+'">';assert.equal(sha(original.split(marker)[1].split('</script>')[0]),asset.sha256);}
+   for(const asset of provenance.styles){const marker='<style data-course-style="'+asset.name+'">';assert.equal(sha(original.split(marker)[1].split('</style>')[0]),asset.sha256);}
+   const reports=[...original.matchAll(/href="data:text\/markdown;charset=utf-8;base64,([^"]+)"/g)];assert.equal(reports.length,2);
+   for(const match of reports)assert.equal(sha(Buffer.from(match[1],'base64')),provenance.reportSha256);
+ }else{assert.equal(c.format,undefined);assert.equal((original.match(/<section class="lesson(?: active)?"/g)||[]).length,c.chapters)}});
+ test(c.slug+': original storage namespace retained',()=>{if(c.storage===null){assert.equal(c.format,'dc-fieldguide');assert(!scripts(original).some(s=>/\b(?:localStorage|sessionStorage)\b/.test(s)));}else{assert(original.includes(c.storage)&&published.includes(c.storage))}});
  test(c.slug+': home link and canonical target',()=>{assert(published.includes('href="../../index.html#courses"'));assert(published.includes(`https://learning.jiadi.ai/courses/${c.slug}/`))});
  test(c.slug+': declared hashes match files',()=>{const m=manifest.courses.find(x=>x.slug===c.slug);assert.equal(sha(original),m.sourceSha256);assert.equal(sha(published),m.publishedSha256)});
  test(c.slug+': all inline scripts parse',()=>scripts(published).forEach(s=>new vm.Script(s)));
 }
+test('course storage namespaces do not collide',()=>{const keys=courses.map(c=>c.storage).filter(x=>x!==null);for(const a of keys)for(const b of keys)if(a!==b)assert(!a.startsWith(b));assert.equal(new Set(keys).size,keys.length)});
+test('standalone courses need no external assets',()=>{for(const c of courses){const s=read('content/courses/'+c.slug+'/index.html');assert(!/<script\b[^>]*\bsrc\s*=/i.test(s));assert(!/<link\b[^>]*rel="stylesheet"/i.test(s));}});
 test('homepage inline scripts parse',()=>scripts(home).forEach(s=>new vm.Script(s)));
 const files=[];function walk(dir){for(const d of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,d.name);if(d.isDirectory())walk(p);else files.push(p)}}walk(path.join(root,'public'));
 test('published directory contains no deployment code, secrets or archives',()=>{for(const p of files){assert(!/\.(zip|key|pem|env|ps1|mjs)$/i.test(p));assert(!/\/\.git/.test(p));assert(fs.statSync(p).size<25*1024*1024)}});

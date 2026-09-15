@@ -32,5 +32,28 @@
     "tone": "green",
     "imageAlt": "未知投资实验室：卖家选择、报价和条件成交利润的联动实验",
     "storage": "interactive-learning-lab:uu-investing:v1"
+  },
+  {
+    "slug": "us-data-center-buildout",
+    "title": "美国数据中心建设：地理、容量与政策",
+    "subtitle": "从一座机房开始，读懂建设计划如何变成现实。",
+    "description": "沿着五章连续中文正文，理解容量口径、建设地理与成本责任；结合州容量地图、具名集群和政策原文，练习判断项目能否落地。",
+    "category": "产业与基础设施",
+    "tags": [
+      "数据中心",
+      "电力",
+      "建设容量",
+      "州政策"
+    ],
+    "chapters": 5,
+    "terms": 20,
+    "metric": "27 节 · 3 阶段地图",
+    "version": "v2.18 · 引导学习版",
+    "level": "基础概念 → 项目判断",
+    "firstTask": "从第 1 章认识 MW 与 GW，拖动运行时长，区分功率和电量。",
+    "tone": "green",
+    "imageAlt": "美国数据中心课程实际页面：容量地图、建设阶段切换和州容量比较",
+    "storage": null,
+    "format": "dc-fieldguide"
   }
 ]

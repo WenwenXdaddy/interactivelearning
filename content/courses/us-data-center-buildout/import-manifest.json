@@ -1,0 +1,41 @@
+{
+  "source": "Previously completed DC Wiki v2.18",
+  "scripts": [
+    {
+      "name": "data.js",
+      "sha256": "9343238eaa6a671990ce8738a22d1d424ca8e885520a21e20ec9b129ffb721b8"
+    },
+    {
+      "name": "content.js",
+      "sha256": "198fe0fcfdca2adc6b59c34dd5fdcff4fa1b78f2601d80ff8ee643eb22e8c63b"
+    },
+    {
+      "name": "reading.js",
+      "sha256": "2393c91834a48daae0272fc19f75e26ed88b15903d19806adb1a4fce46bde0e6"
+    },
+    {
+      "name": "vendor/marked.umd.js",
+      "sha256": "d7931d1cd7bf727dd756c871637edcc9e0f8538003b927368400ec1ee47a9dd9"
+    },
+    {
+      "name": "vendor/purify.min.js",
+      "sha256": "89e1fa7647cb495370d3a997ace4387f5d15d9f4c5af12352c53daa400956287"
+    },
+    {
+      "name": "app.js",
+      "sha256": "8a3de89f021f20fd84f6a7f6cdca8e4399a273f4dd4a896d5fa4b7153eb106b8"
+    }
+  ],
+  "styles": [
+    {
+      "name": "style.css",
+      "sha256": "b675ae7dac66a4ecdbd58fac0d7109aa396ace820c61e95822a9feeeaec8c4cf"
+    },
+    {
+      "name": "reader.css",
+      "sha256": "33e0cca9dca747f151391cd230ce3afc728d2cc0e1c9b1541f2edb0844e7049f"
+    }
+  ],
+  "reportSha256": "d94ef33e0dbccc7f9af43e24afbca12176149992e87ce9eeaa55f5aec4314c10",
+  "sourceIndexSha256": "cb1afe589dff26f7758237c3dd66a96fa256a66bd406ec6d3a456365b1d35460"
+}

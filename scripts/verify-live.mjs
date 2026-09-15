@@ -10,5 +10,5 @@ try{
  if(!home.headers.get('content-security-policy')?.includes("connect-src 'none'"))throw new Error('Security headers are missing');
  for(const c of expected.courses){const res=await get(`/courses/${c.slug}/`);if(!res.ok)throw new Error(c.slug+' unavailable');const html=await res.text();if(crypto.createHash('sha256').update(html).digest('hex')!==c.publishedSha256)throw new Error(c.slug+' content differs from local build');const d=await get(`/downloads/${c.slug}.html`);if(!d.ok||!d.headers.get('content-disposition')?.includes('attachment'))throw new Error(c.slug+' offline download is not served as an attachment');}
  if((await get('/__learning_lab_missing_page__')).status!==404)throw new Error('Unknown paths must return 404, not the homepage');
- console.log('Verified live at '+base+' — homepage, both courses, hashes, downloads and 404.');
+ console.log('Verified live at '+base+' — homepage, '+expected.courses.length+' courses, hashes, downloads and 404.');
 }catch(e){console.error('NOT VERIFIED: '+e.message);process.exitCode=1}

@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 2,
+  "courseCount": 3,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -25,6 +25,22 @@
       "publishedSha256": "373cb80d86159d6cf26b202aa6d19971a57a9d4a6a464e81604e65f284a633ae",
       "scriptSha256": [
         "44dbd357018403fa89c0a007aec3c6a7631ecbd0af1c810cdff147a5324720b7"
+      ]
+    },
+    {
+      "slug": "us-data-center-buildout",
+      "title": "美国数据中心建设：地理、容量与政策",
+      "version": "v2.18 · 引导学习版",
+      "chapters": 5,
+      "sourceSha256": "760c2235893ba4ee9f330e8474d51496177e2b64ed81578e473af52369d4ce66",
+      "publishedSha256": "28a726291f6e17b306ab3d41829e0d108242efd87666cbd7a32decbf778e3048",
+      "scriptSha256": [
+        "9343238eaa6a671990ce8738a22d1d424ca8e885520a21e20ec9b129ffb721b8",
+        "198fe0fcfdca2adc6b59c34dd5fdcff4fa1b78f2601d80ff8ee643eb22e8c63b",
+        "2393c91834a48daae0272fc19f75e26ed88b15903d19806adb1a4fce46bde0e6",
+        "d7931d1cd7bf727dd756c871637edcc9e0f8538003b927368400ec1ee47a9dd9",
+        "89e1fa7647cb495370d3a997ace4387f5d15d9f4c5af12352c53daa400956287",
+        "8a3de89f021f20fd84f6a7f6cdca8e4399a273f4dd4a896d5fa4b7153eb106b8"
       ]
     }
   ]

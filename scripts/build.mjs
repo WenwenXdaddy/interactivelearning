@@ -29,9 +29,12 @@ const bridgeCSS=`\n/* Portal-only navigation. Original course CSS and JavaScript
 const manifest={id:'jiadi-learning-lab',version:'1.0.0',domain:'learning.jiadi.ai',courseCount:courses.length,courses:[]};
 for(const c of courses){
  const source=read(`content/courses/${c.slug}/index.html`);
- if(!source.includes('<div class="brand">'))throw new Error('Missing original header in '+c.slug);
+ if(!source.includes('<div class="brand">')&&!source.includes('<!-- portal-home -->'))throw new Error('Missing original header in '+c.slug);
  if(scripts(source).length===0)throw new Error('Missing course scripts');
- const course=source.replace('</head>',`<meta name="description" content="${escape(c.description)}"><link rel="canonical" href="https://learning.jiadi.ai/courses/${c.slug}/"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><style>${bridgeCSS}</style>\n</head>`).replace('<div class="brand">','<div class="brand"><a class="portal-home" href="../../index.html#courses" aria-label="返回课程首页"><span aria-hidden="true">←</span><small>课程首页</small></a>');
+ const homeLink='<a class="portal-home" href="../../index.html#courses" aria-label="返回课程首页"><span aria-hidden="true">←</span><small>课程首页</small></a>';
+ const portalStyle='<style>.portal-course-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px;margin-bottom:14px}.portal-course-nav .portal-home{margin:0;font-size:12px!important}.portal-course-nav .portal-home small{display:inline!important}.portal-resources{margin:0;line-height:1.8}.portal-resources a{color:inherit;text-underline-offset:3px}</style>';
+ const integrated=source.includes('<!-- portal-home -->')?source.replace('<!-- portal-home -->',portalStyle+'<div class="portal-course-nav">'+homeLink+'<p class="portal-resources"><a href="study-notes.md" download>学习手册 ↓</a> · <a href="../../downloads/'+c.slug+'.html" download>离线 HTML ↓</a></p></div>'):source;
+ const course=integrated.replace('</head>',`<meta name="description" content="${escape(c.description)}"><link rel="canonical" href="https://learning.jiadi.ai/courses/${c.slug}/"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><style>${bridgeCSS}</style>\n</head>`).replace('<div class="brand">','<div class="brand"><a class="portal-home" href="../../index.html#courses" aria-label="返回课程首页"><span aria-hidden="true">←</span><small>课程首页</small></a>');
  if(JSON.stringify(scripts(source))!==JSON.stringify(scripts(course)))throw new Error('Unexpected course script modification');
  write(`courses/${c.slug}/index.html`,course);
  copy(`content/courses/${c.slug}/study-notes.md`,`courses/${c.slug}/study-notes.md`);

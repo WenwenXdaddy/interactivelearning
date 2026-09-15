@@ -1,0 +1,65 @@
+{
+  "scope": "local Node server, not Cloudflare",
+  "checks": [
+    {
+      "name": "homepage serves HTTP 200",
+      "passed": true
+    },
+    {
+      "name": "homepage uses CSP with no outbound connections",
+      "passed": true
+    },
+    {
+      "name": "homepage anti-frame header",
+      "passed": true
+    },
+    {
+      "name": "gold-volatility content matches build bytes",
+      "passed": true
+    },
+    {
+      "name": "gold-volatility unchanged source download",
+      "passed": true
+    },
+    {
+      "name": "gold-volatility HTML attachment header",
+      "passed": true
+    },
+    {
+      "name": "gold-volatility notes attachment header",
+      "passed": true
+    },
+    {
+      "name": "unknown-unknowable content matches build bytes",
+      "passed": true
+    },
+    {
+      "name": "unknown-unknowable unchanged source download",
+      "passed": true
+    },
+    {
+      "name": "unknown-unknowable HTML attachment header",
+      "passed": true
+    },
+    {
+      "name": "unknown-unknowable notes attachment header",
+      "passed": true
+    },
+    {
+      "name": "unknown page is a real 404",
+      "passed": true
+    },
+    {
+      "name": "HEAD has no response body",
+      "passed": true
+    },
+    {
+      "name": "private build header configuration is not served",
+      "passed": true
+    },
+    {
+      "name": "non-GET method is rejected",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+/** Run before every publish. Validates integrity, route isolation and deployment boundaries. */
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';import vm from 'node:vm';import {fileURLToPath}from'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');const scripts=s=>[...s.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]);const sha=s=>crypto.createHash('sha256').update(s).digest('hex');let n=0;function test(name,f){f();n++;console.log('PASS '+name)}
+const courses=JSON.parse(read('courses.json'));const config=JSON.parse(read('wrangler.jsonc'));const manifest=JSON.parse(read('public/site-manifest.json'));const headers=read('public/_headers');const home=read('public/index.html');
+test('fixed custom domain, no API/backend or database',()=>{assert.equal(config.routes.length,1);assert.equal(config.routes[0].pattern,'learning.jiadi.ai');assert.equal(config.routes[0].custom_domain,true);assert.equal(config.assets.directory,'./public');assert.equal(config.assets.not_found_handling,'404-page');assert.equal(config.main,undefined);assert.equal(config.workers_dev,false);assert.equal(config.preview_urls,false)});
+test('generated manifest and catalog agree',()=>{assert.equal(manifest.id,'jiadi-learning-lab');assert.equal(manifest.courseCount,courses.length);assert.equal(manifest.domain,'learning.jiadi.ai');assert.equal((home.match(/<article class="course /g)||[]).length,courses.length)});
+test('no unresolved template variables',()=>assert(!/\{\{[A-Z_]+\}\}/.test(home)));
+test('CSP permits only original hashed inline scripts',()=>{assert(headers.includes("connect-src 'none'"));assert(headers.includes("frame-ancestors 'none'"));const policy=headers.match(/script-src([^;]+)/)[1];assert(!policy.includes('unsafe-inline'));for(const s of [...scripts(home),...courses.flatMap(c=>scripts(read(`content/courses/${c.slug}/index.html`)))])assert(policy.includes(crypto.createHash('sha256').update(s).digest('base64')))});
+for(const c of courses){const original=read(`content/courses/${c.slug}/index.html`);const published=read(`public/courses/${c.slug}/index.html`);
+ test(c.slug+': original JavaScript byte-identical',()=>assert.deepEqual(scripts(published),scripts(original)));
+ test(c.slug+': download is the unchanged, self-contained source',()=>assert.equal(read(`public/downloads/${c.slug}.html`),original));
+ test(c.slug+': notes are unchanged',()=>assert.equal(read(`public/courses/${c.slug}/study-notes.md`),read(`content/courses/${c.slug}/study-notes.md`)));
+ test(c.slug+': chapters and DOM IDs retained',()=>{const ids=s=>[...s.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.deepEqual(ids(original),ids(published));assert.equal((original.match(/<section class="lesson(?: active)?"/g)||[]).length,c.chapters)});
+ test(c.slug+': original storage namespace retained',()=>assert(original.includes(c.storage)&&published.includes(c.storage)));
+ test(c.slug+': home link and canonical target',()=>{assert(published.includes('href="../../index.html#courses"'));assert(published.includes(`https://learning.jiadi.ai/courses/${c.slug}/`))});
+ test(c.slug+': declared hashes match files',()=>{const m=manifest.courses.find(x=>x.slug===c.slug);assert.equal(sha(original),m.sourceSha256);assert.equal(sha(published),m.publishedSha256)});
+ test(c.slug+': all inline scripts parse',()=>scripts(published).forEach(s=>new vm.Script(s)));
+}
+test('homepage inline scripts parse',()=>scripts(home).forEach(s=>new vm.Script(s)));
+const files=[];function walk(dir){for(const d of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,d.name);if(d.isDirectory())walk(p);else files.push(p)}}walk(path.join(root,'public'));
+test('published directory contains no deployment code, secrets or archives',()=>{for(const p of files){assert(!/\.(zip|key|pem|env|ps1|mjs)$/i.test(p));assert(!/\/\.git/.test(p));assert(fs.statSync(p).size<25*1024*1024)}});
+test('no external runtime scripts, stylesheets, trackers or API requests',()=>{for(const p of files.filter(p=>p.endsWith('.html'))){const s=fs.readFileSync(p,'utf8');assert(!/<script\b[^>]*src\s*=\s*["']https?:/i.test(s));assert(!/<link\b[^>]*href\s*=\s*["']https?:[^>]*rel\s*=\s*["']stylesheet/i.test(s));assert(!scripts(s).some(x=>/\bfetch\s*\(|XMLHttpRequest|sendBeacon\s*\(|new\s+WebSocket/.test(x)))}});
+test('home/download/notes/preview links resolve inside public',()=>{for(const m of home.matchAll(/(?:href|src)="([^"#]+)"/g)){const href=m[1];if(/^(https?:|data:|mailto:)/.test(href))continue;const plain=href.split('#')[0].split('?')[0];assert(fs.existsSync(path.join(root,'public',plain)),href)}});
+console.log(`\n${n} static integrity checks passed. Browser/runtime and live hosting need separate tests.`);

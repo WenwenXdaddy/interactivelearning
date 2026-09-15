@@ -1,0 +1,189 @@
+{
+  "mode": "offline DOM with in-memory storage shim; NOT real HTTP navigation or native localStorage",
+  "browser": "system Chromium via Playwright",
+  "checks": [
+    {
+      "name": "home: two courses visible",
+      "status": "passed"
+    },
+    {
+      "name": "home: filter controls initialized",
+      "status": "passed"
+    },
+    {
+      "name": "home: topic filtering",
+      "status": "passed"
+    },
+    {
+      "name": "home: keyword search",
+      "status": "passed"
+    },
+    {
+      "name": "home: no-results feedback",
+      "status": "passed"
+    },
+    {
+      "name": "home: dark theme",
+      "status": "passed"
+    },
+    {
+      "name": "home: theme restored using simulated storage",
+      "status": "passed"
+    },
+    {
+      "name": "home: no horizontal overflow at 390px",
+      "status": "passed"
+    },
+    {
+      "name": "home: no horizontal overflow at 360px",
+      "status": "passed"
+    },
+    {
+      "name": "gold: default regression labCorePL",
+      "status": "passed"
+    },
+    {
+      "name": "gold: default regression labOverlayPL",
+      "status": "passed"
+    },
+    {
+      "name": "gold: default regression labTotalPL",
+      "status": "passed"
+    },
+    {
+      "name": "gold: default regression netCarry",
+      "status": "passed"
+    },
+    {
+      "name": "gold: default regression requiredPremium",
+      "status": "passed"
+    },
+    {
+      "name": "gold: default regression vrpGap",
+      "status": "passed"
+    },
+    {
+      "name": "gold: all ten chapters retained",
+      "status": "passed"
+    },
+    {
+      "name": "gold: zero overlay equals core",
+      "status": "passed"
+    },
+    {
+      "name": "gold: slider changes numerical output",
+      "status": "passed"
+    },
+    {
+      "name": "gold: glossary opens",
+      "status": "passed"
+    },
+    {
+      "name": "gold: glossary search returns results",
+      "status": "passed"
+    },
+    {
+      "name": "gold: Escape outside search closes glossary",
+      "status": "passed"
+    },
+    {
+      "name": "gold: quiz answer saved in own namespace",
+      "status": "passed"
+    },
+    {
+      "name": "gold: real Blob Markdown download",
+      "status": "passed"
+    },
+    {
+      "name": "gold: seen/quiz restored using simulated storage",
+      "status": "passed"
+    },
+    {
+      "name": "gold: mobile header and home link visible",
+      "status": "passed"
+    },
+    {
+      "name": "gold: no horizontal overflow at 390px",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: default model regression threshold",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: default model regression selection",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: default model regression sidecar",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: default model regression growth",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: default model regression insurance",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: all nine chapters retained",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: selection output responds to bid",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: model input reaches saved state",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: parameters restored using simulated storage",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: glossary opens",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: glossary search works",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: Escape closes glossary",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: real Blob Markdown download",
+      "status": "passed"
+    },
+    {
+      "name": "courses: unknown course load does not alter gold keys",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: mobile home link visible",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: no horizontal overflow at 390px",
+      "status": "passed"
+    },
+    {
+      "name": "gold: no horizontal overflow at 360px",
+      "status": "passed"
+    },
+    {
+      "name": "unknown: no horizontal overflow at 360px",
+      "status": "passed"
+    },
+    {
+      "name": "all pages: no JavaScript exceptions",
+      "status": "passed"
+    }
+  ],
+  "pageErrors": [],
+  "passed": 45,
+  "failed": 0
+}

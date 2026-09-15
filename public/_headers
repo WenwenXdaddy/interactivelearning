@@ -1,0 +1,17 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-32FyPGnlu7JXShnyXoRmF94AIMCjvkAFh0kD+CTR+/s=' 'sha256-+SY5zlRVw/iOJ0Kw0b3tYQo8WunDwZNs/koBQnlOMao=' 'sha256-RGw9SoH+6GZ8BEkact3FTs6j76ivHE7UCx38FF4cFNI=' 'sha256-RNvTVwGEA/qJwKAHrsPGp2Mey9CvHIEM3/FHpTJHILc='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'
+
+/downloads/*
+  Content-Disposition: attachment
+  X-Robots-Tag: noindex
+
+/courses/*/study-notes.md
+  Content-Disposition: attachment
+  X-Robots-Tag: noindex
+
+/site-manifest.json
+  Cache-Control: no-cache

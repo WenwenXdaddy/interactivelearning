@@ -1,0 +1,16 @@
+node_modules/
+.wrangler/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+.DS_Store
+Thumbs.db
+validation/screens/
+validation/browser-results.json
+validation/wrangler-*.log
+*.zip
+*.log
+validation/*-export.md

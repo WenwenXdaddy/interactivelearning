@@ -1,0 +1,18 @@
+{
+  "name": "jiadi-learning-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent interactive learning courses for learning.jiadi.ai",
+  "engines": { "node": ">=22.0.0" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "npm run build && npm run check",
+    "preview": "node scripts/serve.mjs",
+    "deploy": "npm run test && wrangler deploy",
+    "deploy:dry-run": "npm run test && wrangler deploy --dry-run",
+    "verify:live": "node scripts/verify-live.mjs"
+  },
+  "devDependencies": { "wrangler": "^4.0.0" }
+}

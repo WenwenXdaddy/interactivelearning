@@ -1,37 +1,57 @@
 # JIADI 学习实验室
 
-固定域名：**learning.jiadi.ai**  
-GitHub 仓库：**WenwenXdaddy/interactivelearning**  
-Cloudflare Worker 名称：**learning-lab**
+目标域名：**learning.jiadi.ai** · 仓库：**WenwenXdaddy/interactivelearning**
 
-## 当前状态
+包含黄金波动率实验室 v2、未知投资实验室，以及可持续增加课程的首页。
+原课程 JavaScript 保留；只增加站点导航。无账号、数据库、运行时 API 或遥测。
+学习记录仅保存在浏览器，可导出笔记，不自动跨设备同步。
 
-仓库初始化、原始 ZIP 导入脚本及 GitHub Actions 触发流程已提交。
-**课程源文件尚待导入；Cloudflare 未部署，域名未核验。**
+## 当前发布边界
 
-## 现在只需上传原始 ZIP 一次
+导入工作流成功后，完整源文件与生成的 public/ 会提交到 main。
+**GitHub 导入不等于 Cloudflare 上线。** 尚需在 Cloudflare 连接仓库并部署。
+仓库目前为公开仓库；本流程不改变可见性、不修改 Cloudflare DNS。
 
-1. 从 ChatGPT 对话下载 `learning-lab-site-v1.0.0.zip`，不要解压、重新压缩或改名。
-2. 在本仓库根目录选择 **Add file → Upload files**，上传该 ZIP。
-3. 将上传提交到 **main**，点击 **Commit changes**。
+## Cloudflare Workers Git 部署
 
-上传入口：https://github.com/WenwenXdaddy/interactivelearning/upload/main
+在 Cloudflare 创建或导入 Workers 项目，连接本仓库：
 
-上传提交会触发 **Import verified learning site**：核对原始 ZIP 和两门课的 SHA-256，恢复课程及首页、更新实际仓库名、运行构建与完整性检查，然后把完整源码和 public/ 提交到 main。
-成功后 ZIP 会从当前文件树删除，但仍保留在上传提交历史中。
+| 字段 | 值 |
+|---|---|
+| Worker / 项目名称 | learning-lab |
+| 仓库 | WenwenXdaddy/interactivelearning |
+| 生产分支 | main |
+| 根目录 | 仓库根目录 |
+| Build command | npm test |
+| Deploy command | npx wrangler deploy |
+| Node.js | 22 或更高 |
 
-查看执行结果：https://github.com/WenwenXdaddy/interactivelearning/actions/workflows/import-site.yml
+wrangler.jsonc 已固定 learning.jiadi.ai，静态目录为 public/。
+只处理这个子域名，不更改 jiadi.ai 主站或其他项目。存在域名冲突时停止并核对。
 
-只有该流程成功且仓库出现 `public/`、`content/`、`package.json` 和 `wrangler.jsonc`，才表示站点文件已导入。
-不要在 ZIP 上传前手动运行工作流；不要先手工增加这些目录，以免触发防覆盖保护。
+## 本地开发
 
-## 核验与安全边界
+```bash
+npm install
+npm test
+npm run preview
+```
 
-- 仅接受此前交付的原始 ZIP：SHA-256 `78758893bf8bea800fcac970d51bc0ab2df26f414039753baa8df0df2c1c2eeb`。
-- 两门课程的原始 JavaScript 不重写。
-- 已在本地执行导入及 24 项静态完整性检查；GitHub 上的完整运行仍待 ZIP 上传。
-- 仓库保持用户设置的公开可见性，不创建或修改其他仓库。
-- GitHub Action 只导入文件，不连接 Cloudflare、不修改 DNS，也不需要 Cloudflare token。
-- 导入后仍需在 Cloudflare 将此仓库连接到 `learning-lab` Worker，并验证 `learning.jiadi.ai`。
+通过本机已授权的 Cloudflare CLI 发布时，运行：
 
-此 README 会在导入成功后自动替换为完整项目说明和部署步骤。
+```bash
+node scripts/publish.mjs --cloudflare
+npm run verify:live
+```
+
+不要再运行 --all 或创建 learning-lab 仓库：正式仓库已经是 interactivelearning。
+不需要把任何 token 发到聊天或提交进仓库。
+
+## 增加课程
+
+保留独立课程源文件于 content/courses/<slug>/，更新 courses.json，运行 npm test。
+只有 public/ 对外发布；content/、scripts/、validation/ 不作为静态根目录。
+两门原始课程可从站点首页下载为离线 HTML。
+
+详见 DEPLOYMENT.md、AGENTS.md 和 docs/HANDOFF.md。
+validation/ 中的既有报告是此前本地测试记录，不能替代这次 CI 或正式域名验收。

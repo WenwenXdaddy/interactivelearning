@@ -1,0 +1,39 @@
+
+> jiadi-learning-lab@1.0.0 test
+> npm run build && npm run check
+
+
+> jiadi-learning-lab@1.0.0 build
+> node scripts/build.mjs
+
+Built 2 courses for learning.jiadi.ai; original course scripts unchanged.
+
+> jiadi-learning-lab@1.0.0 check
+> node scripts/check.mjs
+
+PASS fixed custom domain, no API/backend or database
+PASS generated manifest and catalog agree
+PASS no unresolved template variables
+PASS CSP permits only original hashed inline scripts
+PASS gold-volatility: original JavaScript byte-identical
+PASS gold-volatility: download is the unchanged, self-contained source
+PASS gold-volatility: notes are unchanged
+PASS gold-volatility: chapters and DOM IDs retained
+PASS gold-volatility: original storage namespace retained
+PASS gold-volatility: home link and canonical target
+PASS gold-volatility: declared hashes match files
+PASS gold-volatility: all inline scripts parse
+PASS unknown-unknowable: original JavaScript byte-identical
+PASS unknown-unknowable: download is the unchanged, self-contained source
+PASS unknown-unknowable: notes are unchanged
+PASS unknown-unknowable: chapters and DOM IDs retained
+PASS unknown-unknowable: original storage namespace retained
+PASS unknown-unknowable: home link and canonical target
+PASS unknown-unknowable: declared hashes match files
+PASS unknown-unknowable: all inline scripts parse
+PASS homepage inline scripts parse
+PASS published directory contains no deployment code, secrets or archives
+PASS no external runtime scripts, stylesheets, trackers or API requests
+PASS home/download/notes/preview links resolve inside public
+
+24 static integrity checks passed. Browser/runtime and live hosting need separate tests.

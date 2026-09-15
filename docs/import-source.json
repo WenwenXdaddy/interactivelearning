@@ -1,0 +1,9 @@
+{
+  "archive": "learning-lab-site-v1.0.0.zip",
+  "archiveSha256": "78758893bf8bea800fcac970d51bc0ab2df26f414039753baa8df0df2c1c2eeb",
+  "originalCourseSha256": {
+    "gold-volatility": "6c504df1031559ab28e2ba7fbb3e3ae7e23d6a08fd14fb4806f1dfcdbe4351b5",
+    "unknown-unknowable": "12e10e3ca58e57b42a23ae9fd983654eb7c85b4835d6bc090e22fb909d89317c"
+  },
+  "note": "Fingerprints verified before extraction. Course JavaScript is not rewritten."
+}

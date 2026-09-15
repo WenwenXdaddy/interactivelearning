@@ -1,0 +1,10 @@
+{
+  "repository": "WenwenXdaddy/interactivelearning",
+  "repositoryVisibility": "public",
+  "worker": "learning-lab",
+  "domain": "learning.jiadi.ai",
+  "sourceFilesRestored": true,
+  "cloudflareDeploymentVerified": false,
+  "dnsModifiedByImporter": false,
+  "note": "Check GitHub Actions for build success; Cloudflare must be connected separately."
+}

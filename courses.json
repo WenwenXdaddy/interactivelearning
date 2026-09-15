@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "gold-volatility",
+    "title": "黄金波动率实验室",
+    "subtitle": "看多黄金，也能收波动率？先看你拿什么交换。",
+    "description": "从期权的四个基本动作出发，把权利金、持有成本与尾部风险放到同一本账上；用收益曲线理解每一种结构的代价。",
+    "category": "策略与风险",
+    "tags": ["期权", "VRP", "Carry", "组合收益曲线"],
+    "chapters": 10,
+    "terms": 65,
+    "metric": "14 种结构",
+    "version": "v2 · 讲解增强版",
+    "level": "基础动作 → 复杂组合",
+    "firstTask": "先看四个基本动作，再用 30% 的叠加比例检查收益的分母。",
+    "tone": "gold",
+    "imageAlt": "黄金波动率实验室：核心、期权叠加和总组合的收益曲线界面",
+    "storage": "au-lab-"
+  },
+  {
+    "slug": "unknown-unknowable",
+    "title": "未知投资实验室",
+    "subtitle": "概率不知道时，先问交易为什么存在。",
+    "description": "沿着 Richard Zeckhauser 的文章，区分风险、不确定性与遗漏情景。通过报价、分配条款和仓位实验，判断优势究竟来自哪里。",
+    "category": "投资与决策",
+    "tags": ["不确定性", "逆向选择", "仓位", "事前决策记录"],
+    "chapters": 9,
+    "terms": 34,
+    "metric": "5 个数值实验",
+    "version": "v1 · 交互式阅读",
+    "level": "概念辨析 → 决策实践",
+    "firstTask": "到第 03 站切换卖家的出售规则，观察同一报价为什么会从赚变亏。",
+    "tone": "green",
+    "imageAlt": "未知投资实验室：卖家选择、报价和条件成交利润的联动实验",
+    "storage": "interactive-learning-lab:uu-investing:v1"
+  }
+]

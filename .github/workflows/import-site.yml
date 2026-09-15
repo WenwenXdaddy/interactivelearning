@@ -1,0 +1,37 @@
+name: Import verified learning site
+
+on:
+  push:
+    branches: [main]
+    paths: ['.bootstrap/ready.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import-learning-site
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the exact source commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Restore verified source files
+        run: node .bootstrap/restore.mjs
+      - name: Build and check the original course scripts
+        run: npm test
+      - name: Commit the complete source and generated website
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m 'Import verified learning courses and fixed-domain static site'
+            git push origin HEAD:main
+          fi

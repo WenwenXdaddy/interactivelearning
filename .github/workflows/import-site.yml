@@ -3,7 +3,7 @@ name: Import verified learning site
 on:
   push:
     branches: [main]
-    paths: ['.bootstrap/ready.json']
+    paths: ['learning-lab-site-v1.0.0.zip']
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check out the exact source commit
+      - name: Check out the exact upload commit
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
@@ -26,11 +26,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Restore verified source files
-        run: node .bootstrap/restore.mjs
+      - name: Restore only the fingerprint-verified original archive
+        run: python3 .github/scripts/import-site.py
       - name: Record dependency resolution without running package scripts
         run: npm install --package-lock-only --ignore-scripts
-      - name: Build and check the original course scripts
+      - name: Build and validate the two unchanged course scripts
         run: npm test
       - name: Commit the complete source and generated website
         run: |
@@ -38,6 +38,10 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           if ! git diff --cached --quiet; then
-            git commit -m 'Import verified learning courses and fixed-domain static site'
+            git commit -m 'Import two verified learning courses for learning.jiadi.ai'
             git push origin HEAD:main
           fi
+      - name: State publication boundary
+        run: |
+          echo 'The site source was imported into GitHub. Cloudflare deployment was not performed.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Next: connect this repository to the learning-lab Worker and verify learning.jiadi.ai.' >> "$GITHUB_STEP_SUMMARY"

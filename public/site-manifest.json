@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 5,
+  "courseCount": 8,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -63,6 +63,39 @@
       "publishedSha256": "8542f30f7d50e76c3009b0454dba205f7efe4e71d29c6ef4686c5ea29e06826e",
       "scriptSha256": [
         "d05f5700ec8e7782a13d101c79aa3817e09f1348b44cc15627c623f9cd702538"
+      ]
+    },
+    {
+      "slug": "cognitive-flexibility-langer",
+      "title": "认知灵活性 · 在变化中重新看见选择",
+      "version": "v1 · 引导阅读版",
+      "chapters": 18,
+      "sourceSha256": "6d51b541a10794e5eea22fc686506b4c2181a4a26f31add3746faf8b665b7336",
+      "publishedSha256": "0fbc8e767051cc0e98be887a2fd2e0815e6aa8dd9828124d57e27f61dc01e9e7",
+      "scriptSha256": [
+        "561cec303d01eadfb0b376844af8fccccd59d91416012f6ce656607eb21fbbb3"
+      ]
+    },
+    {
+      "slug": "reclaim-your-brain",
+      "title": "如何重新掌控你的大脑",
+      "version": "v1 · 引导阅读版",
+      "chapters": 22,
+      "sourceSha256": "c54534d7088d0be8ed1935cb885eddf932c6c8ec37ddc39d449dd9d133ee849c",
+      "publishedSha256": "cf2809cb62d41a76443eba8306777c119641790123e234b2244b97dc12142a62",
+      "scriptSha256": [
+        "0c98e78907c83db5f5c76e41532e2e5a6f551575bc2b6c2ac5616235cc82337f"
+      ]
+    },
+    {
+      "slug": "overcome-inner-resistance",
+      "title": "如何克服内心阻力",
+      "version": "v1 · 引导阅读版",
+      "chapters": 22,
+      "sourceSha256": "9a78fce190718c83f21bc3d0e91a864b6906606e75cfc76b8c3c5cb2e3868019",
+      "publishedSha256": "7d42b658a6d05bc776ac21ceff0504d9a9be4301aa58ce3c2e665c2e1821a504",
+      "scriptSha256": [
+        "ce05a08049ef12632ed4b190c57c0da991bca8ec5275c47f610f1c5a8cbb0c81"
       ]
     }
   ]

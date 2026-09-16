@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 8,
+  "courseCount": 11,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -96,6 +96,39 @@
       "publishedSha256": "7d42b658a6d05bc776ac21ceff0504d9a9be4301aa58ce3c2e665c2e1821a504",
       "scriptSha256": [
         "ce05a08049ef12632ed4b190c57c0da991bca8ec5275c47f610f1c5a8cbb0c81"
+      ]
+    },
+    {
+      "slug": "healthy-masculinity",
+      "title": "健康的男性气质",
+      "version": "v1 · 引导阅读版",
+      "chapters": 24,
+      "sourceSha256": "b4a38450c459518b58849aaed0db9e3253e7a33220462fa3babcad9af2590835",
+      "publishedSha256": "0ab39330822811e4a0586b6dc53487bf5697b148ae3b944404f3ddd9aec7e97d",
+      "scriptSha256": [
+        "4b35577ad887b93af6a6de2c6698aaab0e54688ae2905b7b9f1c925d1c36332c"
+      ]
+    },
+    {
+      "slug": "language-learning-science",
+      "title": "学习语言的科学",
+      "version": "v1 · 引导阅读版",
+      "chapters": 23,
+      "sourceSha256": "58f327e82edb0428befb21635e59eae091706b8a281747f95c0d4f2637f6e113",
+      "publishedSha256": "22bd184d45cb0cbd1affb2f966adc47c7fa00f87f560e64830066967326b63a4",
+      "scriptSha256": [
+        "fa56a363deddcdf112bffe25abb616f698b2236f8723d0cf6c02602a60c71c88"
+      ]
+    },
+    {
+      "slug": "why-learning-tools-fail",
+      "title": "大多数学习工具失败的原因",
+      "version": "v1 · 引导阅读版",
+      "chapters": 28,
+      "sourceSha256": "4eb853a2021cf157eb36b6c89d1f899da4e6f6d1311eac2a77cc0c75e3c4b05f",
+      "publishedSha256": "93bcd20021e03bd0cbda5c481ec6b143d03e02924f15b5bd2da03c7dfa788c77",
+      "scriptSha256": [
+        "723d0a9a956202108e3f66f6e60b951a6602a02379f49c91243ea6287d510bf5"
       ]
     }
   ]

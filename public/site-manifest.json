@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 3,
+  "courseCount": 4,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -41,6 +41,17 @@
         "d7931d1cd7bf727dd756c871637edcc9e0f8538003b927368400ec1ee47a9dd9",
         "89e1fa7647cb495370d3a997ace4387f5d15d9f4c5af12352c53daa400956287",
         "8a3de89f021f20fd84f6a7f6cdca8e4399a273f4dd4a896d5fa4b7153eb106b8"
+      ]
+    },
+    {
+      "slug": "pozsar-money-view",
+      "title": "Pozsar 全球货币框架 · 交互导读",
+      "version": "v1 · 引导阅读版",
+      "chapters": 23,
+      "sourceSha256": "71154d69e071c34544e9c3fea1f1d0944b7862315bb184dc3e74ec3e65114852",
+      "publishedSha256": "1fdebd7d21837c6e19935c1c710e7d80205895d4a0e0a00466958b2696a49f0d",
+      "scriptSha256": [
+        "d8af681dbf216163ecb06e0058466b52d5ede251c0216a7165187632bbd02cb4"
       ]
     }
   ]

@@ -55,5 +55,27 @@
     "imageAlt": "美国数据中心课程实际页面：容量地图、建设阶段切换和州容量比较",
     "storage": null,
     "format": "dc-fieldguide"
+  },
+  {
+    "slug": "pozsar-money-view",
+    "title": "Pozsar 全球货币框架 · 交互导读",
+    "subtitle": "从一张资产负债表，读到全球货币秩序。",
+    "description": "沿着发行者、中介约束与融资价格，理解美元压力如何传导；再区分储备数量、估值与制度叙事，用原文定位、术语随查和情景自测检查每一步判断。",
+    "category": "投资与决策",
+    "tags": [
+      "货币体系",
+      "资产负债表",
+      "美元融资",
+      "储备资产"
+    ],
+    "chapters": 23,
+    "terms": 33,
+    "metric": "5 道情景自测",
+    "version": "v1 · 引导阅读版",
+    "level": "账户关系 → 体系判断",
+    "firstTask": "先从第 1 站追踪“谁欠谁”，再到第 5 站理解 ON RRP 如何改变准备金。",
+    "tone": "gold",
+    "imageAlt": "Pozsar 导读实际页面：ON RRP 资金选择、准备金变化与逐步讲解",
+    "storage": "pozsar-money-view:v1"
   }
 ]

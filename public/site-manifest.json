@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 4,
+  "courseCount": 5,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -52,6 +52,17 @@
       "publishedSha256": "1fdebd7d21837c6e19935c1c710e7d80205895d4a0e0a00466958b2696a49f0d",
       "scriptSha256": [
         "d8af681dbf216163ecb06e0058466b52d5ede251c0216a7165187632bbd02cb4"
+      ]
+    },
+    {
+      "slug": "muscle-health-lyon",
+      "title": "通过运动和饮食提升健康寿命",
+      "version": "v2 · 原文增强版",
+      "chapters": 17,
+      "sourceSha256": "b713d3fefbff8eccaf34162070e52929ae37573f7bbae7f6c8cedd3b5d68cc41",
+      "publishedSha256": "8542f30f7d50e76c3009b0454dba205f7efe4e71d29c6ef4686c5ea29e06826e",
+      "scriptSha256": [
+        "d05f5700ec8e7782a13d101c79aa3817e09f1348b44cc15627c623f9cd702538"
       ]
     }
   ]

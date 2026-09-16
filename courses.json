@@ -77,5 +77,27 @@
     "tone": "gold",
     "imageAlt": "Pozsar 导读实际页面：ON RRP 资金选择、准备金变化与逐步讲解",
     "storage": "pozsar-money-view:v1"
+  },
+  {
+    "slug": "muscle-health-lyon",
+    "title": "通过运动和饮食提升健康寿命",
+    "subtitle": "从肌肉出发，把健康建议放回证据与生活。",
+    "description": "沿着 Gabrielle Lyon 的访谈，逐步理解肌肉功能、蛋白质、训练与行为标准；用完整原文对照、证据核查和情景自测，分清机制、研究结果与个人建议，最后回到纯文字全文。",
+    "category": "健康与科学",
+    "tags": [
+      "肌肉健康",
+      "蛋白质",
+      "抗阻训练",
+      "证据辨析"
+    ],
+    "chapters": 17,
+    "terms": 23,
+    "metric": "42 处原文对照",
+    "version": "v2 · 原文增强版",
+    "level": "概念辨析 → 证据判断",
+    "firstTask": "先到第 1 站区分肌肉量、力量与功能，展开“对照原文”，再跳到全文查看上下文。",
+    "tone": "green",
+    "imageAlt": "肌肉健康导读实际页面：肌肉量、力量与健康的分步正文和原文对照",
+    "storage": "learning-lab:muscle-health-lyon:v1"
   }
 ]

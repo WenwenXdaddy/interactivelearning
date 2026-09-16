@@ -1,10 +1,20 @@
 {
   "repository": "WenwenXdaddy/interactivelearning",
   "repositoryVisibility": "public",
-  "worker": "learning-lab",
+  "worker": "interactivelearning",
   "domain": "learning.jiadi.ai",
   "sourceFilesRestored": true,
-  "cloudflareDeploymentVerified": false,
+  "cloudflareDeploymentVerified": true,
+  "verifiedCommit": "53f51f3",
+  "verifiedOn": "2026-09-16",
+  "verificationEvidence": [
+    "GitHub check run 'Workers Builds: interactivelearning' on 53f51f3 concluded success",
+    "npm run verify:live from a normal network: homepage, 3 courses, published hashes, download headers and 404 all match the local build"
+  ],
   "dnsModifiedByImporter": false,
-  "note": "Check GitHub Actions for build success; Cloudflare must be connected separately."
+  "notes": [
+    "Earlier drafts of the docs named the Worker 'learning-lab'; that name was never used.",
+    "Cloudflare bot protection returns 403 to data-centre IPs, so production checks fail from GitHub Actions runners; verify:live exits 2 (INCONCLUSIVE) there.",
+    "Cloudflare injects bot-detection and Web Analytics scripts into HTML at the edge; the site CSP blocks both, and verify:live strips them before comparing hashes."
+  ]
 }

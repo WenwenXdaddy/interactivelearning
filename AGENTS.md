@@ -16,9 +16,12 @@ This is independent of Macro Liquidity Terminal and little-math-kitchen. Do not 
 1. Read the exact current course and take calculation/default/state snapshots before modifying it.
 2. For presentation/integration-only changes keep course scripts byte-identical. If the user requests calculation changes, document them and add domain-specific tests.
 3. Run `npm test`. The checker covers content integrity, configuration and links, not full financial correctness. `site-checks.yml` repeats this for pushes and pull requests; it does not deploy.
+   `live-site-check.yml` is a separate, manual-only production check and covers only `gold-volatility` and `unknown-unknowable`; `us-data-center-buildout` and any newer course are not in it.
 4. Test real HTTP(S) in Chromium and, when available, Safari/mobile; verify glossary, sliders, quiz, exports, navigation, CSP, persistent storage and 404 responses.
 5. Browser tests with a storage shim or in-memory DOM do not count as native persistence or production HTTP tests. Report coverage precisely.
 6. Run `npm run verify:live` only after deployment. A local build or successful Git commit is not proof of a live website.
+7. Run production checks from a normal network, not from CI. Cloudflare bot protection answers 403 to data-centre IPs such as GitHub Actions runners; `verify:live` exits 2 and reports `INCONCLUSIVE` in that case, which is not evidence about the deployment.
+8. Cloudflare's edge injects its bot-detection (`__CF$cv$params`, `/cdn-cgi/challenge-platform/...`) and Web Analytics (`static.cloudflareinsights.com`) scripts into HTML responses. They are not in the build, and this site's CSP blocks both, so every page view logs CSP console errors and Cloudflare Web Analytics does not actually run. `verify:live` removes these injected tags before comparing hashes; any other difference still fails. Changing this would mean changing Cloudflare zone settings or the CSP — ask the user first.
 
 ## State and privacy
 - Preserve `au-lab-*` and `interactive-learning-lab:uu-investing:v1` unless a migration is explicitly implemented.
@@ -27,10 +30,11 @@ This is independent of Macro Liquidity Terminal and little-math-kitchen. Do not 
 - No credentials in source, output, logs or chat. Use official interactive logins or platform secret storage.
 
 ## Publishing
-- The repository and imported courses already exist. Do not create `learning-lab` or run the old `--all` / `--github` paths. Never force-push.
-- Prefer connecting `WenwenXdaddy/interactivelearning`, branch `main`, to Cloudflare Workers Builds: Worker name `learning-lab`, build command `npm test`, deploy command `npx wrangler deploy`, Node.js 22+.
+- The repository and imported courses already exist. Do not create another Worker or run the old `--all` / `--github` paths. Never force-push.
+- Cloudflare Workers Builds is already connected to `WenwenXdaddy/interactivelearning`, branch `main`: **Worker name `interactivelearning`** (matching `wrangler.jsonc`), build command `npm test`, deploy command `npx wrangler deploy`, Node.js 22+. Pushing to `main` deploys. Earlier drafts of these docs said `learning-lab`; that name was never used.
+- Deployment status per commit: `gh api repos/WenwenXdaddy/interactivelearning/commits/<sha>/check-runs` — look for the `Workers Builds: interactivelearning` check run.
 - For an authorized local CLI, use `node scripts/publish.mjs --cloudflare` or `Publish.ps1`. This does not create or modify a GitHub repository.
-- Domain binding is declared in `wrangler.jsonc`, but that does not mean it has happened.
+- Domain binding is declared in `wrangler.jsonc`. As of commit 53f51f3 (2026-09-15) it is live: that commit's Workers Builds check succeeded and `npm run verify:live` confirmed all three courses on `https://learning.jiadi.ai` match the local build.
 - Do not substitute Pages or another domain unless the user agrees. If an existing `learning.jiadi.ai` mapping is found, inspect it before replacing anything.
 - Cloudflare Git Builds linking requires account access; do not claim automatic deployments are connected until verified. GitHub CI only validates; avoid duplicate deployment pipelines.
 - The project currently has no license grant beyond retained source permissions. Do not add an open-source license for the user's content without asking.

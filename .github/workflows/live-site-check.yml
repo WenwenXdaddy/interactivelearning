@@ -1,10 +1,10 @@
 name: Verify live learning site
 
+# Manual only. Cloudflare bot protection answers 403 to GitHub runner IPs, so an automatic run on push
+# would always fail without telling us anything about the deployment. Verify production locally instead:
+# `npm run verify:live` (see DEPLOYMENT.md).
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ['.github/workflows/live-site-check.yml']
 
 permissions:
   contents: read
@@ -30,8 +30,17 @@ jobs:
         shell: bash
         run: |
           mkdir -p live-evidence
-          set -o pipefail
-          npm run verify:live 2>&1 | tee live-evidence/http-verification.txt
+          set +e
+          npm run verify:live > live-evidence/http-verification.txt 2>&1
+          code=$?
+          set -e
+          cat live-evidence/http-verification.txt
+          # Exit code 2 means this runner was blocked at the edge: the check never reached the site, so the
+          # result says nothing about the deployment. Fail loudly rather than pretend it passed.
+          if [ "$code" = "2" ]; then
+            echo "::warning::Inconclusive from GitHub runners (edge protection). Run 'npm run verify:live' from a normal network."
+          fi
+          exit "$code"
       - name: Install isolated browser test tools
         shell: bash
         run: |
@@ -82,7 +91,14 @@ jobs:
                       page.locator('dialog[open]').wait_for(state='visible')
                       page.locator(search_selector).fill(query)
                       check(slug + ': glossary search is interactive', page.locator(search_selector).input_value() == query and len(page.locator('dialog[open]').inner_text()) > 30)
-                      page.keyboard.press('Escape')
+                      # A non-empty type="search" box swallows the first Escape (the browser clears the field
+                      # instead of closing the dialog), so clear it first and allow a bounded retry.
+                      page.locator(search_selector).fill('')
+                      for _ in range(2):
+                          page.keyboard.press('Escape')
+                          if page.locator('dialog[open]').count() == 0:
+                              break
+                          page.wait_for_timeout(200)
                       check(slug + ': Escape closes the glossary', page.locator('dialog[open]').count() == 0)
 
                       page.locator('#nav button').nth(2).click()
@@ -117,7 +133,9 @@ jobs:
                   for route, label in [('/', 'home'), ('/courses/gold-volatility/', 'gold'), ('/courses/unknown-unknowable/', 'unknown')]:
                       response = mp.goto(BASE + route, wait_until='networkidle', timeout=45000)
                       check(label + ': mobile viewport loads over HTTPS', response.status == 200)
-                      check(label + ': no page-level horizontal overflow at 390px', mp.evaluate('document.documentElement.scrollWidth <= innerWidth + 2'))
+                      # Measure against the layout viewport: with mobile emulation Chromium zooms out to fit
+                      # wide content, so innerWidth grows with the overflow and would hide it.
+                      check(label + ': no page-level horizontal overflow at 390px', mp.evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth + 2'))
                       mp.screenshot(path=str(evidence / (label + '-mobile.png')))
                       if label != 'home':
                           mp.locator('#glossaryBtn').click()

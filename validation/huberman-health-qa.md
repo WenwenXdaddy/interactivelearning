@@ -1,3 +1,55 @@
+# huberman-health-qa update to v2 — 2026-09-17
+
+Course: 你最关心的健康问题 · 交互导读 (card title kept; the page's own title is now 你最关心的健康问题｜Huberman 问答导读).
+Route unchanged: https://learning.jiadi.ai/courses/huberman-health-qa/
+
+## Input
+
+A full rebuild by `interactive-learning-lab` 2.2.0 (page COURSE_META.version 2.2.0) from the same Chinese transcript,
+delivered on 2026-09-17 with `huberman-health-qa_study_notes.md`, `course-spec.md`, `source-ledger.csv` and
+`qa-report.md`. Compared with v1 (published 2026-09-17 earlier the same day): 18 stations instead of 12 (16 = 速查与自测,
+17 = 原文全文 with 99 inline backlinks), 25 glossary terms instead of 36, 3 self-checks instead of 4, and a 35-claim
+ledger (verified 11, disputed 9, unverified 15) instead of 37 claims. No numeric model in either version.
+
+## Adaptations made for the site
+
+One, mechanical, agreed by the user before integration:
+
+1. **Handbook link target.** Station 00 linked to `huberman-health-qa_study_notes.md`, a sibling file that the
+   builder does not publish (it would 404 on the site). The single `href` was changed to `study-notes.md`, which is
+   where the builder places the notes, with `download="huberman-health-qa-study-notes.md"` so the saved name matches
+   the homepage download. No other byte of the page changed (432,362 → 432,388 bytes). In the offline HTML download
+   this link has no sibling file to point at; the page's own 导出笔记 button still works offline.
+
+Files were already UTF-8 without BOM, LF. Storage key `interactive-learning-lab:huberman-health-qa:v1` is already a
+literal and unchanged, so existing learner records still load; as with Pozsar, the changed station list means an old
+"visited" record now points at a different station. `courses.json` entry rewritten for v2 (subtitle, description,
+tags, 18/25, "35 条主张核查", "v2 · 带核查的导读", firstTask, imageAlt); title, category 健康与科学, tone gold and
+storage key unchanged. The preview is an actual screenshot of station 16 (速查 table) from the local build.
+
+## Checks run (local, http://127.0.0.1:4173, real HTTP, site CSP, native localStorage)
+
+- `npm test`: 106 static integrity checks pass, including all 12 for this course.
+- `site_checks.py snapshot` on the delivered file: 18 lessons, 25 terms, 0 range inputs, no 390 px overflow, no
+  console errors. Baseline for the comparison below.
+- `site_checks.py check` against the built site: **138 pass, 0 fail, 9 warn, 7 manual**. Home card under
+  健康与科学; downloads byte-identical to repository sources; all 18 station texts and the 25-term count match the
+  baseline (the href change is outside the compared text); navigation, glossary (search "自主"), self-check
+  feedback, export, persistence and reload work under CSP; other courses' storage sentinels untouched; offline HTML
+  opens from disk; no 390 px overflow on any station; no console errors or CSP violations. Warnings/manual items
+  are the same pre-existing ones as for Pozsar; "no visible range inputs" is accurate (no sliders).
+- Course-specific Playwright checks (`extra_checks.py`, 7/7 pass): 对照原文 jump to station 17 with highlight,
+  返回 restores station 01, inline backlink returns to the cited step, and the station 00 handbook link downloads
+  `huberman-health-qa-study-notes.md` byte-identical to `content/courses/huberman-health-qa/study-notes.md`.
+- Home card, mobile 390 and glossary screenshots inspected. `git diff --stat` for every other course directory is empty.
+
+## Not covered
+
+Real iPhone/Safari, screen readers, Firefox/Edge/WebKit. The medical-content note from the v1 record still applies.
+Production deployment and live verification are reported separately.
+
+---
+
 # huberman-health-qa — integration record
 
 Course: 你最关心的健康问题 · 交互导读

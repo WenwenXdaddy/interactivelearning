@@ -45,13 +45,13 @@
     },
     {
       "slug": "pozsar-money-view",
-      "title": "Pozsar 全球货币框架 · 交互导读",
-      "version": "v1 · 引导阅读版",
-      "chapters": 23,
-      "sourceSha256": "71154d69e071c34544e9c3fea1f1d0944b7862315bb184dc3e74ec3e65114852",
-      "publishedSha256": "1fdebd7d21837c6e19935c1c710e7d80205895d4a0e0a00466958b2696a49f0d",
+      "title": "Pozsar 货币观：从资产负债表到全球储备",
+      "version": "v2 · 带核查的导读",
+      "chapters": 39,
+      "sourceSha256": "01c2a8f2648802e3f60aa532001a4abd9a07e754938a95ba33b1bb484260be6f",
+      "publishedSha256": "a28d46d8c60616048ab793976acf2fa2fbf56fde756d86b99f489de7ff0ec701",
       "scriptSha256": [
-        "d8af681dbf216163ecb06e0058466b52d5ede251c0216a7165187632bbd02cb4"
+        "2919e7847b0f0e12a82e9d905fc8c6000c9067157e92e129701175c5c7e04487"
       ]
     },
     {

@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 11,
+  "courseCount": 12,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -129,6 +129,17 @@
       "publishedSha256": "93bcd20021e03bd0cbda5c481ec6b143d03e02924f15b5bd2da03c7dfa788c77",
       "scriptSha256": [
         "723d0a9a956202108e3f66f6e60b951a6602a02379f49c91243ea6287d510bf5"
+      ]
+    },
+    {
+      "slug": "huberman-health-qa",
+      "title": "你最关心的健康问题 · 交互导读",
+      "version": "v1 · 带核查的导读",
+      "chapters": 12,
+      "sourceSha256": "d8f7a49916eab66d9c9fb15569c12e15b12e06366cd4809d1a3e879e36b36649",
+      "publishedSha256": "8d293d96f7cc82a4fc2c41b33abf87b364b449c7fc675fc2ed7d411f39562764",
+      "scriptSha256": [
+        "50be9f3a94adec3f0f9697bc28f020c02f1d70b2a48be07819d86fc312875d2f"
       ]
     }
   ]

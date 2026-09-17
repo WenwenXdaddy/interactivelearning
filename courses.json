@@ -230,5 +230,27 @@
     "version": "v1 · 引导阅读版",
     "level": "概念辨析 → 日常实践",
     "imageAlt": "大多数学习工具失败的原因实际课程页面：分步讲解与原文对照"
+  },
+  {
+    "slug": "huberman-health-qa",
+    "title": "你最关心的健康问题 · 交互导读",
+    "subtitle": "九个提问，底下是同一套推理。",
+    "description": "沿着 Huberman Lab 的九个听众提问，把晨光、夜间训练、记忆、生育与激素放回同一条推理链；每条承重主张旁标了一手文献的核查状态，练习分辨机制推断、专家共识与人体结局证据。",
+    "category": "健康与科学",
+    "tags": [
+      "昼夜节律",
+      "神经可塑性",
+      "证据分级",
+      "补剂"
+    ],
+    "chapters": 12,
+    "terms": 36,
+    "metric": "37 条主张核查",
+    "version": "v1 · 带核查的导读",
+    "level": "机制理解 → 证据分辨",
+    "firstTask": "先看第 01 站光子如何变成一天的节律，再到第 03 站比较两条唤醒路径对睡眠的不同代价。",
+    "tone": "gold",
+    "imageAlt": "课程实际页面：一天中皮质醇与褪黑素相位的示意图，左侧是 12 个学习站的导航",
+    "storage": "interactive-learning-lab:huberman-health-qa:v1"
   }
 ]

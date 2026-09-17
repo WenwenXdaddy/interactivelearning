@@ -59,11 +59,12 @@
       "title": "通过运动和饮食提升健康寿命",
       "version": "v2 · 原文增强版",
       "chapters": 17,
-      "sourceSha256": "21e77ee2c77eba3f9ca491bc9271fa4bdb0d2bb1e8f1db20ea7bcb2fa09c057e",
-      "publishedSha256": "45f5de5ac5ef959c2111912a4963770a78247b0f3859b8c321d6cc35e5d3ae67",
+      "sourceSha256": "ea5fd63281c92df60d109eb56958bcb099291aa63ecba14e1ddc844e11ce0fa8",
+      "publishedSha256": "b2eaa79da6cfd1d8216f1f504a1ec8bd75bb6209ee6bb53b38058cad220870f6",
       "scriptSha256": [
         "d05f5700ec8e7782a13d101c79aa3817e09f1348b44cc15627c623f9cd702538",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745"
+        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
+        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
       ]
     },
     {
@@ -71,11 +72,12 @@
       "title": "认知灵活性 · 在变化中重新看见选择",
       "version": "v1 · 引导阅读版",
       "chapters": 18,
-      "sourceSha256": "ee9cc83626d8598903ec29ca1eef4881d766dab6888402fdb5fdac8fc8eab0d7",
-      "publishedSha256": "b09437dbffcae94c23e1335d1ac84973fe4265bc37dc4fc5ca4e07b3cd998bc0",
+      "sourceSha256": "fd2d3025568f8cf8ef618e9a4c772e3eb080aa935fbd2303725d0293426a59e0",
+      "publishedSha256": "7af0821d17c6515ef996f8407dd944657209b0d2742c8afc245466554d46b2ac",
       "scriptSha256": [
         "561cec303d01eadfb0b376844af8fccccd59d91416012f6ce656607eb21fbbb3",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745"
+        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
+        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
       ]
     },
     {
@@ -83,11 +85,12 @@
       "title": "如何重新掌控你的大脑",
       "version": "v1 · 引导阅读版",
       "chapters": 22,
-      "sourceSha256": "ba2c1c79fbb65099665e907db13205696bc70b57b612ee3ef6ae2e2025eb4f39",
-      "publishedSha256": "d42cbf3a58661b7720cb6d3445c74dcfd182f6a69d1cecc3eaf3e5be10301cc6",
+      "sourceSha256": "7d76501e5be765dec30e88e3b3dcb0cc7ab9d6541053e5b4b0333d937294c38c",
+      "publishedSha256": "35b7ebbd6709cb23d7663a98c2380ae944ad6c3c08e1e73bd6272cf084373ed9",
       "scriptSha256": [
         "0c98e78907c83db5f5c76e41532e2e5a6f551575bc2b6c2ac5616235cc82337f",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745"
+        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
+        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
       ]
     },
     {
@@ -95,11 +98,12 @@
       "title": "如何克服内心阻力",
       "version": "v1 · 引导阅读版",
       "chapters": 22,
-      "sourceSha256": "be6411169787914f65501fe8d05df54a8b3dd97dc4e73b0943d3bdddb44fd3af",
-      "publishedSha256": "de03249ec1681f14cb3770ce27d5efef851f7b9c2888aa155afd093b4b64a54d",
+      "sourceSha256": "6b7c64ba7cd27c0b37307a7dd9f44b30c706101268b8d39edb17d6ca2ba1fb88",
+      "publishedSha256": "a8e1f24ad3d8ebbbeed6085b2e664c57cb221ef1c80e1ae11dd33f305037b971",
       "scriptSha256": [
         "ce05a08049ef12632ed4b190c57c0da991bca8ec5275c47f610f1c5a8cbb0c81",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745"
+        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
+        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
       ]
     },
     {
@@ -107,11 +111,12 @@
       "title": "健康的男性气质",
       "version": "v1 · 引导阅读版",
       "chapters": 24,
-      "sourceSha256": "8da7b540226def5e7106a5dfa466895f15e27b151f9af1c275343e890c76d745",
-      "publishedSha256": "4fd597bcc4b7ebe792b1e03c89c6b77595df85e7e35d44734a0134b8d1aff128",
+      "sourceSha256": "3024704743930450e157cbde36c9daecaeec859365b7fbf8719f109583bd1ef3",
+      "publishedSha256": "59849add8fc72cb3a6311a471e3002f0a75bae7aca8e2ac841cc020723a22303",
       "scriptSha256": [
         "4b35577ad887b93af6a6de2c6698aaab0e54688ae2905b7b9f1c925d1c36332c",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745"
+        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
+        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
       ]
     },
     {
@@ -119,11 +124,12 @@
       "title": "学习语言的科学",
       "version": "v1 · 引导阅读版",
       "chapters": 23,
-      "sourceSha256": "2abcdb16259082a96871383c6fb3a55ad6e81864760b54a851380431d48e3a7b",
-      "publishedSha256": "581c56120b203acc10520f95c987dd1b3300568d5896e97ae05ccb55fa0e0769",
+      "sourceSha256": "6b76f965fb9a652ee9b8da5b843c1657278edf66659017160ca2e263dfcd7c22",
+      "publishedSha256": "c4db1e9c28f3c59e39cc1acb680a12af106b844369c8b9e4921c81b7dbb9b3c2",
       "scriptSha256": [
         "fa56a363deddcdf112bffe25abb616f698b2236f8723d0cf6c02602a60c71c88",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745"
+        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
+        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
       ]
     },
     {
@@ -131,11 +137,12 @@
       "title": "大多数学习工具失败的原因",
       "version": "v1 · 引导阅读版",
       "chapters": 28,
-      "sourceSha256": "e61e730e7cffef12cd89c16748814d38e6e103839b2b41a2b76852f169e7529f",
-      "publishedSha256": "0a704c9db769eeb2a1d0c0f3b3d91c00e1ecc4d11216b4c0c841e7e024370b3d",
+      "sourceSha256": "7a4791278c1d686bc7ab067cf8647b5fcd29be68375343a92464ca288706c35e",
+      "publishedSha256": "ee7182627e0dc9274c19ee6964702404fda89a2c85874d87f5433c76d768becf",
       "scriptSha256": [
         "723d0a9a956202108e3f66f6e60b951a6602a02379f49c91243ea6287d510bf5",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745"
+        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
+        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
       ]
     },
     {

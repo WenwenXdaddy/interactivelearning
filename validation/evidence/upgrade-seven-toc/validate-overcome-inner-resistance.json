@@ -1,0 +1,79 @@
+{
+  "file": "E:\\learning-pages\\upgrade-seven-courses\\content\\courses\\overcome-inner-resistance\\index.html",
+  "status": "passed",
+  "checks": [
+    {
+      "check": "doctype",
+      "passed": true
+    },
+    {
+      "check": "language",
+      "passed": true
+    },
+    {
+      "check": "viewport",
+      "passed": true
+    },
+    {
+      "check": "unique_ids",
+      "passed": true
+    },
+    {
+      "check": "template_replaced",
+      "passed": true
+    },
+    {
+      "check": "self_contained_assets",
+      "passed": true
+    },
+    {
+      "check": "safe_url_schemes",
+      "passed": true
+    },
+    {
+      "check": "no_remote_css",
+      "passed": true
+    },
+    {
+      "check": "no_network_calls",
+      "passed": true
+    },
+    {
+      "check": "explicit_input_labels",
+      "passed": true
+    },
+    {
+      "check": "chart_names",
+      "passed": true
+    },
+    {
+      "check": "main_landmark",
+      "passed": true
+    },
+    {
+      "check": "reduced_motion",
+      "passed": true
+    },
+    {
+      "check": "export_support",
+      "passed": true
+    },
+    {
+      "check": "glossary_support",
+      "passed": true
+    },
+    {
+      "check": "privacy_storage",
+      "passed": true
+    },
+    {
+      "check": "no_agent_facing_text",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "limitations": [
+    "静态启发式检查，不证明模型正确、外链有效、无 XSS 或浏览器完全兼容。"
+  ]
+}

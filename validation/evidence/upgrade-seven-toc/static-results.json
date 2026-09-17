@@ -1,0 +1,1142 @@
+{
+  "mode": "static DOM/text/CSS/JavaScript contract; not a browser runtime test",
+  "passed": 189,
+  "failed": 0,
+  "checks": [
+    {
+      "course": "muscle-health-lyon",
+      "check": "lesson count unchanged",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 0 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 1 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 2 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 3 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 4 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 5 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 6 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 7 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 8 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 9 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 10 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 11 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 12 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 13 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 14 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "station 15 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "verbatim source hash",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "single source TOC and back button",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "responsive source layout contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "history and scroll-spy contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "muscle-health-lyon",
+      "check": "UTF-8 no BOM and LF",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "lesson count unchanged",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 0 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 1 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 2 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 3 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 4 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 5 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 6 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 7 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 8 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 9 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 10 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 11 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 12 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 13 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 14 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 15 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "station 16 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "verbatim source hash",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "single source TOC and back button",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "responsive source layout contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "history and scroll-spy contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "cognitive-flexibility-langer",
+      "check": "UTF-8 no BOM and LF",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "lesson count unchanged",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 0 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 1 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 2 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 3 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 4 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 5 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 6 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 7 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 8 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 9 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 10 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 11 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 12 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 13 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 14 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 15 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 16 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 17 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 18 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 19 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "station 20 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "verbatim source hash",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "single source TOC and back button",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "responsive source layout contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "history and scroll-spy contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "reclaim-your-brain",
+      "check": "UTF-8 no BOM and LF",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "lesson count unchanged",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 0 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 1 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 2 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 3 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 4 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 5 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 6 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 7 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 8 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 9 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 10 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 11 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 12 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 13 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 14 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 15 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 16 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 17 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 18 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 19 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "station 20 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "verbatim source hash",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "single source TOC and back button",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "responsive source layout contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "history and scroll-spy contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "overcome-inner-resistance",
+      "check": "UTF-8 no BOM and LF",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "lesson count unchanged",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 0 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 1 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 2 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 3 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 4 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 5 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 6 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 7 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 8 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 9 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 10 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 11 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 12 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 13 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 14 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 15 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 16 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 17 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 18 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 19 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 20 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 21 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "station 22 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "verbatim source hash",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "single source TOC and back button",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "responsive source layout contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "history and scroll-spy contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "healthy-masculinity",
+      "check": "UTF-8 no BOM and LF",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "lesson count unchanged",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 0 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 1 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 2 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 3 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 4 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 5 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 6 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 7 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 8 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 9 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 10 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 11 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 12 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 13 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 14 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 15 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 16 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 17 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 18 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 19 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 20 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "station 21 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "verbatim source hash",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "single source TOC and back button",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "responsive source layout contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "history and scroll-spy contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "language-learning-science",
+      "check": "UTF-8 no BOM and LF",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "lesson count unchanged",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 0 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 1 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 2 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 3 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 4 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 5 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 6 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 7 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 8 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 9 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 10 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 11 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 12 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 13 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 14 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 15 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 16 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 17 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 18 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 19 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 20 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 21 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 22 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 23 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 24 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 25 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "station 26 text allowlist",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "verbatim source hash",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "single source TOC and back button",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "responsive source layout contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "history and scroll-spy contract",
+      "status": "passed",
+      "detail": ""
+    },
+    {
+      "course": "why-learning-tools-fail",
+      "check": "UTF-8 no BOM and LF",
+      "status": "passed",
+      "detail": ""
+    }
+  ],
+  "failures": []
+}

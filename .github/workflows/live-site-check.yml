@@ -78,16 +78,18 @@ jobs:
                   check('Homepage links to both courses', all(page.locator('a[href*="courses/' + slug + '"]').count() > 0 for slug in ['gold-volatility', 'unknown-unknowable']))
                   page.screenshot(path=str(evidence / 'desktop-home.png'))
 
-                  for slug, count, search_selector, query in [
-                      ('gold-volatility', 10, '#glossarySearch', 'Delta'),
-                      ('unknown-unknowable', 9, '#termSearch', '概率'),
+                  # Per-course controls. gold-volatility keeps its original lab markup; unknown-unknowable was
+                  # rebuilt on the interactive-learning-lab template on 2026-09-19 (15 stations, template ids).
+                  for slug, count, nav, glossary_btn, search_selector, query, theme_btn, export_btn, active_lesson, slider_nav_index in [
+                      ('gold-volatility', 10, '#nav button', '#glossaryBtn', '#glossarySearch', 'Delta', '#themeBtn', '#exportBtn', 'section.lesson.active', 2),
+                      ('unknown-unknowable', 15, '[data-lesson-button]', '#dictionary-button', '#term-search', 'UU', '#theme-toggle', '#export-button', 'section.lesson:not([hidden])', 3),
                   ]:
                       response = page.goto(BASE + '/courses/' + slug + '/', wait_until='networkidle', timeout=45000)
                       check(slug + ': HTTPS course returns 200', response.status == 200)
-                      page.locator('#nav button').first.wait_for(state='visible')
-                      check(slug + ': all chapter navigation buttons render', page.locator('#nav button').count() == count)
+                      page.locator(nav).first.wait_for(state='visible')
+                      check(slug + ': all chapter navigation buttons render', page.locator(nav).count() == count)
                       check(slug + ': SVG graphics render', page.locator('svg path[d], svg polyline, svg line, svg rect').count() > 0)
-                      page.locator('#glossaryBtn').click()
+                      page.locator(glossary_btn).click()
                       page.locator('dialog[open]').wait_for(state='visible')
                       page.locator(search_selector).fill(query)
                       check(slug + ': glossary search is interactive', page.locator(search_selector).input_value() == query and len(page.locator('dialog[open]').inner_text()) > 30)
@@ -101,44 +103,44 @@ jobs:
                           page.wait_for_timeout(200)
                       check(slug + ': Escape closes the glossary', page.locator('dialog[open]').count() == 0)
 
-                      page.locator('#nav button').nth(2).click()
-                      slider = page.locator('section.lesson.active input[type="range"]').first
+                      page.locator(nav).nth(slider_nav_index).click()
+                      slider = page.locator(active_lesson + ' input[type="range"]').first
                       slider.wait_for(state='visible')
                       before_value = slider.input_value()
-                      before_text = page.locator('section.lesson.active').inner_text()
+                      before_text = page.locator(active_lesson).inner_text()
                       slider.focus()
                       slider.press('ArrowRight')
                       check(slug + ': keyboard changes a parameter', slider.input_value() != before_value)
-                      check(slug + ': parameter updates the displayed lesson', page.locator('section.lesson.active').inner_text() != before_text)
+                      check(slug + ': parameter updates the displayed lesson', page.locator(active_lesson).inner_text() != before_text)
 
-                      page.locator('#themeBtn').click()
+                      page.locator(theme_btn).click()
                       theme = page.locator('body').get_attribute('class') or ''
                       check(slug + ': native localStorage has saved state', page.evaluate('Object.keys(localStorage).length') > 0)
                       page.reload(wait_until='networkidle')
-                      page.locator('#nav button').first.wait_for(state='visible')
+                      page.locator(nav).first.wait_for(state='visible')
                       check(slug + ': theme survives a real HTTPS reload', (page.locator('body').get_attribute('class') or '') == theme)
 
                       with page.expect_download() as downloaded:
-                          page.locator('#exportBtn').click()
+                          page.locator(export_btn).click()
                       output = evidence / (slug + '-test-export.md')
                       downloaded.value.save_as(str(output))
                       check(slug + ': Markdown export downloads nonempty notes', output.stat().st_size > 100)
                       check(slug + ': home navigation is retained', page.locator('a[href="../../index.html#courses"]').count() > 0)
-                      page.locator('#nav button').first.click()
+                      page.locator(nav).first.click()
                       page.screenshot(path=str(evidence / (slug + '-desktop.png')))
 
                   check('No uncaught JavaScript exceptions in desktop interactions', not errors)
                   mobile = browser.new_context(viewport={'width': 390, 'height': 844}, is_mobile=True, has_touch=True, device_scale_factor=1)
                   mp = mobile.new_page()
-                  for route, label in [('/', 'home'), ('/courses/gold-volatility/', 'gold'), ('/courses/unknown-unknowable/', 'unknown')]:
+                  for route, label, glossary_btn in [('/', 'home', None), ('/courses/gold-volatility/', 'gold', '#glossaryBtn'), ('/courses/unknown-unknowable/', 'unknown', '#dictionary-button')]:
                       response = mp.goto(BASE + route, wait_until='networkidle', timeout=45000)
                       check(label + ': mobile viewport loads over HTTPS', response.status == 200)
                       # Measure against the layout viewport: with mobile emulation Chromium zooms out to fit
                       # wide content, so innerWidth grows with the overflow and would hide it.
                       check(label + ': no page-level horizontal overflow at 390px', mp.evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth + 2'))
                       mp.screenshot(path=str(evidence / (label + '-mobile.png')))
-                      if label != 'home':
-                          mp.locator('#glossaryBtn').click()
+                      if glossary_btn:
+                          mp.locator(glossary_btn).click()
                           mp.locator('dialog[open]').wait_for(state='visible')
                           check(label + ': touch viewport glossary opens', mp.locator('dialog[open]').is_visible())
                           mp.screenshot(path=str(evidence / (label + '-mobile-glossary.png')))

@@ -18,13 +18,14 @@
     },
     {
       "slug": "unknown-unknowable",
-      "title": "未知投资实验室",
-      "version": "v1 · 交互式阅读",
-      "chapters": 9,
-      "sourceSha256": "12e10e3ca58e57b42a23ae9fd983654eb7c85b4835d6bc090e22fb909d89317c",
-      "publishedSha256": "373cb80d86159d6cf26b202aa6d19971a57a9d4a6a464e81604e65f284a633ae",
+      "title": "投资于未知与不可知：Zeckhauser 导读",
+      "version": "v2 · 推理导读版",
+      "chapters": 15,
+      "sourceSha256": "37d36f84f3c54569c93e7e3f82e60e7c3ea4fe577edfb7f8e990d71a211fc4df",
+      "publishedSha256": "f1a73a09cc4e058729d7a316659a03340e16c807717df0e99d5fe5b5d9c87818",
       "scriptSha256": [
-        "44dbd357018403fa89c0a007aec3c6a7631ecbd0af1c810cdff147a5324720b7"
+        "76dab4c2706a7df240849732184565fa40a6fe5812eeda10db68be8fb81d3322",
+        "deecff3885d0d29a3dcac1e03b706d01ab473776cdf3d582d8d81ed6926a1361"
       ]
     },
     {

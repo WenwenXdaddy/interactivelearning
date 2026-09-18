@@ -148,12 +148,12 @@
     {
       "slug": "huberman-health-qa",
       "title": "你最关心的健康问题 · 交互导读",
-      "version": "v2 · 带核查的导读",
+      "version": "v3 · 推理导读版",
       "chapters": 18,
-      "sourceSha256": "e85f32d7d95d93fd8a1410a78d54ae40822a55f8ec24809f930ca7cf7423bba3",
-      "publishedSha256": "9266ff2326a74a9f36112995c95718cffd499b3925b54c55365962a6beee0b9a",
+      "sourceSha256": "b5c78af6d3d4c65dc67d1f6b73d14972d4d722b87db18c69e50b1bfbbe81811a",
+      "publishedSha256": "45078a3832b2ddba836812d8d5571237d79decfd6e20385a93878ac40e3dda46",
       "scriptSha256": [
-        "d018df7f7b71091f7951c5a8fd7bfeba99a19b560b7916b82901d164a0c0f0d4"
+        "d759ed7392b874206367190c128325b8d80df4aee433b26df2998e0383a31df9"
       ]
     }
   ]

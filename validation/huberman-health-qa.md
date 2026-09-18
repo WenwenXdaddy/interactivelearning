@@ -1,3 +1,65 @@
+# huberman-health-qa update to v3 — 2026-09-18
+
+Course: 你最关心的健康问题 · 交互导读 (card title kept; the page's own title stays 你最关心的健康问题｜Huberman 问答导读).
+Route unchanged: https://learning.jiadi.ai/courses/huberman-health-qa/
+
+## Input
+
+A full rebuild by `interactive-learning-lab` 2.3.2 from the same Chinese transcript (build directory
+`E:\learning-pages\huberman-health-qa-v3`, page COURSE_META.version 3.2.0), delivered 2026-09-18 with
+`huberman-health-qa_study_notes.md`, `course-spec.md`, `source-ledger.csv`, `stations/*.json` and `qa-report.md`.
+Compared with v2: still 18 stations (00 map, 01–15 content, 16 速查与自测, 17 原文全文), but the content stations are
+rebuilt under the 2.3.x rules — each step carries premise / reasoning / conclusion prose, stations 12–15 are
+"source-as-body" (verbatim paragraphs with lead-in and annotations, announced at station 0 and at each station head),
+verification labels moved out of the body into the handbook and glossary, corrections placed after the step prose,
+quick reference gained a 定性结论 section with 30 linked rows, and the five self-checks are free-text (complete a
+process / respond to a change / transfer to a new case) with separate folded answers. Glossary grew from 25 to 55 terms;
+ledger 37 claims (verified 11, derived 2, unverified 15, disputed 9). No numeric model. Storage key
+`interactive-learning-lab:huberman-health-qa:v1` is unchanged, so existing learner records still load (as before, an old
+"visited" record now points at a rebuilt station).
+
+## Adaptations made for the site
+
+One mechanical adaptation, agreed by the user before integration:
+
+1. **Handbook link target.** Station 00 linked to `huberman-health-qa_study_notes.md`, a sibling file the builder does
+   not publish. The single `href` was changed to `study-notes.md` with `download="huberman-health-qa-study-notes.md"`
+   (same change as v2). No other byte of the page differs from the delivered build.
+
+One content fix, agreed by the user during integration and applied in the course build (not in the repository copy):
+the self-check answer boxes said "只保存在本浏览器" but only saved when a mark button was pressed, so a reload lost an
+unmarked draft. The build now saves the draft on input, restores it on reload and includes it in the exported notes
+(`草稿：` line). The page was rebuilt, its own checks rerun (validate_page 17/17, smoke generic, browser_check 106/106,
+leak_check 0 hits) and the repository copy replaced from that rebuild.
+
+Files are UTF-8 without BOM, LF. `courses.json` entry rewritten for v3 (subtitle, description, one tag, terms 55,
+"37 条主张核查", "v3 · 推理导读版", level, firstTask, imageAlt); title, category 健康与科学, tone gold and storage key
+unchanged. The preview is an actual screenshot of station 16 (速查 table) from the local build.
+
+## Checks run (local, http://127.0.0.1:4173, real HTTP, site CSP, native localStorage)
+
+- `npm test`: 106 static integrity checks pass, including all 12 for this course.
+- `site_checks.py snapshot` on the delivered file: 18 lessons, 55 terms, 0 range inputs, no 390 px overflow, no
+  console errors. Baseline for the comparison below.
+- `site_checks.py check` against the built site: **141 pass, 1 fail, 9 warn, 7 manual**. Home card under 健康与科学;
+  downloads byte-identical to repository sources; all 18 station texts and the 55-term count match the baseline;
+  navigation, glossary (search "皮质"), self-check typed note exported and restored after reload, persistence, other
+  courses' storage sentinels untouched, offline HTML opens from disk, no 390 px overflow on any station, no console
+  errors or CSP violations. The one `fail` ("answer button in lesson 9 shows feedback") is a selector mismatch: the
+  script clicks the `[data-predict]` container, while this page's choices are `button[data-predict-q]`; covered by the
+  course-specific check below. Warnings/manual items are the same pre-existing ones as for the other courses.
+- Course-specific Playwright checks (`extra_checks.py` 6/6, `draft_check.py` 2/2): 先猜 choice buttons in stations 03
+  and 09 record a choice, show feedback and persist across reload; a self-check answer marked with 部分对 is restored
+  after reload and appears in the export; an unmarked draft is restored after reload and appears in the export as 草稿.
+- Home card, mobile 390 and glossary screenshots inspected. `git diff --stat` for every other course directory is empty.
+
+## Not covered
+
+Real iPhone/Safari, screen readers, Firefox/Edge/WebKit. The medical-content note from the v1 record still applies.
+Production deployment and live verification are reported separately.
+
+---
+
 # huberman-health-qa update to v2 — 2026-09-17
 
 Course: 你最关心的健康问题 · 交互导读 (card title kept; the page's own title is now 你最关心的健康问题｜Huberman 问答导读).

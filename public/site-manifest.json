@@ -96,15 +96,13 @@
     },
     {
       "slug": "overcome-inner-resistance",
-      "title": "如何克服内心阻力",
-      "version": "v1 · 引导阅读版",
-      "chapters": 22,
-      "sourceSha256": "6b7c64ba7cd27c0b37307a7dd9f44b30c706101268b8d39edb17d6ca2ba1fb88",
-      "publishedSha256": "a8e1f24ad3d8ebbbeed6085b2e664c57cb221ef1c80e1ae11dd33f305037b971",
+      "title": "如何克服内心阻力 · 从想做到做成",
+      "version": "v2 · 推理导读版",
+      "chapters": 13,
+      "sourceSha256": "25d4cf018f5cd1dff3cbc38203a230770a78e04fbb2247a1d15c17c4494f8895",
+      "publishedSha256": "7364773ad3f20182a70b2da9dd11dad2fb86ba6071c17cc6a44140bcd8532c07",
       "scriptSha256": [
-        "ce05a08049ef12632ed4b190c57c0da991bca8ec5275c47f610f1c5a8cbb0c81",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
-        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
+        "ba64c6b6a97e4e71dfffaeacfc444ccd96e8b6fd96dccb3961713c5be9d6bcfc"
       ]
     },
     {

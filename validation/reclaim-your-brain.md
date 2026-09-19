@@ -99,7 +99,23 @@ framed so the two-column comparison fills the top half the homepage card exposes
   390 px mobile, glossary dialog with a live search, both station 07 figures at 1440 px and at 390 px, and the
   preview image itself before `imageAlt` was written.
 - `git diff --stat` confirmed no other course's files changed; the commit touches exactly twelve files.
-- Production verification: recorded below once run.
+- Production, commit `7410b85`: `Workers Builds: interactivelearning` and `validate` both succeeded.
+  `npm run verify:live` passed — homepage, all twelve courses' hashes, downloads and 404, after removing the
+  938 bytes of edge-injected script Cloudflare adds to every course page.
+  Live browser checks against `https://learning.jiadi.ai`: **130 pass, 1 fail, 12 warn, 3 manual**; the
+  supplemental script passed **16/16** against production, including native persistence, a real export and the
+  source-jump round trip.
+- The single live `fail` (`defaults-vs-original: no page errors on first load`) is Cloudflare edge noise, not this
+  course: the blocked `static.cloudflareinsights.com` beacon and the blocked bot-detection script. The course's own
+  inline script's hash **is** in the live CSP and executes — all 16 supplemental functional assertions ran against
+  the live page through `window.LearningLab`, which would be impossible otherwise. The dedicated `[console]` probe
+  downgrades the same messages to `warn` in `--live` mode; this one probe does not apply the same allowance, so it
+  is a checker inconsistency rather than a site defect. The ~367-byte edge tag appended to browser-downloaded HTML
+  is the same known noise. Both are documented in the skill's site contract §6.1; removing them would mean changing
+  Cloudflare zone settings or the CSP, which is the user's decision.
+- The live warnings and the third `manual` item are the same pre-existing items as locally, all in other courses.
+- Not tested: real-device iPhone/Safari, screen readers, and the factual accuracy of the underlying interview
+  beyond the course's own 53-record ledger.
 
 Evidence: `%TEMP%/plc/reclaim-your-brain/`. Commit, deployment and production verification are reported
 separately in the release report.

@@ -109,6 +109,21 @@ card exposes; the image was inspected before `imageAlt` was written.
   plant-source mode, and the preview image itself before `imageAlt` was written.
 - `git diff --stat` over every other course's source directory is empty; the commit touches exactly twelve files,
   and `public/index.html` and `public/site-manifest.json` change only this course's card and hashes.
+- Production, commit `e4d63e6`: `Workers Builds: interactivelearning` and `validate` both succeeded.
+  `npm run verify:live` passed — homepage, all twelve courses' hashes, downloads and 404, after removing the
+  938 bytes of edge-injected script Cloudflare adds to every course page.
+  Live browser checks against `https://learning.jiadi.ai`: **141 pass, 1 fail, 12 warn, 2 manual**; the
+  supplemental script passed **34/34** against production, including the calculator's sliders and both toggles,
+  native persistence, a real export and the source-jump round trip.
+- The single live `fail` (`defaults-vs-original: no page errors on first load`) is Cloudflare edge noise, not this
+  course: the blocked `static.cloudflareinsights.com` beacon and the blocked bot-detection script. Both of this
+  course's inline-script hashes **are** in the live CSP and execute — all 34 supplemental functional assertions
+  ran against the live page, which would be impossible otherwise. The dedicated `[console]` probe downgrades the
+  same 212 messages to `warn` in `--live` mode; this one probe does not apply the same allowance, so it is a
+  checker inconsistency rather than a site defect. The ~367-byte edge tag appended to browser-downloaded HTML is
+  the same known noise. Both are documented in the skill's site contract §6.1; removing them would mean changing
+  Cloudflare zone settings or the CSP, which is the user's decision.
+- The live warnings and the second `manual` item are the same pre-existing items as locally, all in other courses.
 - Not tested: real-device iPhone/Safari, screen readers, and the factual accuracy of the underlying interview
   beyond the course's own 68-record ledger.
 

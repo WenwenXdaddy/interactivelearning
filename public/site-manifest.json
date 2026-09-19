@@ -72,14 +72,12 @@
     {
       "slug": "cognitive-flexibility-langer",
       "title": "认知灵活性 · 在变化中重新看见选择",
-      "version": "v1 · 引导阅读版",
-      "chapters": 18,
-      "sourceSha256": "fd2d3025568f8cf8ef618e9a4c772e3eb080aa935fbd2303725d0293426a59e0",
-      "publishedSha256": "7af0821d17c6515ef996f8407dd944657209b0d2742c8afc245466554d46b2ac",
+      "version": "v2 · 推理导读版",
+      "chapters": 13,
+      "sourceSha256": "1b3999eb92c9a4e24d7338cfc20253733195dfac23489558bd5eaaf1eb22ee2f",
+      "publishedSha256": "4e2093cd66c9c3c53d4a3979bcb5beca23943a37a5d6071c931c2a72c299d50a",
       "scriptSha256": [
-        "561cec303d01eadfb0b376844af8fccccd59d91416012f6ce656607eb21fbbb3",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
-        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
+        "73b7301b1f35bc47f56a4540b19dfefbad6b8d2d0680d7eb8841a45bfe34d155"
       ]
     },
     {

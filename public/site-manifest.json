@@ -107,15 +107,13 @@
     },
     {
       "slug": "healthy-masculinity",
-      "title": "健康的男性气质",
-      "version": "v1 · 引导阅读版",
-      "chapters": 24,
-      "sourceSha256": "3024704743930450e157cbde36c9daecaeec859365b7fbf8719f109583bd1ef3",
-      "publishedSha256": "59849add8fc72cb3a6311a471e3002f0a75bae7aca8e2ac841cc020723a22303",
+      "title": "健康的男性气质 · 坚定与联结",
+      "version": "v2 · 推理导读版",
+      "chapters": 14,
+      "sourceSha256": "b138ee4fee7c18a5746fede6673e9641a3bea1841affd6a611cc5a5569d7ef0c",
+      "publishedSha256": "b4eefaa5883e700df23ed4c68cf6db94ba7a282d499662e7ab64556797d23318",
       "scriptSha256": [
-        "4b35577ad887b93af6a6de2c6698aaab0e54688ae2905b7b9f1c925d1c36332c",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
-        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
+        "e35adfb23f27cf9ea5c94d9e714621302b1a06bd4cf41a86483d73786acfcff6"
       ]
     },
     {

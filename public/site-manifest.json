@@ -47,12 +47,13 @@
     {
       "slug": "pozsar-money-view",
       "title": "Pozsar 货币观：从资产负债表到全球储备",
-      "version": "v2 · 带核查的导读",
-      "chapters": 39,
-      "sourceSha256": "01c2a8f2648802e3f60aa532001a4abd9a07e754938a95ba33b1bb484260be6f",
-      "publishedSha256": "a28d46d8c60616048ab793976acf2fa2fbf56fde756d86b99f489de7ff0ec701",
+      "version": "v3 · 推理导读版",
+      "chapters": 22,
+      "sourceSha256": "2459ceb835ce9d88db3afff63b13cb35c988396696952621729bb6623b5302eb",
+      "publishedSha256": "ba401e65c491818d857372acadfe0dbdd219f06fd96c4ab129f1c93d22aeba84",
       "scriptSha256": [
-        "2919e7847b0f0e12a82e9d905fc8c6000c9067157e92e129701175c5c7e04487"
+        "edc54c3b85fc237f6145a0030887d377b2340e5fa2127138ecab15640d78987c",
+        "e8a0f7108486a2c7a4b6155d3ddceee318bad57519dd275c0a7d07add2651ceb"
       ]
     },
     {

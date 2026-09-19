@@ -125,15 +125,13 @@
     },
     {
       "slug": "why-learning-tools-fail",
-      "title": "大多数学习工具失败的原因",
-      "version": "v1 · 引导阅读版",
-      "chapters": 28,
-      "sourceSha256": "7a4791278c1d686bc7ab067cf8647b5fcd29be68375343a92464ca288706c35e",
-      "publishedSha256": "ee7182627e0dc9274c19ee6964702404fda89a2c85874d87f5433c76d768becf",
+      "title": "大多数学习工具失败的原因 · 从读过到理解",
+      "version": "v2 · 推理导读版",
+      "chapters": 24,
+      "sourceSha256": "93cf0623219643b53ab37ff99a4696a5d47e97cb13a7953d88711ec466f9df3a",
+      "publishedSha256": "6ca4c674cf9fbe2e1a68e7ef1df67bb7297db0f5dbefba0a320d200e6c4a6415",
       "scriptSha256": [
-        "723d0a9a956202108e3f66f6e60b951a6602a02379f49c91243ea6287d510bf5",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
-        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
+        "5ea01e5399c325431255fa3e4ec6a361a3985cc52a448568d576055c9592a206"
       ]
     },
     {

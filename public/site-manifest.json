@@ -82,15 +82,13 @@
     },
     {
       "slug": "reclaim-your-brain",
-      "title": "如何重新掌控你的大脑",
-      "version": "v1 · 引导阅读版",
-      "chapters": 22,
-      "sourceSha256": "7d76501e5be765dec30e88e3b3dcb0cc7ab9d6541053e5b4b0333d937294c38c",
-      "publishedSha256": "35b7ebbd6709cb23d7663a98c2380ae944ad6c3c08e1e73bd6272cf084373ed9",
+      "title": "重新掌控你的大脑 · 节律、注意与习惯",
+      "version": "v2 · 推理导读版",
+      "chapters": 12,
+      "sourceSha256": "51750ee3a58612cab0c07da1d8c07668b5f600642adabd65118fb3934974a4fd",
+      "publishedSha256": "4cb0f60eee691dbbdc90b716c24df68c5381d738b8c86a8eecb77108f2ff1879",
       "scriptSha256": [
-        "0c98e78907c83db5f5c76e41532e2e5a6f551575bc2b6c2ac5616235cc82337f",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
-        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
+        "a3edeace546bc0514f90d787771bf685812cc1d5c46fcd905c05dd92a30539c2"
       ]
     },
     {

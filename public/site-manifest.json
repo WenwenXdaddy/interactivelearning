@@ -120,15 +120,13 @@
     },
     {
       "slug": "language-learning-science",
-      "title": "学习语言的科学",
-      "version": "v1 · 引导阅读版",
-      "chapters": 23,
-      "sourceSha256": "6b76f965fb9a652ee9b8da5b843c1657278edf66659017160ca2e263dfcd7c22",
-      "publishedSha256": "c4db1e9c28f3c59e39cc1acb680a12af106b844369c8b9e4921c81b7dbb9b3c2",
+      "title": "学习语言的科学 · 声音、经验与交流",
+      "version": "v2 · 推理导读版",
+      "chapters": 15,
+      "sourceSha256": "bf5fa2b0342f47b52c1555243f1371950478ed6c6296a83fede2d7a8f96f808d",
+      "publishedSha256": "57224919f4d2d706396c11139885eddf97d4fd45e1c6b72517e054211058154e",
       "scriptSha256": [
-        "fa56a363deddcdf112bffe25abb616f698b2236f8723d0cf6c02602a60c71c88",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
-        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
+        "d033b79df0d4eae6a2d2b89e8d4f6234f982ee50782c6f2d1688334bb826d04a"
       ]
     },
     {

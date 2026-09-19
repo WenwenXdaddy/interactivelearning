@@ -58,15 +58,14 @@
     },
     {
       "slug": "muscle-health-lyon",
-      "title": "通过运动和饮食提升健康寿命",
-      "version": "v2 · 原文增强版",
+      "title": "通过运动和饮食提升健康寿命 · 导读",
+      "version": "v3 · 推理导读版",
       "chapters": 17,
-      "sourceSha256": "ea5fd63281c92df60d109eb56958bcb099291aa63ecba14e1ddc844e11ce0fa8",
-      "publishedSha256": "b2eaa79da6cfd1d8216f1f504a1ec8bd75bb6209ee6bb53b38058cad220870f6",
+      "sourceSha256": "1c7e32e5378f02348b6fa17af5dfb744e9e07084f9622632d768d638273b0e35",
+      "publishedSha256": "c65a62f90908af6754ddbf229e3a6d848b9c22f2456dd2328323c2ca1256bba5",
       "scriptSha256": [
-        "d05f5700ec8e7782a13d101c79aa3817e09f1348b44cc15627c623f9cd702538",
-        "74bcfcbb21ffb64c678e0b6b7aeaacb4d5d68917532251d767c408ecafc03745",
-        "7cf52cceb1ad5a6bfd57833632f5b88f53cefb6c5c057ea0c71a02ac62ad7573"
+        "5ac0d2130ecc00dba4cf1a1d69a8c15e3b2a27481a3f06eddd48be552c90f24a",
+        "f6f55beeb9a05302822eb9e3e173f3e69ed797eeaf3f878bb2dc07e6eeb4d3b5"
       ]
     },
     {

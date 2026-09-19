@@ -61,21 +61,36 @@ built site, framed so the table fills the top half the homepage card exposes; th
 ## Verification
 
 - `npm test`: 106 static integrity checks passed across twelve courses.
-- Local HTTP/CSP browser checks against the freshly built `public/` over real HTTP with native localStorage
-  (results recorded in the release report): homepage card, byte-identical notes and offline download, per-station
-  default text against the pre-integration snapshot, station navigation, glossary dialog and search, one-line memo,
-  export, reload persistence, sentinel test that other courses' storage is untouched, offline HTML, regression over
-  the older courses, 390 px layout, and console/CSP errors.
-- Station 11's five self-checks are free-text scenario questions with no answer button, so the scripted quiz probe
-  reports `manual`; the free-text drafts and their persistence were exercised through the memo/persistence probes.
-- The page has no sliders, so the slider probe is not applicable.
-- Screenshots inspected rather than merely generated: homepage card, desktop course page, 390 px mobile, glossary
-  dialog, and the preview image itself.
-- `git diff --stat` confirmed no other course's files changed.
-- Production: Cloudflare Workers Builds check on the pushed commit, `npm run verify:live`, and the same browser
-  checks re-run against `https://learning.jiadi.ai`. Cloudflare's edge injects bot-detection and Web Analytics
-  scripts that this site's CSP blocks; those console errors and the ~367-byte difference in browser-downloaded
-  HTML are known, pre-existing noise, recorded as warnings rather than failures.
+- Local HTTP/CSP browser checks against the freshly built `public/` over real HTTP with native localStorage:
+  **133 pass, 0 fail, 10 warn, 4 manual**. Covered the homepage card, byte-identical notes and offline download,
+  per-station default text against the pre-integration snapshot, station navigation, glossary dialog and search,
+  one-line memo, export, reload persistence, a sentinel test that other courses' storage is untouched, offline
+  HTML, regression over the eleven older courses, 390 px layout, and console/CSP errors. The local server was
+  restarted after the rebuild and its served CSP confirmed to carry all 23 current script hashes.
+- All ten local warnings are pre-existing behaviour in *other* courses (gold-volatility's two-press Escape on its
+  `type="search"` glossary box; "no visible slider on the current lesson" for the courses that have no model).
+- Two `manual` items for this course, both expected and both covered by a purpose-written supplemental script
+  (`%TEMP%/plc/cognitive-flexibility-langer/supplemental.py`): the page has no sliders (no numerical model, not
+  applicable), and station 11's five self-checks are free-text scenario questions with no `[data-answer]` button.
+  The supplemental script passed 8/8 locally: 13 station buttons, five free-text boxes present, a typed draft
+  surviving a reload through native localStorage, that draft reaching the actual export, the 34-record ledger
+  count reaching the export, and the source-jump round trip (station 01 → station 12 transcript → back-link → 01,
+  opening the collapsed 对照原文 block first, as a reader would).
+- Screenshots inspected rather than merely generated: homepage card, 390 px mobile, glossary dialog with a live
+  search, and the preview image itself before `imageAlt` was written.
+- `git diff --stat` confirmed no other course's files changed; the commit touches exactly twelve files.
+- Production, commit `fa88245`: `Workers Builds: interactivelearning` and `validate` both succeeded.
+  `npm run verify:live` passed — homepage, all twelve courses' hashes, downloads and 404.
+  Live browser checks: **131 pass, 1 fail, 12 warn, 4 manual**; the supplemental script passed 7/7 functional
+  assertions against `https://learning.jiadi.ai`, including native persistence and a real export.
+- The single live `fail` (`defaults-vs-original: no page errors on first load`) is Cloudflare edge noise, not this
+  course. Verified directly against the live response: the page carries two inline scripts — the course's own
+  20,419-character script, whose hash **is** in the live CSP and which therefore executes, and Cloudflare's
+  921-character bot-detection script, which is blocked — plus the blocked `static.cloudflareinsights.com` beacon.
+  The dedicated `[console]` probe downgrades this to `warn` in `--live` mode; this one probe does not apply the
+  same allowance, so it is a checker inconsistency rather than a site defect. The ~367-byte edge tag appended to
+  browser-downloaded HTML is the same known noise. Both are documented in the skill's site contract §6.1;
+  removing them would mean changing Cloudflare zone settings or the CSP, which is the user's decision.
 - Not tested: real-device iPhone/Safari, screen readers, and the factual accuracy of the underlying interview
   beyond the course's own 34-record ledger.
 

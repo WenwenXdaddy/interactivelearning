@@ -107,6 +107,24 @@ inspected before `imageAlt` was written.
   top or bottom of a station. Not changed here — page text and layout belong to interactive-learning-lab.
 - `git diff --stat` over every other course's source directory is empty; the commit touches exactly eleven files,
   and `public/index.html` and `public/site-manifest.json` change only this course's card and hashes.
+- Production, commit `8598e82`: `Workers Builds: interactivelearning` and `validate` both succeeded.
+  `npm run verify:live` passed — homepage, all twelve courses' hashes, downloads and 404, after removing the
+  938 bytes of edge-injected script Cloudflare adds to every course page.
+  Live browser checks against `https://learning.jiadi.ai`: **154 pass, 1 fail, 12 warn, 2 manual**; the
+  supplemental script passed **16/17** against production, the one exception being its own console probe (below).
+- The single live `fail` in each run (`defaults-vs-original: no page errors on first load`, and the supplemental
+  script's `no console or page errors`) is Cloudflare edge noise, not this course: the blocked
+  `static.cloudflareinsights.com` beacon and the blocked bot-detection script. This course's inline-script hash
+  `sha256-XqAeU5nDJUMSVfo+TsajYaOYXMUqRIVo1XYFXJWSogY=` **is** in the live CSP and executes — all 16 functional
+  supplemental assertions ran against the live page, which would be impossible otherwise. The dedicated
+  `[console]` probe downgrades the same 212 messages to `warn` in `--live` mode; these two probes do not apply
+  the same allowance, so it is a checker inconsistency rather than a site defect. The ~367-byte edge tag appended
+  to browser-downloaded HTML is the same known noise. Both are documented in the skill's site contract §6.1;
+  removing them would mean changing Cloudflare zone settings or the CSP, which is the user's decision.
+- The live warnings and both `manual` items are the same pre-existing items as locally, in other courses or
+  inherent to this course's design.
+- Live screenshots inspected: the homepage card (24 个学习站 / 34 条核查记录 / 34 个术语) and the 390 px glossary
+  dialog listing the course's terms.
 - Not tested: real-device iPhone/Safari, screen readers, and the factual accuracy of the underlying interview
   beyond the course's own 34-record ledger.
 

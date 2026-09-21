@@ -9,3 +9,5 @@
 线上验证要在普通网络上跑；GitHub 机器会被 Cloudflare 以 403 挡住（脚本报 INCONCLUSIVE，退出码 2）。
 只有正式域名的内容、HTTPS 和功能验证通过，才报告已上线。
 不要求用户在聊天粘贴 token；不修改其他站点或加入数据库、登录、遥测。
+
+2026-09-21：主页新增封面流（cover shelf），位于目录网格上方；零依赖（原生 scroll-snap + portal home.js 内联逻辑），CSP 未变。见 docs/coverflow-spec.md 与 validation/homepage-coverflow.md。

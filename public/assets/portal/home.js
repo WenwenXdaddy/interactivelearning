@@ -116,11 +116,107 @@
     });
     recentSection.hidden = !items.length;
   }
+  // Cover shelf: native scroll-snap track with JS-computed 3D tilt. Order stays newest-first;
+  // filters, search and favorites apply to it exactly as they do to the grid.
+  const shelf = document.querySelector('.shelf');
+  const shelfTrack = document.querySelector('.shelf-track');
+  const shelfPanel = document.querySelector('.shelf-detail');
+  const shelfItems = shelfTrack ? [...shelfTrack.children].filter(el => el.classList.contains('shelf-item')) : [];
+  const shelfDotsWrap = document.querySelector('.shelf-dots');
+  const shelfDots = shelfDotsWrap ? [...shelfDotsWrap.children] : [];
+  const shelfNav = document.querySelector('.shelf-nav');
+  const shelfCounter = document.querySelector('.shelf-count');
+  const shelfPrev = document.querySelector('[data-shelf-prev]');
+  const shelfNext = document.querySelector('[data-shelf-next]');
+  const shelfVisible = () => shelfItems.filter(item => !item.hidden);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let shelfActive = null, shelfQueued = false, shelfQuiet = 0, shelfDetailTimer = 0, shelfDetailSlug = '';
+  let shelfSuppressClick = false, shelfDrag = null, shelfResize = 0, shelfAnim = 0;
+  // Browser-native smooth scrollIntoView gets cancelled by the per-frame inline style writes below,
+  // so programmatic centering runs its own rAF animation over instant jumps.
+  function shelfCenter(item, mode) {
+    const target = Math.max(0, Math.min(shelfTrack.scrollWidth - shelfTrack.clientWidth,
+      item.offsetLeft + item.offsetWidth / 2 - shelfTrack.clientWidth / 2));
+    cancelAnimationFrame(shelfAnim);
+    if (mode === 'instant' || reduceMotion.matches) { shelfTrack.scrollTo({left: target, behavior: 'instant'}); return; }
+    const from = shelfTrack.scrollLeft, delta = target - from;
+    if (Math.abs(delta) < 1) return;
+    const start = performance.now(), duration = Math.min(520, 200 + Math.abs(delta) * 0.25);
+    const step = now => {
+      const progress = Math.min(1, (now - start) / duration), eased = 1 - Math.pow(1 - progress, 3);
+      shelfTrack.scrollTo({left: from + delta * eased, behavior: 'instant'});
+      shelfAnim = progress < 1 ? requestAnimationFrame(step) : 0;
+    };
+    shelfAnim = requestAnimationFrame(step);
+  }
+  function shelfCancelAnim() { cancelAnimationFrame(shelfAnim); shelfAnim = 0; }
+  function shelfStyle(item, distance) {
+    const clamped = Math.max(-1, Math.min(1, distance)), amount = Math.abs(clamped);
+    item.style.setProperty('--tx', (clamped * -36).toFixed(2) + 'px');
+    item.style.setProperty('--tz', ((1 - amount) * 120 - 120).toFixed(2) + 'px');
+    item.style.setProperty('--rot', (clamped * -42).toFixed(2) + 'deg');
+    item.style.setProperty('--op', Math.max(1 - amount * 0.35, 0.65).toFixed(3));
+    item.style.setProperty('--zi', String(100 - Math.round(amount * 50)));
+  }
+  function shelfMeasure() {
+    shelfQueued = false;
+    const trackBox = shelfTrack.getBoundingClientRect();
+    const center = trackBox.left + trackBox.width / 2, width = trackBox.width || 1;
+    let best = null, bestGap = 2;
+    shelfItems.forEach(item => {
+      if (item.hidden) { if (item.getAttribute('style')) item.removeAttribute('style'); return; }
+      const box = item.getBoundingClientRect();
+      const distance = (box.left + box.width / 2 - center) / width * 2;
+      shelfStyle(item, distance);
+      if (Math.abs(distance) < bestGap) { bestGap = Math.abs(distance); best = item; }
+    });
+    if (best && best !== shelfActive) shelfSetActive(best);
+  }
+  function shelfRequestMeasure() { if (!shelfQueued) { shelfQueued = true; requestAnimationFrame(shelfMeasure); } }
+  function shelfSetActive(item) {
+    shelfActive = item;
+    shelfItems.forEach(entry => { if (entry === item) entry.setAttribute('aria-current', 'true'); else entry.removeAttribute('aria-current'); });
+    const visible = shelfVisible(), position = visible.indexOf(item);
+    if (shelfPrev) shelfPrev.disabled = position <= 0;
+    if (shelfNext) shelfNext.disabled = position >= visible.length - 1;
+    for (let index = 0; index < shelfDots.length; index++) {
+      if (!shelfDots[index]) continue;
+      shelfDots[index].hidden = shelfItems[index] ? shelfItems[index].hidden : true;
+      shelfDots[index].setAttribute('aria-selected', String(shelfItems[index] === item));
+    }
+    if (shelfCounter) shelfCounter.textContent = (position + 1) + ' / ' + visible.length;
+    clearTimeout(shelfDetailTimer);
+    shelfDetailTimer = setTimeout(() => {
+      const template = shelfActive && shelfActive.querySelector('template.cover-detail');
+      if (!template || shelfActive.dataset.slug === shelfDetailSlug) return;
+      shelfDetailSlug = shelfActive.dataset.slug;
+      shelfPanel.replaceChildren(template.content.cloneNode(true));
+    }, 200);
+  }
+  function shelfUpdateEdges() {
+    const visible = shelfVisible();
+    visible.forEach((item, index) => {
+      item.classList.toggle('shelf-start', index === 0);
+      item.classList.toggle('shelf-end', index === visible.length - 1);
+    });
+  }
+  function shelfSync(state) {
+    if (!shelf) return;
+    shelfItems.forEach(item => { item.hidden = !matchesCard(item, state); });
+    const visible = shelfVisible();
+    shelf.hidden = visible.length === 0;
+    if (!visible.length) return;
+    shelfUpdateEdges();
+    if (!shelfActive || shelfActive.hidden) shelfSetActive(visible[0]); else shelfSetActive(shelfActive);
+    shelfCenter(shelfActive, 'instant');
+    shelfRequestMeasure();
+  }
   function update() {
     sortCards(cards, sort.value).forEach(card => grid.append(card));
     const state = {category, query:search.value, favoritesOnly:favoritesOnly.getAttribute('aria-pressed') === 'true', favorites};
     let count = 0;
     cards.forEach(card => { card.hidden = !matchesCard(card, state); if (!card.hidden) count++; });
+    shelfSync(state);
     document.getElementById('visibleCount').textContent = `显示 ${count} / ${cards.length} 门`;
     document.getElementById('emptyState').hidden = count > 0;
   }
@@ -166,6 +262,97 @@
     if (event.key === RECENT) refreshRecent();
     if (event.key === THEME) setTheme(event.newValue === 'dark');
   });
+  if (shelf && shelfTrack && shelfItems.length) {
+    shelfTrack.addEventListener('scroll', () => {
+      shelfRequestMeasure();
+      clearTimeout(shelfQuiet);
+      shelfQuiet = setTimeout(shelfMeasure, 150);
+    }, {passive: true});
+    shelfTrack.addEventListener('scrollend', shelfMeasure);
+    shelfTrack.addEventListener('wheel', shelfCancelAnim, {passive: true});
+    shelfTrack.addEventListener('touchstart', shelfCancelAnim, {passive: true});
+    shelfTrack.addEventListener('focusin', event => {
+      const item = event.target.closest('.shelf-item');
+      if (item && !item.hidden && item !== shelfActive) shelfCenter(item);
+    });
+    shelfTrack.addEventListener('keydown', event => {
+      const visible = shelfVisible(), index = shelfActive ? visible.indexOf(shelfActive) : -1;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        const next = event.key === 'ArrowLeft' ? index - 1 : index + 1;
+        if (next >= 0 && next < visible.length) shelfCenter(visible[next]);
+      } else if (event.key === 'Home') {
+        event.preventDefault();
+        if (visible.length) shelfCenter(visible[0]);
+      } else if (event.key === 'End') {
+        event.preventDefault();
+        if (visible.length) shelfCenter(visible[visible.length - 1]);
+      } else if (event.key === 'Enter') {
+        const cover = shelfActive && shelfActive.querySelector('a.cover');
+        if (cover) { event.preventDefault(); location.href = cover.href; }
+      }
+    });
+    shelfTrack.addEventListener('pointerdown', event => {
+      shelfSuppressClick = false;
+      shelfCancelAnim();
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      event.preventDefault();
+      shelfDrag = {x: event.clientX, left: shelfTrack.scrollLeft, moved: false};
+    });
+    window.addEventListener('pointermove', event => {
+      if (!shelfDrag) return;
+      const dx = event.clientX - shelfDrag.x;
+      if (!shelfDrag.moved && Math.abs(dx) > 6) {
+        shelfDrag.moved = true;
+        shelfSuppressClick = true;
+        shelfTrack.classList.add('dragging');
+      }
+      if (shelfDrag.moved) shelfTrack.scrollLeft = shelfDrag.left - dx;
+    });
+    window.addEventListener('pointerup', () => {
+      if (!shelfDrag) return;
+      shelfDrag = null;
+      shelfTrack.classList.remove('dragging');
+      if (shelfSuppressClick) setTimeout(() => { shelfSuppressClick = false; }, 0);
+    });
+    shelfTrack.addEventListener('click', event => {
+      if (shelfSuppressClick) { shelfSuppressClick = false; event.preventDefault(); return; }
+      const cover = event.target.closest('a.cover');
+      if (!cover) return;
+      const item = cover.closest('.shelf-item');
+      if (item !== shelfActive) { event.preventDefault(); shelfCenter(item); }
+    });
+    window.addEventListener('resize', () => {
+      clearTimeout(shelfResize);
+      shelfResize = setTimeout(() => {
+        if (shelfActive && !shelfActive.hidden) shelfCenter(shelfActive, 'instant');
+        shelfRequestMeasure();
+      }, 150);
+    });
+    if (shelfPrev) shelfPrev.addEventListener('click', () => {
+      const visible = shelfVisible(), index = shelfActive ? visible.indexOf(shelfActive) : -1;
+      if (index > 0) shelfCenter(visible[index - 1]);
+    });
+    if (shelfNext) shelfNext.addEventListener('click', () => {
+      const visible = shelfVisible(), index = shelfActive ? visible.indexOf(shelfActive) : -1;
+      if (index > -1 && index < visible.length - 1) shelfCenter(visible[index + 1]);
+    });
+    shelfDots.forEach((dot, index) => dot.addEventListener('click', () => {
+      const item = shelfItems[index];
+      if (item && !item.hidden) shelfCenter(item);
+    }));
+    if (shelfNav) shelfNav.hidden = false;
+    if (shelfDotsWrap) shelfDotsWrap.hidden = false;
+    if (shelfCounter) shelfCounter.hidden = false;
+    const first = shelfVisible()[0];
+    if (first) {
+      shelfUpdateEdges();
+      shelfDetailSlug = first.dataset.slug;
+      shelfSetActive(first);
+      shelfTrack.scrollLeft = 0;
+      shelfRequestMeasure();
+    }
+  }
   document.getElementById('catalogTools').hidden = false;
   refreshFavorites(); refreshRecent(); update();
 })();

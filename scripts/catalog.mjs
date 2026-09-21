@@ -37,5 +37,30 @@ export function renderCatalog(courses) {
     if (route.slugs.some(slug => !names.has(slug))) throw new Error('Curated route references an unknown course');
     return `<article class="route"><h3>${escape(route.title)}</h3><p>${escape(route.reason)}</p><ol>${route.slugs.map(slug => `<li><a href="/courses/${escape(slug)}/index.html">${escape(names.get(slug))}</a></li>`).join('')}</ol></article>`;
   }).join('');
-  return {FILTERS: filters, COURSE_CARDS: cards, CURATED_ROUTES: curated};
+  // Cover shelf: newest course first and initially centered. Pure-CSS cover faces reuse the preview
+  // screenshots; the detail template carries the full course copy so the panel needs no extra request.
+  const newestFirst = [...courses].reverse();
+  const shelfDetail = course => {
+    const {slug} = course;
+    return `<div class="course-kicker"><span>${escape(course.category)} · ${escape(course.version)}</span></div>
+<h3>${escape(course.title)}</h3><p class="subtitle">${escape(course.subtitle)}</p>
+<p class="description">${escape(course.description)}</p>
+<div class="tags">${course.tags.map(tag => `<span class="tag">${escape(tag)}</span>`).join('')}</div>
+<div class="course-stats"><span>${course.chapters} 个学习站</span><span>${escape(course.metric)}</span><span>${course.terms} 个术语</span></div>
+<div class="course-actions"><a class="cta" href="/courses/${escape(slug)}/index.html">进入课程 <span aria-hidden="true">↗</span></a><div class="download-links"><a href="/courses/${escape(slug)}/study-notes.md" download="${escape(slug)}-study-notes.md">学习手册 ↓</a><a href="/downloads/${escape(slug)}.html" download="${escape(slug)}.html">独立 HTML ↓</a></div></div>
+<p class="course-tip"><strong>建议起点</strong> · ${escape(course.firstTask)}</p>`;
+  };
+  const covers = newestFirst.map(course => {
+    const {slug} = course;
+    const search = [course.title, course.subtitle, course.description, course.category, ...course.tags].join(' ');
+    return `<li class="shelf-item" data-slug="${escape(slug)}" data-category="${escape(course.category)}" data-search="${escape(search)}">
+<a class="cover" href="/courses/${escape(slug)}/index.html" aria-label="${escape(course.title)}：${escape(course.subtitle)}"><span class="cover-mat" data-tone="${escape(course.tone)}"><span class="cover-category">${escape(course.category)}</span><strong class="cover-title">${escape(course.title)}</strong><span class="cover-meta">${course.chapters} 站 · ${course.terms} 术语</span></span><img class="cover-thumb" src="/assets/previews/${escape(slug)}.webp" alt="" width="1120" height="960" loading="lazy"></a>
+<template class="cover-detail">${shelfDetail(course)}</template></li>`;
+  }).join('\n');
+  const dots = courses.length <= 20
+    ? newestFirst.map((course, index) => `<button class="shelf-dot" type="button" role="tab" aria-selected="${index === 0}" aria-label="${escape(course.title)}"></button>`).join('')
+    : '';
+  return {FILTERS: filters, COURSE_CARDS: cards, CURATED_ROUTES: curated,
+    COURSE_COVERS: covers, SHELF_DOTS: dots, SHELF_DETAIL_INITIAL: shelfDetail(newestFirst[0]),
+    SHELF_CLASS: courses.length > 20 ? ' shelf-countonly' : ''};
 }

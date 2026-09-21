@@ -128,4 +128,4 @@ spec 撰写时主页仍是单文件内联架构。实施期间远端 main 合入
 - `prefers-reduced-motion: reduce` 的浏览器实测：chrome-devtools MCP 的 `emulate` 不提供该项仿真；仅核对了 CSS 分支（`transform:none!important` + `.shelf-item::after{opacity:0!important}`）。
 - 屏幕阅读器实际朗读（NVDA/VoiceOver）：仅验证了 `role="status" aria-live="polite"` 结构与文本按 200ms 去抖写入。
 - 390 宽深色模式截图：只核对了计算样式，未单独出图。
-- 线上 HTTPS：本轮为 draft PR，未合并、未推送 `main`，因此**未**运行 `npm run verify:live`（按 AGENTS.md 第 6 条，部署后才有意义）。
+- 线上 HTTPS：PR #5 合并为 `7b163e5`（2026-09-21），Workers Builds: interactivelearning 检查 success；随后从本机普通网络运行 `npm run verify:live` 通过（Verified live at https://learning.jiadi.ai — homepage, 15 courses, hashes, downloads and 404，退出码 0）。

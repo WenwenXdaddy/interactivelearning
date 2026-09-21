@@ -152,6 +152,11 @@ function serialized(slug, task) {
   next.finally(() => { if (locks.get(slug) === next) locks.delete(slug); }).catch(() => {});
   return next;
 }
+function replayable(response) {
+  if (!response) return null;
+  // Older caches may contain followed redirects; navigation respondWith rejects them under redirect mode "manual".
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers: response.headers });
+}
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const shell = await caches.open(SHELL);
@@ -191,7 +196,7 @@ async function courseCache(slug, url) {
   const record = await pointer(slug);
   if (!record || record.corrupt || !(await caches.keys()).includes(record.cacheName) || !record.urls.includes(url)) return null;
   const cache = await caches.open(record.cacheName);
-  return (await cache.match(own(url))) || null;
+  return replayable(await cache.match(own(url)));
 }
 self.addEventListener('fetch', event => {
   const request = event.request;
@@ -203,7 +208,7 @@ self.addEventListener('fetch', event => {
     event.respondWith((async () => {
       if (path === '/index.html') {
         try { return await fetch(request); } catch {}
-        return (await (await caches.open(SHELL)).match(own('/index.html'))) || Response.error();
+        return replayable(await (await caches.open(SHELL)).match(own('/index.html'))) || Response.error();
       }
       const slug = slugFromCoursePath(path);
       if (slug) {
@@ -211,7 +216,7 @@ self.addEventListener('fetch', event => {
         if (saved) return saved;
       }
       try { return await fetch(request); } catch {}
-      return (await (await caches.open(SHELL)).match(own('/offline.html'))) || Response.error();
+      return replayable(await (await caches.open(SHELL)).match(own('/offline.html'))) || Response.error();
     })());
     return;
   }
@@ -232,7 +237,7 @@ self.addEventListener('fetch', event => {
       const saved = await courseCache(candidate, key);
       if (saved) return saved;
     }
-    const shell = await (await caches.open(SHELL)).match(own(key));
+    const shell = replayable(await (await caches.open(SHELL)).match(own(key)));
     if (shell) return shell;
     return fetch(request);
   })());

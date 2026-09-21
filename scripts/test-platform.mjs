@@ -34,13 +34,19 @@ const network = async request => {
   if (config.bundles.alpha.urls.some(asset => new URL(asset, origin).pathname === url.pathname)) return response('Asset', url.href);
   return response('Not found', url.href, 404);
 };
+const cloneResponse = value => {
+  const copy = value.clone();
+  Object.defineProperty(copy, 'url', { value: value.url });
+  Object.defineProperty(copy, 'redirected', { value: value.redirected });
+  return copy;
+};
 const caches = {
   async open(name) {
     if (!maps.has(name)) maps.set(name, new Map());
     const map = maps.get(name);
     return {
-      async put(key, value) { if (new URL(String(key)).pathname === quotaPath) throw new Error('QuotaExceededError'); map.set(String(key), value.clone()); },
-      async match(key) { return map.get(String(key))?.clone(); },
+      async put(key, value) { if (new URL(String(key)).pathname === quotaPath) throw new Error('QuotaExceededError'); map.set(String(key), cloneResponse(value)); },
+      async match(key) { const value = map.get(String(key)); return value && cloneResponse(value); },
       async delete(key) { return map.delete(String(key)); }
     };
   },
@@ -83,6 +89,14 @@ assert.equal(acceptsRedirect('/downloads/missing.html', `${origin}/downloads/mis
 assert.equal(acceptsRedirect('/offline.html', `${origin}/other`), false, 'unknown alias is rejected');
 assert.equal(acceptsRedirect('/downloads/alpha.html', 'https://example.com/downloads/alpha'), false, 'cross-origin redirect is rejected');
 assert.equal(acceptsRedirect('/downloads/alpha.html?copy=1', `${origin}/downloads/alpha?copy=2`), false, 'query changes are rejected');
+context.probeResponse = new Response('download', { status: 203, statusText: 'Non-Authoritative Information', headers: { 'content-type': 'text/html', 'content-disposition': 'attachment' } });
+Object.defineProperty(context.probeResponse, 'redirected', { value: true });
+const replayed = vm.runInContext('replayable(probeResponse)', context);
+assert.equal(replayed.redirected, false, 'replayed response clears redirect state');
+assert.equal(replayed.status, 203, 'replayed response retains status');
+assert.equal(replayed.statusText, 'Non-Authoritative Information', 'replayed response retains status text');
+assert.equal(replayed.headers.get('content-type'), 'text/html', 'replayed response retains content type');
+assert.equal(replayed.headers.get('content-disposition'), 'attachment', 'replayed response retains download headers');
 assert.equal((await navigate(`${origin}/missing`)).status, 404, 'online 404 must pass through');
 let intercepted = false;
 listeners.fetch({ request: { method: 'GET', mode: 'navigate', url: 'https://example.com/other' }, respondWith() { intercepted = true; } });
@@ -93,8 +107,13 @@ assert.equal((await (await caches.open('jiadi-learning-pwa:shell:shell-v1')).mat
 const first = (await message('status', 'alpha')).result;
 assert.equal(first.state, 'saved');
 assert(first.bytes > 0);
-assert.equal((await navigate(`${origin}/courses/alpha/`)).status, 200, 'saved slash alias works');
-assert.equal((await navigate(`${origin}/courses/alpha/index.html`)).status, 200, 'saved index alias works');
+const savedSlash = await navigate(`${origin}/courses/alpha/`);
+assert.equal(savedSlash.status, 200, 'saved slash alias works');
+assert.equal(savedSlash.redirected, false, 'saved redirected response is replayed as a normal response');
+assert.equal(savedSlash.headers.get('content-type'), 'text/html', 'saved response headers are retained');
+const savedIndex = await navigate(`${origin}/courses/alpha/index.html`);
+assert.equal(savedIndex.status, 200, 'saved index alias works');
+assert.equal(savedIndex.redirected, false, 'saved index response is not a redirected response');
 
 vm.runInContext("CONFIG.bundles.alpha.version = 'bundle-v2'", context);
 failPath = '/courses/alpha/study-notes.md';
@@ -119,6 +138,11 @@ assert.equal((await message('status', 'alpha')).result.version, 'bundle-v2');
 assert.equal((await maps.get((await caches.keys()).find(name => name.startsWith('jiadi-learning-pwa:course:alpha:'))).size) > 0, true);
 assert.equal((await message('remove', 'alpha')).result.state, 'unsaved');
 offline = true;
-assert((await (await navigate(`${origin}/courses/alpha/`)).text()).includes('Offline'), 'unsaved offline route has fallback');
-assert((await (await navigate(`${origin}/`)).text()).includes('Home'), 'home slash alias works offline');
+const offlineFallback = await navigate(`${origin}/courses/alpha/`);
+assert((await offlineFallback.text()).includes('Offline'), 'unsaved offline route has fallback');
+assert.equal(offlineFallback.redirected, false, 'redirected offline fallback is replayed normally');
+assert.equal(offlineFallback.headers.get('content-type'), 'text/html');
+const offlineHome = await navigate(`${origin}/`);
+assert((await offlineHome.text()).includes('Home'), 'home slash alias works offline');
+assert.equal(offlineHome.redirected, false, 'redirected homepage shell is replayed normally');
 console.log('PASS platform worker: aliases, redirects, offline shell, network/quota/version rollback, removal, 404 and off-origin boundaries');

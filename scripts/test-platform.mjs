@@ -16,8 +16,8 @@ let quotaPath = null;
 let offline = false;
 let redirects = false;
 let bridgeVersion = '1234567890abcdef';
-const response = (body, url, status = 200, redirected = false) => {
-  const result = new Response(body, { status, headers: { 'content-type': url.endsWith('.html') || url.endsWith('/') ? 'text/html' : 'text/plain' } });
+const response = (body, url, status = 200, redirected = false, contentType) => {
+  const result = new Response(body, { status, headers: { 'content-type': contentType || (url.endsWith('.html') || url.endsWith('/') ? 'text/html' : 'text/plain') } });
   Object.defineProperty(result, 'url', { value: url });
   Object.defineProperty(result, 'redirected', { value: redirected });
   return result;
@@ -26,9 +26,10 @@ const network = async request => {
   const url = new URL(typeof request === 'string' ? request : request.url);
   if (offline || url.pathname === failPath) throw new Error('network unavailable');
   if (url.pathname === '/index.html') return response('<h1>Home</h1>', redirects ? `${origin}/` : url.href, 200, redirects);
-  if (url.pathname === '/offline.html') return response('<h1>Offline</h1><div id="offline-manager"></div>', url.href);
+  if (url.pathname === '/offline.html') return response('<h1>Offline</h1><div id="offline-manager"></div>', redirects ? `${origin}/offline${url.search}` : url.href, 200, redirects, 'text/html');
   if (url.pathname === '/courses/alpha/index.html') return response(`<meta name="jiadi-course" content="alpha"><meta name="jiadi-course-build" content="${config.bundles.alpha.marker}"><script src="/assets/portal/resume.js?v=${bridgeVersion}"></script><script src="/assets/portal/pwa.js?v=1234567890abcdef"></script><link href="/assets/brand/logo.svg?v=1234567890abcdef"><link href="/assets/brand/apple-touch-icon.png?v=1234567890abcdef"><link href="/manifest.webmanifest"><h1>Course</h1>`, redirects ? `${origin}/courses/alpha/` : url.href, 200, redirects);
   if (url.pathname === '/courses/alpha/study-notes.md') return response('Notes', url.href);
+  if (url.pathname === '/downloads/alpha.html') return response('Original standalone course', redirects ? `${origin}/downloads/alpha${url.search}` : url.href, 200, redirects, 'text/html');
   if (url.pathname === '/assets/portal/resume.js') return response('/* bridge */', url.href);
   if (config.bundles.alpha.urls.some(asset => new URL(asset, origin).pathname === url.pathname)) return response('Asset', url.href);
   return response('Not found', url.href, 404);
@@ -65,17 +66,30 @@ async function navigate(url) {
   return pending;
 }
 
+redirects = true;
 await lifecycle('install');
 assert(maps.has('jiadi-learning-pwa:shell:shell-v1'));
 await lifecycle('activate');
 assert(!source.includes('skipWaiting(') && !source.includes('clients.claim('));
+const acceptsRedirect = (requested, received) => {
+  context.probeResponse = response('redirected', received, 200, true, 'text/html');
+  context.probeRequest = requested;
+  return vm.runInContext('expectedResponse(probeRequest, probeResponse)', context);
+};
+assert.equal(acceptsRedirect('/offline.html', `${origin}/offline`), true);
+assert.equal(acceptsRedirect('/downloads/alpha.html', `${origin}/downloads/alpha`), true);
+assert.equal(acceptsRedirect('/downloads/alpha.html?copy=1', `${origin}/downloads/alpha?copy=1`), false, 'query-bearing aliases are rejected');
+assert.equal(acceptsRedirect('/downloads/missing.html', `${origin}/downloads/missing`), false, 'unknown download slug is rejected');
+assert.equal(acceptsRedirect('/offline.html', `${origin}/other`), false, 'unknown alias is rejected');
+assert.equal(acceptsRedirect('/downloads/alpha.html', 'https://example.com/downloads/alpha'), false, 'cross-origin redirect is rejected');
+assert.equal(acceptsRedirect('/downloads/alpha.html?copy=1', `${origin}/downloads/alpha?copy=2`), false, 'query changes are rejected');
 assert.equal((await navigate(`${origin}/missing`)).status, 404, 'online 404 must pass through');
 let intercepted = false;
 listeners.fetch({ request: { method: 'GET', mode: 'navigate', url: 'https://example.com/other' }, respondWith() { intercepted = true; } });
 assert.equal(intercepted, false, 'off-origin requests are untouched');
 
-redirects = true;
 assert.equal((await message('save', 'alpha')).ok, true, 'same-origin canonical HTML redirects are accepted');
+assert.equal((await (await caches.open('jiadi-learning-pwa:shell:shell-v1')).match(`${origin}/offline.html`)).status, 200, 'redirected offline page is cached at authored key');
 const first = (await message('status', 'alpha')).result;
 assert.equal(first.state, 'saved');
 assert(first.bytes > 0);

@@ -5,6 +5,7 @@
   const KEY = 'jiadi-learning-portal:recent:v1';
   const VERSION = 1;
   const ADAPTER_VERSION = 1;
+  const MAX_ITEMS = 50;
   const STEP_PATTERNS = {
     'unknown-unknowable': /^st\d{2}-\d+$/,
     'pozsar-money-view': /^s\d+-\d+$/,
@@ -17,7 +18,8 @@
     'healthy-masculinity': /^step-\d{2}-\d+$/,
     'huberman-health-qa': /^step-\d+-\d+$/,
     'language-learning-science': /^step-\d+-\d+$/,
-    'unconditional-parenting': /^s\d{2}-\d+$/
+    'unconditional-parenting': /^s\d{2}-\d+$/,
+    'outlive-guided-full': /^s\d+-\d+$/
   };
   const KIND = {
     ...Object.fromEntries(Object.keys(STEP_PATTERNS).map(slug => [slug, 'steps'])),
@@ -69,7 +71,7 @@
     try {
       const data = JSON.parse(raw);
       if (data?.version !== VERSION || !Array.isArray(data.items)) return { version: VERSION, items: [] };
-      return { version: VERSION, items: data.items.filter(validItem).slice(0, 14) };
+      return { version: VERSION, items: data.items.filter(validItem).slice(0, MAX_ITEMS) };
     } catch {
       return { version: VERSION, items: [] };
     }
@@ -80,7 +82,7 @@
     // since this tab opened. This is still only a best-effort localStorage merge.
     recent = readRecent();
     const items = [item, ...recent.items.filter(other => other.slug !== slug)]
-      .sort((a, b) => b.visitedAt - a.visitedAt).slice(0, 14);
+      .sort((a, b) => b.visitedAt - a.visitedAt).slice(0, MAX_ITEMS);
     recent = { version: VERSION, items };
     try { localStorage.setItem(KEY, JSON.stringify(recent)); }
     catch { reportStorageFailure(); }

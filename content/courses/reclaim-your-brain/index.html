@@ -933,7 +933,7 @@ const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(
 const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const LESSON_COUNT=$$('[data-lesson]').length,CONCLUSIONS=$$('[data-lesson]').map(el=>{const c=el.querySelector('.conclusion p:last-child');return c?c.textContent:'';}),LESSON_TITLES=$$('[data-lesson-button]').map(b=>b.textContent.replace(/^\d+\s*·\s*/,''));
 const freshQuiz=()=>QUIZ_IDS.reduce((o,q)=>(o[q]={first:null,latest:null,draft:''},o),{});
-const fresh=()=>({lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'dark'});
+const fresh=()=>({lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'light'});
 let state=fresh(),storageOK=true,lastFocus=null,activeTerm=null,reviewOnly=false;
 function storageFailure(){storageOK=false;const w=$('#storage-warning');if(w)w.hidden=false;}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){storageFailure();}}
@@ -946,7 +946,7 @@ if(d.quiz&&typeof d.quiz==='object')for(const q of QUIZ_IDS){const s=d.quiz[q];i
 state.quiz[q].first=typeof s.first==='string'?cleanText(s.first):null;
 state.quiz[q].latest=typeof s.latest==='string'?cleanText(s.latest):null;
 state.quiz[q].draft=cleanText(s.draft);}
-state.coach=d.coach!==false;state.theme=d.theme==='light'?'light':'dark';
+state.coach=d.coach!==false;state.theme=d.theme==='dark'?'dark':'light';
 }catch(e){/* Corrupt JSON falls back to defaults; unavailable storage is reported. */try{localStorage.getItem(KEY);}catch(ignore){storageFailure();}}}
 function showLesson(n,navigated=true){n=Math.max(0,Math.min(LESSON_COUNT-1,Number(n)||0));state.lesson=n;if(!state.seen.includes(n))state.seen.push(n);$$('[data-lesson]').forEach(el=>el.hidden=Number(el.dataset.lesson)!==n);$$('[data-lesson-button]').forEach(el=>{const active=Number(el.dataset.lessonButton)===n;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});$('#progress').textContent=`已浏览 ${state.seen.length} / ${LESSON_COUNT}；浏览不等于掌握。`;$('#lesson-position').textContent=`${String(n+1).padStart(2,'0')} / ${String(LESSON_COUNT).padStart(2,'0')}`;$('#previous-button').disabled=n===0;$('#next-button').disabled=n===LESSON_COUNT-1;if(navigated)window.scrollTo(0,0);save();requestAnimationFrame(srcSpy);}
 function applyAppearance(){document.body.classList.toggle('compact',!state.coach);document.body.classList.toggle('light',state.theme==='light');$('#coach-toggle').textContent=state.coach?'讲解：开':'讲解：关';$('#coach-toggle').setAttribute('aria-pressed',String(state.coach));}

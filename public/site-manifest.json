@@ -2,17 +2,17 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 14,
+  "courseCount": 15,
   "courses": [
     {
       "slug": "gold-volatility",
       "title": "黄金波动率实验室",
       "version": "v2 · 讲解增强版",
       "chapters": 10,
-      "sourceSha256": "6c504df1031559ab28e2ba7fbb3e3ae7e23d6a08fd14fb4806f1dfcdbe4351b5",
-      "publishedSha256": "afcd7415ac5f1e26d608e6cc06020468fe5010d394555b5eb4c5c24948f2eec5",
+      "sourceSha256": "dd37662966b694f7c169b74f9249428a2eca645edc0ed4aa1c15610c0101a004",
+      "publishedSha256": "dbc37bf3f95ab7938d67ebde9bc8fa4dd71c20944888eac3881dc31306bd4c8b",
       "scriptSha256": [
-        "f92639ce5455c3f88e2742b0d1bded610a3c5ae9c3c1936cfe4a0142794e31aa",
+        "f18b8cedd746eef59238c3d33c3c20ca2f8d5557175f95b3b0597538f6555ecd",
         "446c3d4a81fee8667c04491a72ddc54ecea3efa8af1c4ed40b1dfc145e1c14d2"
       ]
     },
@@ -21,11 +21,11 @@
       "title": "投资于未知与不可知：Zeckhauser 导读",
       "version": "v2 · 推理导读版",
       "chapters": 15,
-      "sourceSha256": "37d36f84f3c54569c93e7e3f82e60e7c3ea4fe577edfb7f8e990d71a211fc4df",
-      "publishedSha256": "9a75bba827bb91e81b34f0801bdd0acd16e1fd009dfa72573986bde20a8a14b4",
+      "sourceSha256": "0c33be0e4cf2594ce474e9d29a26a2515f03a981409304e95600804f69ece4e0",
+      "publishedSha256": "741700ce8a85b097ddcf75ff9d2ffba2a7b4b7d04456ee54b7a30aec2b6a2afa",
       "scriptSha256": [
         "76dab4c2706a7df240849732184565fa40a6fe5812eeda10db68be8fb81d3322",
-        "deecff3885d0d29a3dcac1e03b706d01ab473776cdf3d582d8d81ed6926a1361"
+        "64d4232fb84acd33a43e3a0a9e7eeb12f772e2cd7d9772361a0189a7062c2080"
       ]
     },
     {
@@ -34,7 +34,7 @@
       "version": "v2.18 · 引导学习版",
       "chapters": 5,
       "sourceSha256": "760c2235893ba4ee9f330e8474d51496177e2b64ed81578e473af52369d4ce66",
-      "publishedSha256": "8b1aef9261c4d98fe733e205e16cd66c4d498a0e72c268ae60a720e6c328bfcd",
+      "publishedSha256": "8dfd2b4461333d68f5392f1f3854caf28dd9d42c3353901b82326156c0ecef3a",
       "scriptSha256": [
         "9343238eaa6a671990ce8738a22d1d424ca8e885520a21e20ec9b129ffb721b8",
         "198fe0fcfdca2adc6b59c34dd5fdcff4fa1b78f2601d80ff8ee643eb22e8c63b",
@@ -49,11 +49,11 @@
       "title": "Pozsar 货币观：从资产负债表到全球储备",
       "version": "v3 · 推理导读版",
       "chapters": 22,
-      "sourceSha256": "2459ceb835ce9d88db3afff63b13cb35c988396696952621729bb6623b5302eb",
-      "publishedSha256": "86ddaf5122f960a63d6dc75ca5ee6beb434f0f343da2b4efc9eee28ac11dc398",
+      "sourceSha256": "79011e1ce6413e4d790941d14b32c675ce077a90eba044bb5b22350f56282f21",
+      "publishedSha256": "f472d70a6a3eaccd3f4d3b18f05614f2953d0fac823cd7eebe969a1913a26a02",
       "scriptSha256": [
         "edc54c3b85fc237f6145a0030887d377b2340e5fa2127138ecab15640d78987c",
-        "e8a0f7108486a2c7a4b6155d3ddceee318bad57519dd275c0a7d07add2651ceb"
+        "2eda5f85a797b894d926c5f0dfeec6d3d348009e4840e3062514d157e7264a3e"
       ]
     },
     {
@@ -61,11 +61,11 @@
       "title": "通过运动和饮食提升健康寿命 · 导读",
       "version": "v3 · 推理导读版",
       "chapters": 17,
-      "sourceSha256": "1c7e32e5378f02348b6fa17af5dfb744e9e07084f9622632d768d638273b0e35",
-      "publishedSha256": "30ea044115acc558e458098b8644f0ab151003d8a5cebe7c440050c0807df91b",
+      "sourceSha256": "b13186f1a0285a98e0e6c17630b7febe3bc8d95604805f256d827b9f1b6b9d4f",
+      "publishedSha256": "231fcad7277544f3bcff5d1c32aa6f2d613287271d59bc8af2b226d21e65a05c",
       "scriptSha256": [
         "5ac0d2130ecc00dba4cf1a1d69a8c15e3b2a27481a3f06eddd48be552c90f24a",
-        "f6f55beeb9a05302822eb9e3e173f3e69ed797eeaf3f878bb2dc07e6eeb4d3b5"
+        "8a1696db92c067384d65e0d2288120135c00fedc9a9032e170a5c95bab0a27f9"
       ]
     },
     {
@@ -73,10 +73,10 @@
       "title": "认知灵活性 · 在变化中重新看见选择",
       "version": "v2 · 推理导读版",
       "chapters": 13,
-      "sourceSha256": "1b3999eb92c9a4e24d7338cfc20253733195dfac23489558bd5eaaf1eb22ee2f",
-      "publishedSha256": "7bb76198df642703fcc4ddf1477adc6366f98109bba87004fd0b6b39fae18589",
+      "sourceSha256": "9aa8472549fbc07ef4162e395c04f9af12e0d1832e8eb7e461ada279c707d4ca",
+      "publishedSha256": "f2c2c60dc58e25e35241cebf2e93dc4c4973e06d0d305b2e4f099e957ed0f638",
       "scriptSha256": [
-        "73b7301b1f35bc47f56a4540b19dfefbad6b8d2d0680d7eb8841a45bfe34d155"
+        "d98a4e68a8ab4b298ee439ac3e22d30cfc6af5879f68a74d3a22ba2632d669ae"
       ]
     },
     {
@@ -84,10 +84,10 @@
       "title": "重新掌控你的大脑 · 节律、注意与习惯",
       "version": "v2 · 推理导读版",
       "chapters": 12,
-      "sourceSha256": "51750ee3a58612cab0c07da1d8c07668b5f600642adabd65118fb3934974a4fd",
-      "publishedSha256": "c9c7314ffa62754ddf8baf73b4fac51cbc0c6d1a16c5e5629fb05d1a644ccd2f",
+      "sourceSha256": "f4c17138716be0f5a2f2999b4b886f605dfa5a91643c1ee536ce4a4d45bdc4bf",
+      "publishedSha256": "f5a7c0fd173868789e3482ebccec5ae546401232fe9f585ea3aca1f077058e13",
       "scriptSha256": [
-        "a3edeace546bc0514f90d787771bf685812cc1d5c46fcd905c05dd92a30539c2"
+        "5c9a9489eaa430f8eefa90267224ef2d58760915b9b1ff59afac14fbb1d03d6f"
       ]
     },
     {
@@ -95,10 +95,10 @@
       "title": "如何克服内心阻力 · 从想做到做成",
       "version": "v2 · 推理导读版",
       "chapters": 13,
-      "sourceSha256": "25d4cf018f5cd1dff3cbc38203a230770a78e04fbb2247a1d15c17c4494f8895",
-      "publishedSha256": "00b2811d1d2e9a11ac53ee7db5a29e3bc660f642df573abc56ef01f7b5306554",
+      "sourceSha256": "4b32b147badbf6cb36b48c4b2b5926f4dc253a2f15acdc3f018ebffaa6434979",
+      "publishedSha256": "736a7e7b570814add4ed29d11d53b5428b0b61f67675384ef1c324cc47dd20e6",
       "scriptSha256": [
-        "ba64c6b6a97e4e71dfffaeacfc444ccd96e8b6fd96dccb3961713c5be9d6bcfc"
+        "39f410055d0fa4a9f607b165a84c59a36e336bca62c5155fe739642231a88ebd"
       ]
     },
     {
@@ -106,10 +106,10 @@
       "title": "健康的男性气质 · 坚定与联结",
       "version": "v2 · 推理导读版",
       "chapters": 14,
-      "sourceSha256": "b138ee4fee7c18a5746fede6673e9641a3bea1841affd6a611cc5a5569d7ef0c",
-      "publishedSha256": "2bfe918126ae9fcd14e560ea37eb93d6f979958c074d79cfacce554d15312d11",
+      "sourceSha256": "0aae4f320cf749028f176275a3120598efeb4500f9b84707cf44587371e0b188",
+      "publishedSha256": "13d2df05f7c520a48757dc2f8012e102a4894a21b687fab02d9c6636b1180137",
       "scriptSha256": [
-        "e35adfb23f27cf9ea5c94d9e714621302b1a06bd4cf41a86483d73786acfcff6"
+        "140c8f3aafa572c0230de280fc55a7aeefa94d54189d8cee2b141cd073d0d1de"
       ]
     },
     {
@@ -117,10 +117,10 @@
       "title": "学习语言的科学 · 声音、经验与交流",
       "version": "v2 · 推理导读版",
       "chapters": 15,
-      "sourceSha256": "bf5fa2b0342f47b52c1555243f1371950478ed6c6296a83fede2d7a8f96f808d",
-      "publishedSha256": "54121e9a754839d25faabbe51f32fa3e30d5cdbbd3b29b218dceb14e322dd263",
+      "sourceSha256": "d4883778dcdcd5fec6848587e6ebb0db6934b971be5b268846f5f5dcad115331",
+      "publishedSha256": "217c09a60a12a798f329c07cb70a55210277abb52b38cf85d3a1e5038e57c98d",
       "scriptSha256": [
-        "d033b79df0d4eae6a2d2b89e8d4f6234f982ee50782c6f2d1688334bb826d04a"
+        "1353a097d6603f1ece905786c1881e6cd0b8a11a06d00cea902395a471a712b6"
       ]
     },
     {
@@ -128,10 +128,10 @@
       "title": "大多数学习工具失败的原因 · 从读过到理解",
       "version": "v2 · 推理导读版",
       "chapters": 24,
-      "sourceSha256": "93cf0623219643b53ab37ff99a4696a5d47e97cb13a7953d88711ec466f9df3a",
-      "publishedSha256": "ea489323cfd1a04cd1db11b049e8437e37c4c193639331a1a4ee79ad31f94743",
+      "sourceSha256": "7e9dcc2a8d34ff823f659f627bce5c5b6f45106c74799015a418a268eaa58a8e",
+      "publishedSha256": "683c7acabe74dd27f3cdfcd630cd3bada0ed11e6397df19fd9ad21389472719e",
       "scriptSha256": [
-        "5ea01e5399c325431255fa3e4ec6a361a3985cc52a448568d576055c9592a206"
+        "785c4160b27b8b85db0261ec49cfc3a13dc84b4b6e405367b01baab2754641d0"
       ]
     },
     {
@@ -140,7 +140,7 @@
       "version": "v3 · 推理导读版",
       "chapters": 18,
       "sourceSha256": "b5c78af6d3d4c65dc67d1f6b73d14972d4d722b87db18c69e50b1bfbbe81811a",
-      "publishedSha256": "5663d614515eea7587df81ea371235352bf28ea5123c7f550a04c49a1e6c43d4",
+      "publishedSha256": "888cd90bc841f2c8509061710ebf62cbf8d32e5447d0a7cc7a6376d03757d23e",
       "scriptSha256": [
         "d759ed7392b874206367190c128325b8d80df4aee433b26df2998e0383a31df9"
       ]
@@ -150,11 +150,11 @@
       "title": "不同饮食对健康的影响：Gardner 对话导读",
       "version": "v1 · 推理导读版",
       "chapters": 15,
-      "sourceSha256": "e4dec759a39f7566e3978015ce3977fc68c6896590e12356aae1dfb074eff212",
-      "publishedSha256": "8e0c980f73ff95d252bc78f0b5202ab83b79c5d8a397db162feec194ada09658",
+      "sourceSha256": "6a83f57e75d816140bffd33049688c914bf0efb94cd24f6ebc764181ce9cb012",
+      "publishedSha256": "3a2a12c63b59b659fe0249e9583bd5e0225e4fe5374468f6e33c1be575f7a515",
       "scriptSha256": [
         "49a3803681265d553c5afeb346ea26b45fc69beed05d48d91f0e6e0589fc7bac",
-        "461de57d74febbcd38e2dd18a3b8346dfb7d9e5d410909154ee42b6914181d5b"
+        "666c67c85d27bb23a2b3cd59400152add8840f11dfd01431d3ec3404038415eb"
       ]
     },
     {
@@ -163,9 +163,20 @@
       "version": "v1 · 原文导读版",
       "chapters": 37,
       "sourceSha256": "d3eb5eca0b55ac260230ac86cd3ae928e7e5ed2da2f8e830d07acec097063e6e",
-      "publishedSha256": "1b02ce966e7d486b51b06560d3c2923dfd830d788654156183af7ef704f6c078",
+      "publishedSha256": "ae1432edf8af59f610848680caa1204b79438febdf96fb5cbb6bad1bdf367d98",
       "scriptSha256": [
         "b5a2c2199411a69c18c8bfcaf7ece3bbe879e331db5a32d1695d82769e267c02"
+      ]
+    },
+    {
+      "slug": "outlive-guided-full",
+      "title": "《超越百岁》｜全书导读",
+      "version": "v1 · 全书导读版",
+      "chapters": 32,
+      "sourceSha256": "c6567566cedfbf7635bfbc44edcf5aa18f7e19d7c9fceaad38d31357b96373eb",
+      "publishedSha256": "8ec278371e86433cd66e46d8dc5c85c725b70e9d034ae2f27b434fc6cfb5d2e5",
+      "scriptSha256": [
+        "ac34ae4e5e0ba67aa3da1dc738635afb8a8ac1941dbf4746d09f54ae78fb31da"
       ]
     }
   ]

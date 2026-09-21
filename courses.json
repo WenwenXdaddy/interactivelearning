@@ -22,8 +22,8 @@
     "storage": "au-lab-",
     "sourceAddedAt": "2026-09-15T10:00:13Z",
     "sourceAddedCommit": "4e548c8",
-    "sourceUpdatedAt": "2026-09-15T10:00:13Z",
-    "sourceUpdatedCommit": "4e548c8"
+    "sourceUpdatedAt": "2026-09-21T11:40:31+08:00",
+    "sourceUpdatedCommit": "a5edbc2"
   },
   {
     "slug": "unknown-unknowable",
@@ -49,8 +49,8 @@
     "storage": "interactive-learning-lab:uu-investing:v1",
     "sourceAddedAt": "2026-09-15T10:00:13Z",
     "sourceAddedCommit": "4e548c8",
-    "sourceUpdatedAt": "2026-09-19T01:54:55+08:00",
-    "sourceUpdatedCommit": "242088b"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "slug": "us-data-center-buildout",
@@ -103,8 +103,8 @@
     "storage": "pozsar-money-view:v1",
     "sourceAddedAt": "2026-09-16T17:28:58+08:00",
     "sourceAddedCommit": "f04e49a",
-    "sourceUpdatedAt": "2026-09-19T18:00:13+08:00",
-    "sourceUpdatedCommit": "ff274a5"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "slug": "muscle-health-lyon",
@@ -130,8 +130,8 @@
     "storage": "learning-lab:muscle-health-lyon:v1",
     "sourceAddedAt": "2026-09-16T19:11:00+08:00",
     "sourceAddedCommit": "46ff0e2",
-    "sourceUpdatedAt": "2026-09-19T19:00:20+08:00",
-    "sourceUpdatedCommit": "e4d63e6"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "slug": "cognitive-flexibility-langer",
@@ -157,8 +157,8 @@
     "storage": "learning:cognitive-flexibility-langer:v1",
     "sourceAddedAt": "2026-09-16T20:11:16+08:00",
     "sourceAddedCommit": "480fa60",
-    "sourceUpdatedAt": "2026-09-19T18:17:20+08:00",
-    "sourceUpdatedCommit": "fa88245"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "title": "重新掌控你的大脑 · 节律、注意与习惯",
@@ -184,8 +184,8 @@
     "imageAlt": "课程第 07 站的示意图：「当年的头盔」与「今天的手机」两栏并排，各列出视野与认知空间两行读数——头盔两者同时缩小所以干扰真的减少了，手机只缩小了视野、认知空间仍然无限，左侧是 12 个学习站的导航",
     "sourceAddedAt": "2026-09-16T20:11:16+08:00",
     "sourceAddedCommit": "480fa60",
-    "sourceUpdatedAt": "2026-09-19T18:37:03+08:00",
-    "sourceUpdatedCommit": "7410b85"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "title": "如何克服内心阻力 · 从想做到做成",
@@ -211,8 +211,8 @@
     "imageAlt": "课程第 11 站速查与自测：规则与比例表逐行列出规则和「站 XX · 第 N 步」回到正文的按钮，左侧是 13 个学习站的导航",
     "sourceAddedAt": "2026-09-16T20:11:16+08:00",
     "sourceAddedCommit": "480fa60",
-    "sourceUpdatedAt": "2026-09-19T13:28:11+08:00",
-    "sourceUpdatedCommit": "9746053"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "title": "健康的男性气质 · 坚定与联结",
@@ -238,8 +238,8 @@
     "imageAlt": "课程第 12 站速查表“可照做的固定步骤”：负责任的疏离、关系正念、接住批评的两句台词、反馈卷轴等逐行列出，右列标着“站 XX · 第 N 步”的出处，左侧是 14 个学习站的导航",
     "sourceAddedAt": "2026-09-16T20:39:26+08:00",
     "sourceAddedCommit": "a258717",
-    "sourceUpdatedAt": "2026-09-19T17:29:55+08:00",
-    "sourceUpdatedCommit": "8d53de0"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "title": "学习语言的科学 · 声音、经验与交流",
@@ -265,8 +265,8 @@
     "imageAlt": "课程第 13 站速查表“定性结论”：每站一条不含数字的结论逐行列出，右列标着“站 XX · 第 N 步”的出处，下方接着关键数字表，左侧是 15 个学习站的导航",
     "sourceAddedAt": "2026-09-16T20:39:26+08:00",
     "sourceAddedCommit": "a258717",
-    "sourceUpdatedAt": "2026-09-19T16:50:10+08:00",
-    "sourceUpdatedCommit": "13d97d3"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "title": "大多数学习工具失败的原因 · 从读过到理解",
@@ -292,8 +292,8 @@
     "imageAlt": "课程第 22 站速查表“定性结论”：每站一到两条不含数字的判断逐行列出，中列标着“嘉宾原话”或“本课提炼”，右列是“站 XX · 第 N 步”的出处按钮，左侧是 24 个学习站的导航",
     "sourceAddedAt": "2026-09-16T20:39:26+08:00",
     "sourceAddedCommit": "a258717",
-    "sourceUpdatedAt": "2026-09-19T19:25:35+08:00",
-    "sourceUpdatedCommit": "8598e82"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "slug": "huberman-health-qa",
@@ -346,8 +346,8 @@
     "storage": "interactive-learning-lab:diet-health-gardner:v3",
     "sourceAddedAt": "2026-09-21T09:39:25+08:00",
     "sourceAddedCommit": "e959cb8",
-    "sourceUpdatedAt": "2026-09-21T09:39:25+08:00",
-    "sourceUpdatedCommit": "e959cb8"
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   },
   {
     "slug": "unconditional-parenting",
@@ -374,5 +374,32 @@
     "sourceAddedCommit": "ce54375",
     "sourceUpdatedAt": "2026-09-21T10:00:40+08:00",
     "sourceUpdatedCommit": "ce54375"
+  },
+  {
+    "slug": "outlive-guided-full",
+    "title": "《超越百岁》｜全书导读",
+    "subtitle": "理解论证，保留生活。",
+    "description": "沿导言与第 1–17 章分 32 站阅读：先理解寿命与健康寿命、医学 3.0 和证据判断，再进入代谢、心血管、癌症、认知、运动、营养、睡眠与情绪健康。每一步保留原文定位，末站提供速查、自测与原文全文。",
+    "category": "健康与科学",
+    "tags": [
+      "长寿",
+      "健康寿命",
+      "医学3.0",
+      "证据判断",
+      "原文导读"
+    ],
+    "chapters": 32,
+    "terms": 35,
+    "metric": "64 项核查记录",
+    "version": "v1 · 全书导读版",
+    "level": "寿命与证据 → 个人战略",
+    "firstTask": "先到站 01 区分寿命与健康寿命，再到站 03 用基率、绝对风险和证据层级检查一条健康结论。",
+    "tone": "green",
+    "imageAlt": "《超越百岁》全书导读第一站：长寿目标、正文阅读步骤与左侧站点导航",
+    "storage": "learning-lab:outlive-guided-full:schema2",
+    "sourceAddedAt": "2026-09-21T11:35:34+08:00",
+    "sourceAddedCommit": "a478c3b",
+    "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
+    "sourceUpdatedCommit": "a478c3b"
   }
 ]

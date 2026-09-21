@@ -2938,7 +2938,7 @@ const CONCLUSIONS = $$('[data-lesson]').map(el => {const c = el.querySelector('.
 const LESSON_TITLES = $$('[data-lesson-button]').map(b => b.textContent.replace(/^\d+\s*·\s*/, ''));
 const fmt = n => Math.round(n).toLocaleString('en-US');
 const freshQuiz = () => QUIZ_IDS.reduce((a, q) => (a[q] = {first: null, latest: null, draft: ''}, a), {});
-const fresh = () => ({params: {slr: {...LabModel.slrDefaults}, res: {...LabModel.resDefaults}}, lesson: 0, seen: [0], review: [], quiz: freshQuiz(), coach: true, theme: 'dark'});
+const fresh = () => ({params: {slr: {...LabModel.slrDefaults}, res: {...LabModel.resDefaults}}, lesson: 0, seen: [0], review: [], quiz: freshQuiz(), coach: true, theme: 'light'});
 let state = fresh(), storageOK = true, lastFocus = null, activeTerm = null, reviewOnly = false;
 function storageFailure(){storageOK = false; $('#storage-warning').hidden = false;}
 function save(){try{localStorage.setItem(KEY, JSON.stringify(state));}catch(e){storageFailure();}}
@@ -2973,7 +2973,7 @@ function restore(){
       }
     }
     state.coach = d.coach !== false;
-    state.theme = d.theme === 'light' ? 'light' : 'dark';
+    state.theme = d.theme === 'dark' ? 'dark' : 'light';
   }catch(e){
     try{localStorage.getItem(KEY);}catch(ignore){storageFailure();}
   }

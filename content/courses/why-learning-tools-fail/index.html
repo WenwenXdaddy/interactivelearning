@@ -509,7 +509,7 @@ const CONCLUSIONS=$$('[data-lesson]').map(el=>{const c=el.querySelector('.conclu
 const LESSON_TITLES=$$('[data-lesson-button]').map(b=>b.textContent.replace(/^\d+\s*·\s*/,''));
 const QUIZ_IDS=QUIZ.map(q=>q.id);
 const freshQuiz=()=>{const o={};for(const q of QUIZ_IDS)o[q]={first:null,latest:null,draft:''};return o;};
-const fresh=()=>({lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'dark'});
+const fresh=()=>({lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'light'});
 let state=fresh(),storageOK=true,lastFocus=null,activeTerm=null,reviewOnly=false;
 function storageFailure(){storageOK=false;const w=$('#storage-warning');if(w)w.hidden=false;}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){storageFailure();}}
@@ -523,7 +523,7 @@ if(d.quiz&&typeof d.quiz==='object')for(const q of QUIZ_IDS){const s=d.quiz[q];i
  state.quiz[q].first=typeof s.first==='string'?clip(s.first):null;
  state.quiz[q].latest=typeof s.latest==='string'?clip(s.latest):null;
  state.quiz[q].draft=clip(s.draft);}}
-state.coach=d.coach!==false;state.theme=d.theme==='light'?'light':'dark';
+state.coach=d.coach!==false;state.theme=d.theme==='dark'?'dark':'light';
 }catch(e){try{localStorage.getItem(KEY);}catch(ignore){storageFailure();}}}
 function showLesson(n,navigated=true){n=Math.max(0,Math.min(LESSON_COUNT-1,Number(n)||0));state.lesson=n;
 if(!state.seen.includes(n))state.seen.push(n);

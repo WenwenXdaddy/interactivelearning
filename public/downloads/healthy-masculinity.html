@@ -693,7 +693,7 @@ const LESSON_COUNT=$$('[data-lesson]').length;
 const CONCLUSIONS=$$('[data-lesson]').map(el=>{const c=el.querySelector('.conclusion p:last-child');return c?c.textContent:'';});
 const LESSON_TITLES=$$('[data-lesson-button]').map(b=>b.textContent.replace(/^\d+\s*·\s*/,''));
 function freshQuiz(){const q={};for(const id of QUIZ_IDS)q[id]={first:null,latest:null,draft:''};return q;}
-const fresh=()=>({lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'dark'});
+const fresh=()=>({lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'light'});
 let state=fresh(),storageOK=true,lastFocus=null,activeTerm=null,reviewOnly=false;
 function storageFailure(){storageOK=false;const w=$('#storage-warning');if(w)w.hidden=false;}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){storageFailure();}}
@@ -709,7 +709,7 @@ function restore(){try{
     for(const k of ['first','latest'])if(typeof s[k]==='string')state.quiz[id][k]=s[k].slice(0,DRAFT_MAX);
     if(typeof s.draft==='string')state.quiz[id].draft=s.draft.slice(0,DRAFT_MAX);
   }
-  state.coach=d.coach!==false;state.theme=d.theme==='light'?'light':'dark';
+  state.coach=d.coach!==false;state.theme=d.theme==='dark'?'dark':'light';
 }catch(e){try{localStorage.getItem(KEY);}catch(ignore){storageFailure();}}}
 function showLesson(n,navigated=true){
   n=Math.max(0,Math.min(LESSON_COUNT-1,Number(n)||0));state.lesson=n;

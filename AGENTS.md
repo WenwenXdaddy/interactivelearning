@@ -12,6 +12,7 @@ This is independent of Macro Liquidity Terminal and little-math-kitchen. Do not 
 - `templates/home.html` contains the homepage design. `content/previews/` contains actual course screenshots.
 - `public/` is the only deployed directory; never deploy the repository root.
 - Downloads retain original course bytes. Original notes and source citations remain unchanged.
+- User-authorized theme update on 2026-09-21: course source theme initialization defaults to light when no explicit preference exists. Preserve explicit dark/light choices, storage keys, learning state, content and calculations; generated pages and standalone downloads retain these updated source bytes.
 
 ## Edit / verification workflow
 1. Read the exact current course and take calculation/default/state snapshots before modifying it.

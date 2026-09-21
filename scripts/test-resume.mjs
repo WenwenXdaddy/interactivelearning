@@ -17,8 +17,10 @@ const cases = [
   ['healthy-masculinity', 14, /^step-\d{2}-\d+$/],
   ['huberman-health-qa', 18, /^step-\d+-\d+$/],
   ['language-learning-science', 15, /^step-\d+-\d+$/],
-  ['unconditional-parenting', 37, /^s\d{2}-\d+$/]
+  ['unconditional-parenting', 37, /^s\d{2}-\d+$/],
+  ['outlive-guided-full', 32, /^s\d+-\d+$/]
 ];
+const registeredSlugs = [...cases.map(([slug]) => slug), 'gold-volatility', 'us-data-center-buildout'];
 
 function tags(html, name) { return [...html.matchAll(new RegExp(`<${name}\\b[^>]*>`, 'g'))].map(x => x[0]); }
 function attr(tag, name) { return tag.match(new RegExp(`\\b${name}="([^"]*)"`))?.[1] ?? null; }
@@ -155,5 +157,12 @@ result.dispatchClick(false);
 result.controls[1].click();
 result.dispatchPagehide();
 assert.equal(result.current()[0].capability, 'visit', 'untrusted navigation is not flushed');
+const fullCatalog = JSON.stringify({ version: 1, items: registeredSlugs.map((slug, index) => ({
+  slug, visitedAt: 1000 - index, lessonId: null, stepId: null,
+  label: '', capability: 'visit', adapterVersion: 1
+})) });
+result = harness(fullCatalog);
+assert.equal(result.current().length, 15, 'a new visit retains all 15 registered course records');
+assert.deepEqual(new Set(result.current().map(item => item.slug)), new Set(registeredSlugs));
 
-console.log('Resume adapter source contracts and bridge storage/restore tests passed (14 courses).');
+console.log('Resume adapter source contracts and bridge storage/restore tests passed (15 courses).');

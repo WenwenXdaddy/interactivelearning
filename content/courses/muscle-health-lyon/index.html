@@ -1651,7 +1651,7 @@ const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const KEY='learning-lab:muscle-health-lyon:v1';
 const LESSON_COUNT=$$('[data-lesson]').length,CONCLUSIONS=$$('[data-lesson]').map(el=>{const c=el.querySelector('.conclusion p:last-child');return c?c.textContent:'';}),LESSON_TITLES=$$('[data-lesson-button]').map(b=>b.textContent.replace(/^\d+\s*·\s*/,''));
 const freshQuiz=()=>QUIZ_IDS.reduce((a,q)=>{a[q]={first:null,latest:null,draft:''};return a;},{});
-const fresh=()=>({params:{...LabModel.defaults},lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'dark'});
+const fresh=()=>({params:{...LabModel.defaults},lesson:0,seen:[0],review:[],quiz:freshQuiz(),coach:true,theme:'light'});
 let state=fresh(),storageOK=true,lastFocus=null,activeTerm=null,reviewOnly=false;
 function storageFailure(){storageOK=false;$('#storage-warning').hidden=false;}
 function save(){if(!storageOK)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){storageFailure();}}
@@ -1670,7 +1670,7 @@ function restore(){try{const raw=localStorage.getItem(KEY);if(!raw)return;const 
  if(d.quiz&&typeof d.quiz==='object')for(const q of QUIZ_IDS){const src=d.quiz[q];if(!src||typeof src!=='object')continue;
   for(const k of ['first','latest'])if(typeof src[k]==='string')state.quiz[q][k]=src[k].slice(0,DRAFT_MAX);
   if(typeof src.draft==='string')state.quiz[q].draft=src.draft.slice(0,DRAFT_MAX);}
- state.coach=d.coach!==false;state.theme=d.theme==='light'?'light':'dark';
+ state.coach=d.coach!==false;state.theme=d.theme==='dark'?'dark':'light';
 }catch(e){/* 坏 JSON 回落到默认值；存储不可用时给提示 */try{localStorage.getItem(KEY);}catch(ignore){storageFailure();}}}
 function showLesson(n,navigated=true){n=Math.max(0,Math.min(LESSON_COUNT-1,Number(n)||0));state.lesson=n;if(!state.seen.includes(n))state.seen.push(n);
  $$('[data-lesson]').forEach(el=>el.hidden=Number(el.dataset.lesson)!==n);

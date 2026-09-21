@@ -45,10 +45,10 @@ table{border-collapse:collapse;width:100%;font-size:14px}table.maxims th[scope=r
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 @media print{body{color:#152436;background:#fff}.header,.sidebar,.footer,dialog,.actions,.noprint{display:none!important}.shell{display:block}main{padding:0}.lesson[hidden]{display:block!important}.lesson{break-before:page}}
 </style>
-<meta name="description" content="沿 Zeckhauser 2006 年论文的论证顺序分十五站：从风险、不确定到无知的三级阶梯，互补能力与挎斗投资，逆向选择与相对知识，直到八条格言与 Buffett 的地震再保险。每步先讲作者的前提与推演，英文原文整段可翻；四个可拖模型只放在文字说不清的地方。"><meta name="jiadi-course" content="unknown-unknowable"><meta name="jiadi-course-build" content="748f36c2091952dd"><link rel="canonical" href="https://learning.jiadi.ai/courses/unknown-unknowable/"><link rel="icon" href="/assets/brand/logo.svg?v=053677b44b47ab94" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png?v=077430de303ea240"><style>
+<meta name="description" content="沿 Zeckhauser 2006 年论文的论证顺序分十五站：从风险、不确定到无知的三级阶梯，互补能力与挎斗投资，逆向选择与相对知识，直到八条格言与 Buffett 的地震再保险。每步先讲作者的前提与推演，英文原文整段可翻；四个可拖模型只放在文字说不清的地方。"><meta name="jiadi-course" content="unknown-unknowable"><meta name="jiadi-course-build" content="8a28d1b0b6850651"><link rel="canonical" href="https://learning.jiadi.ai/courses/unknown-unknowable/"><link rel="icon" href="/assets/brand/logo.svg?v=053677b44b47ab94" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png?v=077430de303ea240"><style>
 /* Portal-only navigation. Original course CSS and JavaScript are retained. */
 .portal-home{display:inline-flex!important;align-items:center;justify-content:center;gap:5px;padding:4px 9px;margin-right:10px;border:1px solid currentColor;border-radius:7px;text-decoration:none;font-family:-apple-system,"PingFang SC",sans-serif;font-size:11px!important;font-weight:500;line-height:1.5;min-height:36px;white-space:nowrap;flex-shrink:0;opacity:.85;color:inherit}.portal-home:focus-visible{outline:3px solid currentColor;outline-offset:3px}.portal-home small{font:inherit!important;color:inherit!important;letter-spacing:0!important;display:inline!important}@media(max-width:760px){.portal-home{min-height:40px;min-width:38px;padding:5px;margin-right:4px;font-size:16px!important}.portal-home small{display:none!important}.portal-home~div>small{display:none!important}}@media print{.portal-home{display:none!important}}
-</style><script defer src="/assets/portal/resume.js?v=5590f0a1d59520f3" data-course="unknown-unknowable"></script><script defer src="/assets/portal/pwa.js?v=e96bfa7c176486e3"></script>
+</style><script defer src="/assets/portal/resume.js?v=53e8cb0f3c2f10c9" data-course="unknown-unknowable"></script><script defer src="/assets/portal/pwa.js?v=e96bfa7c176486e3"></script>
 </head>
 <body>
 <noscript><p class="page-error">本页面的词典、试一试与导出需要 JavaScript。请在完整浏览器中打开；此文件不会连接账户，也不会上传你的学习记录。</p></noscript>
@@ -752,7 +752,7 @@ const STATUS_TEXT={verified:'已查一手材料',derived:'按原文给的数字�
 const RANGE={"symmetry":{"base":[20,400],"swing":[0,100]},"kelly":{"win":[0,1],"ratio":[0.1,10]},"bidding":{"adv":[1,3],"bid":[0,200],"lo":[0,0],"hi":[20,200]},"advantage":{"adv":[0.5,6],"mean":[0.05,0.99],"informed":[0,1],"selection":[0,1]}};
 const fresh=()=>({params:JSON.parse(JSON.stringify(LabModel.defaults)),lesson:0,seen:[0],review:[],
   quiz:Object.fromEntries(Object.keys(QUIZ).map(q=>[q,{first:null,latest:null,draft:null}])),
-  guess:{first:null,latest:null},coach:true,theme:'dark'});
+  guess:{first:null,latest:null},coach:true,theme:'light'});
 let state=fresh(),storageOK=true,lastFocus=null,activeTerm=null,reviewOnly=false;
 function storageFailure(){storageOK=false;const w=$('#storage-warning');if(w)w.hidden=false;}
 function save(){if(!storageOK)return;try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){storageFailure();}}
@@ -774,7 +774,7 @@ function restore(){try{const raw=localStorage.getItem(KEY);if(!raw)return;const 
   if(d.quiz&&typeof d.quiz==='object')for(const q of Object.keys(QUIZ)){const s=d.quiz[q];
     if(s&&typeof s==='object')for(const k of ['first','latest','draft'])if(typeof s[k]==='string')state.quiz[q][k]=s[k].slice(0,4000);}
   if(d.guess&&typeof d.guess==='object')for(const k of ['first','latest'])if(d.guess[k]==='A'||d.guess[k]==='B')state.guess[k]=d.guess[k];
-  state.coach=d.coach!==false;state.theme=d.theme==='light'?'light':'dark';
+  state.coach=d.coach!==false;state.theme=d.theme==='dark'?'dark':'light';
 }catch(e){try{localStorage.getItem(KEY);}catch(ignore){storageFailure();}}}
 function showLesson(n,navigated=true){n=Math.max(0,Math.min(LESSON_COUNT-1,Number(n)||0));state.lesson=n;
   if(!state.seen.includes(n))state.seen.push(n);

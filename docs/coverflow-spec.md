@@ -278,3 +278,20 @@ z-index: calc(100 - round(abs(var(--d)) * 50));
 - 筛选/搜索/收藏经新 `update()` 的 `matchesCard` 一致生效；排序下拉只作用于网格，封面流保持最新在前（§2 不变）。
 - 程序化居中不再用浏览器平滑 `scrollIntoView`（Chromium 会因逐帧内联样式写入中断动画），改为自绘 rAF 动画；§4.2 行为不变。
 - 验收与修复记录见 `validation/homepage-coverflow.md`。
+
+---
+
+## 13. 第二轮设计增量（2026-09-21）
+
+上线后的评审提出 8 项改进，已在分支 `worktree-coverflow-spec` 实施。以下条目**取代** §3–§6 中的对应描述；其余规格不变。
+
+- **不透明压暗取代 opacity**（改 §3.3、§4.4）。18% 的重叠加上 0.65–0.89 的 `opacity` 会让相邻封面的标题互相透出。现在封面始终完全不透明，"后退"由 `.shelf-item::after` 覆盖层表达：JS 写入 `--dim`（中心 0，边缘 0.35），`body.dark` 下改用纯黑并乘 1.45。`--op` 变量删除。`prefers-reduced-motion` 分支同时强制 `transform:none` 与 `--dim` 失效（`opacity:0!important`）。
+- **移动端紧凑面板**（改 §3.4）。≤680px 断点：封面 220px → **180px**（仍 3:4），track 内边距收紧到 `8px / 16px`；详情面板只显示「分类 · 版本 / 标题 / 副标题 / `.course-actions`」，`.description`、`.tags`、`.course-stats`、`.course-tip` 由 CSS 隐藏（**模板不变**，构建产物与测试断言不受影响）。390px 宽下 shelf 区块由约 861px 降到 473–518px。
+- **Roving tabindex**（改 §4.2、§4.4）。`ul.shelf-track` 不再是 Tab 目标；只有居中封面的链接 `tabindex="0"`，其余 `-1`，初始值由 `catalog.mjs` 渲染，因此无 JS 时首张封面仍可聚焦、每张封面仍是真链接。键盘 ←/→/Home/End 在切换时把焦点一并移到新的居中封面；鼠标拖动与触摸滚动**不**移动焦点（指针按下时只把焦点交给按下的那张封面）。Shelf 内 Tab 位由 16 个降到 3 个（封面 1 + 两个侧边按钮 + 圆点组 1）。
+- **圆点语义**（改 §2、§4.2）。`role="tablist"` / `role="tab"` / `aria-selected` 是"标签页"语义，与封面流不符；改为 `<div class="shelf-dots" role="group" aria-label="封面位置">` 内的普通按钮，用 `aria-pressed` 表示当前项。整组只占一个 Tab 位（非当前圆点 `tabindex="-1"`），←/→ 在组内移动并居中对应封面。
+- **独立状态行**（改 §2、§4.4）。`.shelf-detail` 去掉 `aria-live="polite"`——整块面板作为 live region 会让屏幕阅读器复述全部正文。改为视觉隐藏的 `<p class="sr-only" id="shelfStatus" role="status" aria-live="polite">`，与面板更新同批、同样 200ms 去抖，只播报 `当前：<标题>（第 n / N 门）`。面板本身保留既有的焦点恢复逻辑。
+- **缓存式测量**（改 §4.1）。原实现每帧对每个（已被 transform 过的）item 调 `getBoundingClientRect`，读写交错且自我参照。现在各可见项的**未变换**中心 `offsetLeft + offsetWidth/2` 与 `clientWidth` 在 init、resize 以及每次筛选／`shelfSync` 后由 `shelfRemeasure()` 缓存；每帧只读 `shelfTrack.scrollLeft`，按 `distance = (centre - (scrollLeft + clientWidth/2)) / clientWidth * 2` 计算再写 CSS 变量。`shelfCenter` 继续使用 `offsetLeft`，两者由此在同一坐标系内。实测倾斜角与改前完全相同（0 / -14.12° / -28.25° / -42.00°），初始居中偏移仍为 0px。
+- **首图优先级**（补 §5）。首张（最新、初始居中）封面缩略图 `loading="eager" fetchpriority="high"`，第 2、3 张 `loading="eager"`，其余保持 `loading="lazy"`。
+- **侧边按钮 DOM 顺序**（补 §2）。两个绝对定位的切换按钮改为「prev 在 `<ul>` 之前、next 在之后」，使 Tab 顺序与视觉顺序一致；视觉位置不变。
+
+验收结果与未覆盖项见 `validation/homepage-coverflow.md` 的「第二轮改进（2026-09-21）」。

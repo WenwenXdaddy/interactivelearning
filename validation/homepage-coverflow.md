@@ -73,3 +73,59 @@ spec 撰写时主页仍是单文件内联架构。实施期间远端 main 合入
 6. **侧边切换按钮（新）**：「上一门/下一门」从顶部行改为封面流两侧上下居中的透明按钮 + 大三角（CSS border 三角，零新资产），z-index 置顶，禁用态淡化；`aria-label` 保留。截图 `validation/evidence/coverflow-side-buttons-1440.png`；check 的无 JS 断言已同步新标记。
 
 `npm test` 全套通过（137 项静态 + 4 套）。线上验证（本次修复后）：commit `cb96624` Workers Builds success；`npm run verify:live` 通过（Verified live at https://learning.jiadi.ai，退出码 0）。
+
+---
+
+## 第二轮改进（2026-09-21）
+
+分支 `worktree-coverflow-spec`（基线 `fd1d408`）。评审提出的 8 项改进全部实施，范围仍限于 `templates/home.html`、`scripts/catalog.mjs`、`content/portal/home.css`、`content/portal/home.js`、`scripts/check.mjs`。课程源文件、`courses.json`、网格模板与下载字节均未改动。
+
+### 八项改动
+
+| # | 改动 | 文件 |
+|---|---|---|
+| 1 | **不透明压暗替代 opacity**。封面恢复完全不透明，侧边"后退感"改由 `.shelf-item::after` 覆盖层表达，alpha 跟随 JS 写入的 `--dim`（中心 0 → 边缘 0.35；`body.dark` 下 ×1.45 的纯黑）。`--op` 变量已删除；reduced-motion 分支保持平铺且 `--dim` 强制为 0 | `home.css`、`home.js` |
+| 2 | **≤680px 移动端紧凑化**。封面 220→180px（仍 3:4，实测 180×240），track 内边距 12/26 → 8/16；详情面板只保留「分类 · 版本 / 标题 / 副标题 / 动作行」，`.description`、`.tags`、`.course-stats`、`.course-tip` 在该断点 `display:none`（模板未改，check 断言不受影响） | `home.css` |
+| 3 | **图片优先级**。首张（最新、初始居中）封面 `loading="eager" fetchpriority="high"`，第 2、3 张 `loading="eager"`，其余保持 `loading="lazy"` | `catalog.mjs` |
+| 4 | **Roving tabindex**。只有当前居中的封面链接 `tabindex="0"`，其余 `-1`；`ul.shelf-track` 不再 `tabindex="0"`；键盘 ←/→/Home/End 时焦点随之移动（鼠标/触摸滚动不移焦点）。初始值由 `catalog.mjs` 渲染，无 JS 时首张封面仍可聚焦，每张封面仍是真链接 | `home.html`、`catalog.mjs`、`home.js` |
+| 5 | **圆点语义**。`role="tablist"`/`role="tab"`/`aria-selected` → `role="group"` + `aria-pressed` 的普通按钮；只有当前圆点 `tabindex="0"`（整组一个 Tab 位，←/→ 在组内移动）；CSS 选择器与 check 断言同步 | `home.html`、`catalog.mjs`、`home.css`、`home.js`、`check.mjs` |
+| 6 | **状态朗读行**。`.shelf-detail` 去掉 `aria-live="polite"`；新增视觉隐藏的 `<p class="sr-only" id="shelfStatus" role="status" aria-live="polite">`，与面板同批 200ms 去抖写入 `当前：<标题>（第 n / N 门）`。`home.css` 原本没有 `.sr-only`，本轮新增该工具类。面板原有的焦点恢复逻辑保留 | `home.html`、`home.css`、`home.js` |
+| 7 | **测量不再逐帧读布局**。`shelfMeasure` 不再对每个（已被 transform 过的）元素调用 `getBoundingClientRect`；改为在 init／resize／每次筛选后由 `shelfRemeasure()` 缓存各可见项的未变换中心（`offsetLeft + offsetWidth/2`）与 `clientWidth`，每帧只读 `shelfTrack.scrollLeft` 再写 CSS 变量。`shelfCenter` 仍用 `offsetLeft` | `home.js` |
+| 8 | **侧边按钮 DOM 顺序**。「上一门」移到 `<ul>` 之前、「下一门」移到之后（二者仍为绝对定位，视觉不变），Tab 顺序成为 prev → 封面 → next | `home.html`、`check.mjs` |
+
+### 静态检查
+
+- `npm test` 全套通过：**139 项静态检查**（上一轮 137 + 新增 2 项）+ test-home / test-resume / test-theme-defaults / test-platform 全部 PASS。
+- 新增断言：①「shelf keeps one Tab stop per group and prioritises the centred cover image」——封面数 = 课程数、恰好 1 张封面 `tabindex="0"` 且为最新那张、其余 `-1`、track 无 `tabindex`、首图 eager+high、第 2–3 图 eager、其余 lazy、圆点无 `role="tab"`/`aria-selected`、恰好 1 个 `aria-pressed="true"` 与 1 个 `tabindex="0"`；②「centred course is announced through a dedicated status line」——`#shelfStatus` 存在、面板不再是 live region、`.sr-only` 工具类与 JS 写入存在。
+- 原有断言扩展：「shelf controls stay hidden until JavaScript runs」增加 prev 在 `<ul>` 之前、next 在之后的 DOM 顺序断言。
+- **网格未变**：改前基线 `public/index.html` 的 `<div class="course-grid"…</section>` 区域 32,256 字节、SHA-256 `42c5377630c1ef1e3dfcc61ef46d31a1e52c655017571dcc3295599ebdcc8d43`，改后逐字节相同。`content/courses/` 无任何改动。
+- 无新增 `localStorage` 键、无 `fetch`/XHR、无第三方依赖；JS 仍全部在外置 `content/portal/home.js`（`script-src 'self'`），CSP 未变。
+
+### 浏览器验收（本地 HTTP `node scripts/serve.mjs --port 4173`，Chromium via chrome-devtools MCP）
+
+| 项目 | 1440 宽 | 390 宽 |
+|---|---|---|
+| 初始居中偏移 | ✅ 0px | ✅ 0px |
+| 封面不透明 / 压暗 | ✅ `opacity: 1`，`--dim` 0 / 0.118 / 0.235 / 0.350；倾斜角与上一轮完全相同（0 / -14.12° / -28.25° / -42.00°） | ✅ 同上 |
+| 深色模式 | ✅ 压暗层 `rgb(0,0,0)`，边缘 alpha 0.5075；截图 `evidence/coverflow-r2-1440-dark.png` | ✅ 计算值核对通过（未单独截图） |
+| Shelf 内 Tab 位 | ✅ 共 3 个（封面 ×1、next 按钮、当前圆点；prev 在首项时 disabled 被跳过）；改前为 16（track + 15 封面）。真实 Tab 键实测顺序：主题按钮 → 封面 → 下一门 → 圆点 | — |
+| ←/→ | ✅ 第 1→2 门，偏移 0，焦点随动，状态行「当前：无条件养育 · 一起读（第 2 / 15 门）」 | ✅ 偏移 0，焦点随动，计数 6 / 15 |
+| End / Home | ✅ End→第 15 门（next 禁用）、Home→第 1 门（scrollLeft 0、prev 禁用），偏移均为 0 | — |
+| 聚焦封面上按 Enter | ✅ 打开的是**聚焦**的那门课（`/courses/unconditional-parenting/index.html`），不是此前居中的那门 | — |
+| 点击非居中封面 | ✅ 先居中（偏移 0）且不跳转，焦点落到该封面（`tabIndex` 变为 0），状态行同步 | — |
+| prev / next / 圆点 | ✅ 三者均精确居中（偏移 0），`aria-pressed` 与圆点序号同步 | — |
+| 滚动不夺焦点 | ✅ 焦点在搜索框时程序化滚动 track，active 与状态行更新，`document.activeElement` 保持不变 | — |
+| 筛选「健康与科学」 | ✅ 封面 15→6，active 保留且重新居中（偏移 0），可见封面中恰好 1 张可 Tab，圆点同步 6 个 | — |
+| 搜索 0 结果 → 清除 | ✅ 整个 `.shelf` 隐藏 + 空状态显示；清除后恢复 15 门、重新居中、Tab 位回到 1 | — |
+| Shelf 区块高度 | 839px（与上一轮一致） | ✅ **473px**（首门课）；遍历全部 15 门课的最坏情况 **518px**，均低于 560px 目标（改前约 861px） |
+| 移动端紧凑面板 | — | ✅ `.description` / `.tags` / `.course-stats` / `.course-tip` 计算样式 `display:none`，`.course-actions` 为 `flex`；封面 180×240；圆点隐藏、显示 "1 / 15" |
+| 控制台 | ✅ 无 error/warning。仅 2 条非错误项：DevTools issue「Lazy-loaded images should have explicit dimensions」（既有，网格图片）与 PWA 安装横幅 info | ✅ 同上 |
+| 截图 | `evidence/coverflow-r2-1440.png`（浅色） | `evidence/coverflow-r2-390.png`（浅色） |
+
+### 本轮未覆盖
+
+- Safari（macOS/iOS）与真实触摸惯性滚动：本机无 macOS/iOS 设备或触摸屏。
+- `prefers-reduced-motion: reduce` 的浏览器实测：chrome-devtools MCP 的 `emulate` 不提供该项仿真；仅核对了 CSS 分支（`transform:none!important` + `.shelf-item::after{opacity:0!important}`）。
+- 屏幕阅读器实际朗读（NVDA/VoiceOver）：仅验证了 `role="status" aria-live="polite"` 结构与文本按 200ms 去抖写入。
+- 390 宽深色模式截图：只核对了计算样式，未单独出图。
+- 线上 HTTPS：本轮为 draft PR，未合并、未推送 `main`，因此**未**运行 `npm run verify:live`（按 AGENTS.md 第 6 条，部署后才有意义）。

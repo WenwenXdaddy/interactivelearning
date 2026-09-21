@@ -18,7 +18,10 @@ try{
  const r=await get('/site-manifest.json');if(!r.ok)throw new Error(`Manifest HTTP ${r.status}`);
  const current=await r.json();if(current.id!==expected.id||current.version!==expected.version)throw new Error('Unexpected site identity/version');
  const home=await get('/');if(!home.ok)throw new Error('Homepage unavailable');const text=await home.text();if(!text.includes('JIADI 学习实验室'))throw new Error('Homepage does not match this project');
- if(!home.headers.get('content-security-policy')?.includes("connect-src 'none'"))throw new Error('Security headers are missing');
+ const expectedCsp=fs.readFileSync(path.join(root,'public/_headers'),'utf8').match(/^\s*Content-Security-Policy:\s*(.+)$/m)?.[1].trim();
+ if(!expectedCsp||home.headers.get('content-security-policy')!==expectedCsp)throw new Error('Security policy differs from the approved local build');
+ if(sha(strip(text))!==sha(fs.readFileSync(path.join(root,'public/index.html'))))throw new Error('Homepage differs from local build');
+ for(const asset of ['/sw.js','/manifest.webmanifest']){const response=await get(asset);if(!response.ok||sha(Buffer.from(await response.arrayBuffer()))!==sha(fs.readFileSync(path.join(root,'public',asset.slice(1)))))throw new Error(asset+' differs from local build');}
  for(const c of expected.courses){const res=await get(`/courses/${c.slug}/`);if(!res.ok)throw new Error(c.slug+' unavailable');
   const html=await res.text();const clean=strip(html);
   if(clean.length!==html.length)normalised.push(`${c.slug}: ${html.length-clean.length} bytes of edge-injected script removed`);

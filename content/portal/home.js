@@ -125,12 +125,16 @@
   const shelfDotsWrap = document.querySelector('.shelf-dots');
   const shelfDots = shelfDotsWrap ? [...shelfDotsWrap.children] : [];
   const shelfCounter = document.querySelector('.shelf-count');
+  const shelfStatus = document.getElementById('shelfStatus');
   const shelfPrev = document.querySelector('[data-shelf-prev]');
   const shelfNext = document.querySelector('[data-shelf-next]');
   const shelfVisible = () => shelfItems.filter(item => !item.hidden);
+  const shelfCoverOf = item => item && item.querySelector('a.cover');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let shelfActive = null, shelfQueued = false, shelfQuiet = 0, shelfDetailTimer = 0, shelfDetailSlug = '';
-  let shelfSuppressClick = false, shelfDrag = null, shelfResize = 0, shelfAnim = 0;
+  let shelfSuppressClick = false, shelfDrag = null, shelfResize = 0, shelfAnim = 0, shelfFocusing = false;
+  // Untransformed geometry, cached so the per-frame loop never reads layout between style writes.
+  let shelfCentres = [], shelfView = 1;
   // Browser-native smooth scrollIntoView gets cancelled by the per-frame inline style writes below,
   // so programmatic centering runs its own rAF animation over instant jumps.
   function shelfCenter(item, mode) {
@@ -154,40 +158,61 @@
     item.style.setProperty('--tx', (clamped * -36).toFixed(2) + 'px');
     item.style.setProperty('--tz', ((1 - amount) * 120 - 120).toFixed(2) + 'px');
     item.style.setProperty('--rot', (clamped * -42).toFixed(2) + 'deg');
-    item.style.setProperty('--op', Math.max(1 - amount * 0.35, 0.65).toFixed(3));
+    item.style.setProperty('--dim', (amount * 0.35).toFixed(3));
     item.style.setProperty('--zi', String(100 - Math.round(amount * 50)));
+  }
+  // Rebuilt on init, on resize and after every catalog update; layout is only read here.
+  function shelfRemeasure() {
+    shelfView = shelfTrack.clientWidth || 1;
+    shelfCentres = shelfItems.map(item => item.hidden ? null : item.offsetLeft + item.offsetWidth / 2);
   }
   function shelfMeasure() {
     shelfQueued = false;
-    const trackBox = shelfTrack.getBoundingClientRect();
-    const center = trackBox.left + trackBox.width / 2, width = trackBox.width || 1;
+    const viewCentre = shelfTrack.scrollLeft + shelfView / 2;
     let best = null, bestGap = 2;
-    shelfItems.forEach(item => {
-      if (item.hidden) { if (item.getAttribute('style')) item.removeAttribute('style'); return; }
-      const box = item.getBoundingClientRect();
-      const distance = (box.left + box.width / 2 - center) / width * 2;
+    for (let index = 0; index < shelfItems.length; index++) {
+      const item = shelfItems[index], centre = shelfCentres[index];
+      if (item.hidden || centre === null || centre === undefined) {
+        if (item.getAttribute('style')) item.removeAttribute('style');
+        continue;
+      }
+      const distance = (centre - viewCentre) / shelfView * 2;
       shelfStyle(item, distance);
       if (Math.abs(distance) < bestGap) { bestGap = Math.abs(distance); best = item; }
-    });
+    }
     if (best && best !== shelfActive) shelfSetActive(best);
   }
   function shelfRequestMeasure() { if (!shelfQueued) { shelfQueued = true; requestAnimationFrame(shelfMeasure); } }
   function shelfSetActive(item) {
     shelfActive = item;
-    shelfItems.forEach(entry => { if (entry === item) entry.setAttribute('aria-current', 'true'); else entry.removeAttribute('aria-current'); });
+    shelfItems.forEach(entry => {
+      const cover = shelfCoverOf(entry);
+      if (entry === item) entry.setAttribute('aria-current', 'true'); else entry.removeAttribute('aria-current');
+      // roving tabindex: only the centred cover is a Tab stop
+      if (cover) cover.tabIndex = entry === item ? 0 : -1;
+    });
     const visible = shelfVisible(), position = visible.indexOf(item);
     if (shelfPrev) shelfPrev.disabled = position <= 0;
     if (shelfNext) shelfNext.disabled = position >= visible.length - 1;
     for (let index = 0; index < shelfDots.length; index++) {
       if (!shelfDots[index]) continue;
+      const selected = shelfItems[index] === item;
       shelfDots[index].hidden = shelfItems[index] ? shelfItems[index].hidden : true;
-      shelfDots[index].setAttribute('aria-selected', String(shelfItems[index] === item));
+      shelfDots[index].setAttribute('aria-pressed', String(selected));
+      shelfDots[index].tabIndex = selected ? 0 : -1;
     }
     if (shelfCounter) shelfCounter.textContent = (position + 1) + ' / ' + visible.length;
     clearTimeout(shelfDetailTimer);
     shelfDetailTimer = setTimeout(() => {
       const template = shelfActive && shelfActive.querySelector('template.cover-detail');
-      if (!template || shelfActive.dataset.slug === shelfDetailSlug) return;
+      if (!template) return;
+      if (shelfStatus) {
+        const title = shelfActive.querySelector('.cover-title');
+        const list = shelfVisible();
+        shelfStatus.textContent = '当前：' + (title ? title.textContent : '') +
+          '（第 ' + (list.indexOf(shelfActive) + 1) + ' / ' + list.length + ' 门）';
+      }
+      if (shelfActive.dataset.slug === shelfDetailSlug) return;
       shelfDetailSlug = shelfActive.dataset.slug;
       // replacing the panel drops any focus inside it; refocus the same link (or its successor) afterwards
       const panelLinks = () => [...shelfPanel.querySelectorAll('a')];
@@ -216,6 +241,7 @@
     shelf.hidden = visible.length === 0;
     if (!visible.length) return;
     shelfUpdateEdges();
+    shelfRemeasure();
     if (!shelfActive || shelfActive.hidden) shelfSetActive(visible[0]); else shelfSetActive(shelfActive);
     shelfCenter(shelfActive, 'instant');
     shelfRequestMeasure();
@@ -281,25 +307,37 @@
     shelfTrack.addEventListener('wheel', shelfCancelAnim, {passive: true});
     shelfTrack.addEventListener('touchstart', shelfCancelAnim, {passive: true});
     shelfTrack.addEventListener('focusin', event => {
+      if (shelfFocusing) return;
       const item = event.target.closest('.shelf-item');
       if (item && !item.hidden && item !== shelfActive) shelfCenter(item);
     });
+    // Keyboard navigation moves focus with the carousel; pointer and touch scrolling never do.
+    function shelfGoTo(item) {
+      if (!item) return;
+      shelfCenter(item);
+      const cover = shelfCoverOf(item);
+      if (!cover) return;
+      shelfFocusing = true;
+      cover.tabIndex = 0;
+      cover.focus({preventScroll: true});
+      shelfFocusing = false;
+    }
     shelfTrack.addEventListener('keydown', event => {
       const visible = shelfVisible(), index = shelfActive ? visible.indexOf(shelfActive) : -1;
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         event.preventDefault();
         const next = event.key === 'ArrowLeft' ? index - 1 : index + 1;
-        if (next >= 0 && next < visible.length) shelfCenter(visible[next]);
+        if (next >= 0 && next < visible.length) shelfGoTo(visible[next]);
       } else if (event.key === 'Home') {
         event.preventDefault();
-        if (visible.length) shelfCenter(visible[0]);
+        if (visible.length) shelfGoTo(visible[0]);
       } else if (event.key === 'End') {
         event.preventDefault();
-        if (visible.length) shelfCenter(visible[visible.length - 1]);
+        if (visible.length) shelfGoTo(visible[visible.length - 1]);
       } else if (event.key === 'Enter') {
         // a focused cover link keeps its native target; only bare-track Enter uses the centered course
         if (event.target.closest && event.target.closest('a.cover')) return;
-        const cover = shelfActive && shelfActive.querySelector('a.cover');
+        const cover = shelfCoverOf(shelfActive);
         if (cover) { event.preventDefault(); location.href = cover.href; }
       }
     });
@@ -308,8 +346,10 @@
       shelfCancelAnim();
       if (event.pointerType !== 'mouse' || event.button !== 0) return;
       event.preventDefault();
-      // preventDefault() also blocks native focus-on-click; hand the keyboard to the track instead
-      shelfTrack.focus({preventScroll: true});
+      // preventDefault() also blocks native focus-on-click; focus the pressed cover (or the centred
+      // one) so the keyboard can take over from wherever the pointer left off
+      const cover = event.target.closest('a.cover') || shelfCoverOf(shelfActive);
+      if (cover) { shelfFocusing = true; cover.tabIndex = 0; cover.focus({preventScroll: true}); shelfFocusing = false; }
       shelfDrag = {x: event.clientX, left: shelfTrack.scrollLeft, moved: false};
     });
     function shelfEndDrag() {
@@ -342,6 +382,7 @@
     window.addEventListener('resize', () => {
       clearTimeout(shelfResize);
       shelfResize = setTimeout(() => {
+        shelfRemeasure();
         if (shelfActive && !shelfActive.hidden) shelfCenter(shelfActive, 'instant');
         shelfRequestMeasure();
       }, 150);
@@ -358,6 +399,20 @@
       const item = shelfItems[index];
       if (item && !item.hidden) shelfCenter(item);
     }));
+    // The dot group is a single Tab stop; arrows walk it and centre the matching cover.
+    if (shelfDotsWrap) shelfDotsWrap.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      const usable = shelfDots.filter(dot => !dot.hidden);
+      const here = usable.indexOf(event.target);
+      if (here < 0) return;
+      const next = usable[event.key === 'ArrowLeft' ? here - 1 : here + 1];
+      if (!next) return;
+      event.preventDefault();
+      const item = shelfItems[shelfDots.indexOf(next)];
+      if (item && !item.hidden) shelfCenter(item);
+      next.tabIndex = 0;
+      next.focus({preventScroll: true});
+    });
     if (shelfPrev) shelfPrev.hidden = false;
     if (shelfNext) shelfNext.hidden = false;
     if (shelfDotsWrap) shelfDotsWrap.hidden = false;
@@ -365,6 +420,7 @@
     const first = shelfVisible()[0];
     if (first) {
       shelfUpdateEdges();
+      shelfRemeasure();
       shelfDetailSlug = first.dataset.slug;
       shelfSetActive(first);
       shelfTrack.scrollLeft = 0;

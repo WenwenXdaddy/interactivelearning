@@ -50,15 +50,20 @@ export function renderCatalog(courses) {
 <div class="course-actions"><a class="cta" href="/courses/${escape(slug)}/index.html">进入课程 <span aria-hidden="true">↗</span></a><div class="download-links"><a href="/courses/${escape(slug)}/study-notes.md" download="${escape(slug)}-study-notes.md">学习手册 ↓</a><a href="/downloads/${escape(slug)}.html" download="${escape(slug)}.html">独立 HTML ↓</a></div></div>
 <p class="course-tip"><strong>建议起点</strong> · ${escape(course.firstTask)}</p>`;
   };
-  const covers = newestFirst.map(course => {
+  const covers = newestFirst.map((course, index) => {
     const {slug} = course;
     const search = [course.title, course.subtitle, course.description, course.category, ...course.tags].join(' ');
+    // The newest cover is centred on load, so it is the LCP candidate; its two neighbours are partly
+    // visible either side. Everything further out stays lazy.
+    const priority = index === 0 ? 'loading="eager" fetchpriority="high"' : (index < 3 ? 'loading="eager"' : 'loading="lazy"');
+    // Roving tabindex: only the active cover is in the Tab order. Rendered here so that without
+    // JavaScript the first (centred) cover is still focusable and every cover stays a real link.
     return `<li class="shelf-item" data-slug="${escape(slug)}" data-category="${escape(course.category)}" data-search="${escape(search)}">
-<a class="cover" href="/courses/${escape(slug)}/index.html" aria-label="${escape(course.title)}：${escape(course.subtitle)}"><span class="cover-mat" data-tone="${escape(course.tone)}"><span class="cover-category">${escape(course.category)}</span><strong class="cover-title">${escape(course.title)}</strong><span class="cover-meta">${course.chapters} 站 · ${course.terms} 术语</span></span><img class="cover-thumb" src="/assets/previews/${escape(slug)}.webp" alt="" width="1120" height="960" loading="lazy"></a>
+<a class="cover" href="/courses/${escape(slug)}/index.html" tabindex="${index === 0 ? '0' : '-1'}" aria-label="${escape(course.title)}：${escape(course.subtitle)}"><span class="cover-mat" data-tone="${escape(course.tone)}"><span class="cover-category">${escape(course.category)}</span><strong class="cover-title">${escape(course.title)}</strong><span class="cover-meta">${course.chapters} 站 · ${course.terms} 术语</span></span><img class="cover-thumb" src="/assets/previews/${escape(slug)}.webp" alt="" width="1120" height="960" ${priority}></a>
 <template class="cover-detail">${shelfDetail(course)}</template></li>`;
   }).join('\n');
   const dots = courses.length <= 20
-    ? newestFirst.map((course, index) => `<button class="shelf-dot" type="button" role="tab" aria-selected="${index === 0}" aria-label="${escape(course.title)}"></button>`).join('')
+    ? newestFirst.map((course, index) => `<button class="shelf-dot" type="button" aria-pressed="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}" aria-label="${escape(course.title)}"></button>`).join('')
     : '';
   return {FILTERS: filters, COURSE_CARDS: cards, CURATED_ROUTES: curated,
     COURSE_COVERS: covers, SHELF_DOTS: dots, SHELF_DETAIL_INITIAL: shelfDetail(newestFirst[0]),

@@ -12,12 +12,12 @@ vm.runInNewContext(fs.readFileSync(path.join(root, 'content/portal/home.js'), 'u
 const {parseFavorites, parseRecent, canResume, sortCards, matchesCard} = context.module.exports;
 const known = new Set(courses.map(course => course.slug));
 const normalize = value => JSON.parse(JSON.stringify(value));
-assert.equal(courses.length, 14);
+assert(courses.length >= 14, 'the existing catalog remains available as new courses are added');
 assert.equal(courses.find(course => course.slug === 'us-data-center-buildout').category, '产业与基础设施');
-assert.equal(new Set(courses.map(c => c.slug)).size, 14);
+assert.equal(new Set(courses.map(c => c.slug)).size, courses.length);
 assert.equal(routes.length, 2);
 assert.equal(routes.every(route => route.slugs.length === 2 && route.slugs.every(slug => known.has(slug))), true);
-assert.equal(renderCatalog(courses).COURSE_CARDS.match(/<article class="course /g)?.length, 14);
+assert.equal(renderCatalog(courses).COURSE_CARDS.match(/<article class="course /g)?.length, courses.length);
 assert.deepEqual(normalize(parseFavorites('{"version":2,"slugs":["gold-volatility"]}', known)), []);
 assert.deepEqual(normalize(parseFavorites('{"version":1,"slugs":["gold-volatility","fake","gold-volatility"]}', known)), ['gold-volatility']);
 assert.deepEqual(normalize(parseFavorites('malformed', known)), []);

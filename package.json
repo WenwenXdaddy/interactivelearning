@@ -9,7 +9,7 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "test:platform": "node scripts/test-platform.mjs",
-    "test": "npm run build && npm run check && node scripts/test-home.mjs && node scripts/test-resume.mjs && npm run test:platform",
+    "test": "npm run build && npm run check && node scripts/test-home.mjs && node scripts/test-resume.mjs && node scripts/test-theme-defaults.mjs && npm run test:platform",
     "preview": "node scripts/serve.mjs",
     "deploy": "npm run test && wrangler deploy",
     "deploy:dry-run": "npm run test && wrangler deploy --dry-run",

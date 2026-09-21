@@ -15,9 +15,12 @@ function expectedResponse(url, response) {
   const received = new URL(response.url);
   if (requested.origin !== self.location.origin || received.origin !== self.location.origin) return false;
   if (!response.redirected) return received.pathname === requested.pathname && received.search === requested.search;
+  const download = /^\/downloads\/([a-z0-9]+(?:-[a-z0-9]+)*)\.html$/.exec(requested.pathname);
   const alias = requested.pathname === '/index.html' && received.pathname === '/'
-    || /^\/courses\/[a-z0-9-]+\/index\.html$/.test(requested.pathname) && received.pathname === requested.pathname.replace(/index\.html$/, '');
-  return alias && !requested.search && !received.search;
+    || /^\/courses\/[a-z0-9-]+\/index\.html$/.test(requested.pathname) && received.pathname === requested.pathname.replace(/index\.html$/, '')
+    || requested.pathname === '/offline.html' && CONFIG.shellPaths.includes('/offline.html') && received.pathname === '/offline'
+    || download && validSlug(download[1]) && CONFIG.bundles[download[1]].urls.includes(requested.pathname) && received.pathname === `/downloads/${download[1]}`;
+  return Boolean(alias) && !requested.search && !received.search;
 }
 
 function canonical(path) {

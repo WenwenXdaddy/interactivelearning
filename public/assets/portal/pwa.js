@@ -177,6 +177,19 @@
   const ready = navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(async reg => {
     registration = reg;
     reg.addEventListener('updatefound', () => reg.installing?.addEventListener('statechange', updateNotice));
+    if (!reg.active && reg.installing) {
+      const installing = reg.installing;
+      await new Promise((resolve, reject) => {
+        const changed = () => {
+          if (installing.state === 'activated' || installing.state === 'redundant') {
+            installing.removeEventListener('statechange', changed);
+            installing.state === 'activated' ? resolve() : reject(new Error('Offline installation failed'));
+          }
+        };
+        installing.addEventListener('statechange', changed);
+        changed();
+      });
+    }
     await navigator.serviceWorker.ready;
     updateNotice();
     await refresh();

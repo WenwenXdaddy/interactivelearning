@@ -58,7 +58,7 @@ spec 撰写时主页仍是单文件内联架构。实施期间远端 main 合入
 - Safari（macOS/iOS）与真实触摸惯性；`prefers-reduced-motion` 浏览器实测；屏幕阅读器朗读（aria-live 结构已实现）。
 - 线上 HTTPS/Cloudflare：待推送后 `npm run verify:live`（结果追加于下）。
 
-## 线上验证（待推送后填写）
+## 线上验证（已完成）
 
-- [ ] Workers Builds 检查通过（commit `____`）
-- [ ] `npm run verify:live` 通过（普通网络）
+- [x] Workers Builds 检查通过（commit `de910e5`，`Workers Builds: interactivelearning` = success，2026-09-21）
+- [x] `npm run verify:live` 通过（普通网络）：Verified live at https://learning.jiadi.ai — homepage, 15 courses, hashes, downloads and 404（退出码 0；Cloudflare 边缘注入按既有流程移除后比对）

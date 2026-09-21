@@ -124,7 +124,6 @@
   const shelfItems = shelfTrack ? [...shelfTrack.children].filter(el => el.classList.contains('shelf-item')) : [];
   const shelfDotsWrap = document.querySelector('.shelf-dots');
   const shelfDots = shelfDotsWrap ? [...shelfDotsWrap.children] : [];
-  const shelfNav = document.querySelector('.shelf-nav');
   const shelfCounter = document.querySelector('.shelf-count');
   const shelfPrev = document.querySelector('[data-shelf-prev]');
   const shelfNext = document.querySelector('[data-shelf-next]');
@@ -190,7 +189,17 @@
       const template = shelfActive && shelfActive.querySelector('template.cover-detail');
       if (!template || shelfActive.dataset.slug === shelfDetailSlug) return;
       shelfDetailSlug = shelfActive.dataset.slug;
+      // replacing the panel drops any focus inside it; refocus the same link (or its successor) afterwards
+      const panelLinks = () => [...shelfPanel.querySelectorAll('a')];
+      const focused = document.activeElement;
+      const restore = shelfPanel.contains(focused) && focused.tagName === 'A'
+        ? {href: focused.getAttribute('href'), index: panelLinks().indexOf(focused)} : null;
       shelfPanel.replaceChildren(template.content.cloneNode(true));
+      if (restore) {
+        const links = panelLinks();
+        const restored = links.find(link => link.getAttribute('href') === restore.href) || links[restore.index];
+        if (restored) restored.focus({preventScroll: true});
+      }
     }, 200);
   }
   function shelfUpdateEdges() {
@@ -288,6 +297,8 @@
         event.preventDefault();
         if (visible.length) shelfCenter(visible[visible.length - 1]);
       } else if (event.key === 'Enter') {
+        // a focused cover link keeps its native target; only bare-track Enter uses the centered course
+        if (event.target.closest && event.target.closest('a.cover')) return;
         const cover = shelfActive && shelfActive.querySelector('a.cover');
         if (cover) { event.preventDefault(); location.href = cover.href; }
       }
@@ -297,10 +308,20 @@
       shelfCancelAnim();
       if (event.pointerType !== 'mouse' || event.button !== 0) return;
       event.preventDefault();
+      // preventDefault() also blocks native focus-on-click; hand the keyboard to the track instead
+      shelfTrack.focus({preventScroll: true});
       shelfDrag = {x: event.clientX, left: shelfTrack.scrollLeft, moved: false};
     });
+    function shelfEndDrag() {
+      if (!shelfDrag) return;
+      shelfDrag = null;
+      shelfTrack.classList.remove('dragging');
+      if (shelfSuppressClick) setTimeout(() => { shelfSuppressClick = false; }, 0);
+    }
     window.addEventListener('pointermove', event => {
       if (!shelfDrag) return;
+      // the button may be released outside the window: buttons==0 ends the drag
+      if (!(event.buttons & 1)) { shelfEndDrag(); return; }
       const dx = event.clientX - shelfDrag.x;
       if (!shelfDrag.moved && Math.abs(dx) > 6) {
         shelfDrag.moved = true;
@@ -309,12 +330,8 @@
       }
       if (shelfDrag.moved) shelfTrack.scrollLeft = shelfDrag.left - dx;
     });
-    window.addEventListener('pointerup', () => {
-      if (!shelfDrag) return;
-      shelfDrag = null;
-      shelfTrack.classList.remove('dragging');
-      if (shelfSuppressClick) setTimeout(() => { shelfSuppressClick = false; }, 0);
-    });
+    window.addEventListener('pointerup', shelfEndDrag);
+    window.addEventListener('pointercancel', shelfEndDrag);
     shelfTrack.addEventListener('click', event => {
       if (shelfSuppressClick) { shelfSuppressClick = false; event.preventDefault(); return; }
       const cover = event.target.closest('a.cover');
@@ -341,7 +358,8 @@
       const item = shelfItems[index];
       if (item && !item.hidden) shelfCenter(item);
     }));
-    if (shelfNav) shelfNav.hidden = false;
+    if (shelfPrev) shelfPrev.hidden = false;
+    if (shelfNext) shelfNext.hidden = false;
     if (shelfDotsWrap) shelfDotsWrap.hidden = false;
     if (shelfCounter) shelfCounter.hidden = false;
     const first = shelfVisible()[0];

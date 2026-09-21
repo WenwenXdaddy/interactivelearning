@@ -62,3 +62,14 @@ spec 撰写时主页仍是单文件内联架构。实施期间远端 main 合入
 
 - [x] Workers Builds 检查通过（commit `de910e5`，`Workers Builds: interactivelearning` = success，2026-09-21）
 - [x] `npm run verify:live` 通过（普通网络）：Verified live at https://learning.jiadi.ai — homepage, 15 courses, hashes, downloads and 404（退出码 0；Cloudflare 边缘注入按既有流程移除后比对）
+
+## 缺陷修复轮（2026-09-21，用户确认的 5 项缺陷 + 桌面侧边按钮）
+
+1. **面板统计粘连**：`.shelf-detail .course-stats` 补 `display:flex;gap:14px;flex-wrap:wrap`（新架构网格仅剩单项统计，flex 排版已被删除）。实测 computed display=flex、gap=14px，三项「32 个学习站 / 64 项核查记录 / 35 个术语」分开排列。
+2. **点击封面后键盘不接管**：`pointerdown` 的 `preventDefault()` 连带阻止了原生点击聚焦；补 `shelfTrack.focus({preventScroll:true})`。可信鼠标点击 track 后实测 `activeElement` 为 track。
+3. **Enter 进错课**：track keydown 不再拦截 `event.target` 为 `a.cover` 的 Enter，交给链接原生行为。可信 Enter 实测打开的是**聚焦**的那门课（healthy-masculinity，非此前居中的 outlive）。
+4. **面板替换吞焦点**：替换前记录面板内焦点链接的 href 与序号，替换后优先按 href、否则按同类同位（CTA 位）回焦。实测焦点从旧 CTA 转移到新面板的 CTA，不再掉回 body。
+5. **拖动残留**：`pointermove` 增加 `event.buttons` 检查（窗口外松开即结束），新增 `pointercancel` 监听；两者均实测清掉 dragging 类，后续点击不被误抑制。
+6. **侧边切换按钮（新）**：「上一门/下一门」从顶部行改为封面流两侧上下居中的透明按钮 + 大三角（CSS border 三角，零新资产），z-index 置顶，禁用态淡化；`aria-label` 保留。截图 `validation/evidence/coverflow-side-buttons-1440.png`；check 的无 JS 断言已同步新标记。
+
+`npm test` 全套通过（137 项静态 + 4 套）。线上验证（本次修复后）：见下。

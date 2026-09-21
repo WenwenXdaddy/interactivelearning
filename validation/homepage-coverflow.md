@@ -72,4 +72,4 @@ spec 撰写时主页仍是单文件内联架构。实施期间远端 main 合入
 5. **拖动残留**：`pointermove` 增加 `event.buttons` 检查（窗口外松开即结束），新增 `pointercancel` 监听；两者均实测清掉 dragging 类，后续点击不被误抑制。
 6. **侧边切换按钮（新）**：「上一门/下一门」从顶部行改为封面流两侧上下居中的透明按钮 + 大三角（CSS border 三角，零新资产），z-index 置顶，禁用态淡化；`aria-label` 保留。截图 `validation/evidence/coverflow-side-buttons-1440.png`；check 的无 JS 断言已同步新标记。
 
-`npm test` 全套通过（137 项静态 + 4 套）。线上验证（本次修复后）：见下。
+`npm test` 全套通过（137 项静态 + 4 套）。线上验证（本次修复后）：commit `cb96624` Workers Builds success；`npm run verify:live` 通过（Verified live at https://learning.jiadi.ai，退出码 0）。

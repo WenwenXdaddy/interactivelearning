@@ -10,7 +10,7 @@
       "version": "v2 · 讲解增强版",
       "chapters": 10,
       "sourceSha256": "6c504df1031559ab28e2ba7fbb3e3ae7e23d6a08fd14fb4806f1dfcdbe4351b5",
-      "publishedSha256": "917df3cca7f5673891cfa98e6612905624e61182442b1bcbade1dd345cca338e",
+      "publishedSha256": "e1300d2f34bcd07ca4280620d3f63ef8249f5fc7417c42e57556b2a1105cb555",
       "scriptSha256": [
         "f92639ce5455c3f88e2742b0d1bded610a3c5ae9c3c1936cfe4a0142794e31aa",
         "446c3d4a81fee8667c04491a72ddc54ecea3efa8af1c4ed40b1dfc145e1c14d2"
@@ -22,7 +22,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 15,
       "sourceSha256": "37d36f84f3c54569c93e7e3f82e60e7c3ea4fe577edfb7f8e990d71a211fc4df",
-      "publishedSha256": "f1a73a09cc4e058729d7a316659a03340e16c807717df0e99d5fe5b5d9c87818",
+      "publishedSha256": "ec22f05edec7101a77e04ae74759b2a109edbec980a34f0b36007bff6fbe28ff",
       "scriptSha256": [
         "76dab4c2706a7df240849732184565fa40a6fe5812eeda10db68be8fb81d3322",
         "deecff3885d0d29a3dcac1e03b706d01ab473776cdf3d582d8d81ed6926a1361"
@@ -34,7 +34,7 @@
       "version": "v2.18 · 引导学习版",
       "chapters": 5,
       "sourceSha256": "760c2235893ba4ee9f330e8474d51496177e2b64ed81578e473af52369d4ce66",
-      "publishedSha256": "28a726291f6e17b306ab3d41829e0d108242efd87666cbd7a32decbf778e3048",
+      "publishedSha256": "57948fc82556b7c6ce97cb190cf221224f7a7e43b7f46c5ddd41f2362dfb8727",
       "scriptSha256": [
         "9343238eaa6a671990ce8738a22d1d424ca8e885520a21e20ec9b129ffb721b8",
         "198fe0fcfdca2adc6b59c34dd5fdcff4fa1b78f2601d80ff8ee643eb22e8c63b",
@@ -50,7 +50,7 @@
       "version": "v3 · 推理导读版",
       "chapters": 22,
       "sourceSha256": "2459ceb835ce9d88db3afff63b13cb35c988396696952621729bb6623b5302eb",
-      "publishedSha256": "ba401e65c491818d857372acadfe0dbdd219f06fd96c4ab129f1c93d22aeba84",
+      "publishedSha256": "617e86812377049dc0e992f1a2354e1df2b2ec05ef5c44cc478c2fbb29c80198",
       "scriptSha256": [
         "edc54c3b85fc237f6145a0030887d377b2340e5fa2127138ecab15640d78987c",
         "e8a0f7108486a2c7a4b6155d3ddceee318bad57519dd275c0a7d07add2651ceb"
@@ -62,7 +62,7 @@
       "version": "v3 · 推理导读版",
       "chapters": 17,
       "sourceSha256": "1c7e32e5378f02348b6fa17af5dfb744e9e07084f9622632d768d638273b0e35",
-      "publishedSha256": "c65a62f90908af6754ddbf229e3a6d848b9c22f2456dd2328323c2ca1256bba5",
+      "publishedSha256": "1e473a0133516c2575e13fb92fa72fd87eb72c69f320e41236812c33236c29fb",
       "scriptSha256": [
         "5ac0d2130ecc00dba4cf1a1d69a8c15e3b2a27481a3f06eddd48be552c90f24a",
         "f6f55beeb9a05302822eb9e3e173f3e69ed797eeaf3f878bb2dc07e6eeb4d3b5"
@@ -74,7 +74,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 13,
       "sourceSha256": "1b3999eb92c9a4e24d7338cfc20253733195dfac23489558bd5eaaf1eb22ee2f",
-      "publishedSha256": "4e2093cd66c9c3c53d4a3979bcb5beca23943a37a5d6071c931c2a72c299d50a",
+      "publishedSha256": "50aa6889e9fa540bfbec8c28e5c8b76944a0b4a5ffa2ada580958b8f820061b0",
       "scriptSha256": [
         "73b7301b1f35bc47f56a4540b19dfefbad6b8d2d0680d7eb8841a45bfe34d155"
       ]
@@ -85,7 +85,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 12,
       "sourceSha256": "51750ee3a58612cab0c07da1d8c07668b5f600642adabd65118fb3934974a4fd",
-      "publishedSha256": "4cb0f60eee691dbbdc90b716c24df68c5381d738b8c86a8eecb77108f2ff1879",
+      "publishedSha256": "123632195be55560a97adc00b628a72d4dfb7c78cb81057fa1665e8c85ce8f62",
       "scriptSha256": [
         "a3edeace546bc0514f90d787771bf685812cc1d5c46fcd905c05dd92a30539c2"
       ]
@@ -96,7 +96,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 13,
       "sourceSha256": "25d4cf018f5cd1dff3cbc38203a230770a78e04fbb2247a1d15c17c4494f8895",
-      "publishedSha256": "7364773ad3f20182a70b2da9dd11dad2fb86ba6071c17cc6a44140bcd8532c07",
+      "publishedSha256": "3e5ab5aa5dff2129ff8c0637a40db485415c71d22fc6ebe45054dbc9c94fcdf1",
       "scriptSha256": [
         "ba64c6b6a97e4e71dfffaeacfc444ccd96e8b6fd96dccb3961713c5be9d6bcfc"
       ]
@@ -107,7 +107,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 14,
       "sourceSha256": "b138ee4fee7c18a5746fede6673e9641a3bea1841affd6a611cc5a5569d7ef0c",
-      "publishedSha256": "b4eefaa5883e700df23ed4c68cf6db94ba7a282d499662e7ab64556797d23318",
+      "publishedSha256": "2b4f8213d0a3e3386b420d46ee0d327f86b0afafc77bab6b355933786fa3d62f",
       "scriptSha256": [
         "e35adfb23f27cf9ea5c94d9e714621302b1a06bd4cf41a86483d73786acfcff6"
       ]
@@ -118,7 +118,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 15,
       "sourceSha256": "bf5fa2b0342f47b52c1555243f1371950478ed6c6296a83fede2d7a8f96f808d",
-      "publishedSha256": "57224919f4d2d706396c11139885eddf97d4fd45e1c6b72517e054211058154e",
+      "publishedSha256": "91d70e3770fa1a1abc989f137668baff460b0000add5fa3bffced11ac9723397",
       "scriptSha256": [
         "d033b79df0d4eae6a2d2b89e8d4f6234f982ee50782c6f2d1688334bb826d04a"
       ]
@@ -129,7 +129,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 24,
       "sourceSha256": "93cf0623219643b53ab37ff99a4696a5d47e97cb13a7953d88711ec466f9df3a",
-      "publishedSha256": "6ca4c674cf9fbe2e1a68e7ef1df67bb7297db0f5dbefba0a320d200e6c4a6415",
+      "publishedSha256": "d281eb47eb7cabcb5ab75081d8be2de6da88cef933bb70d731a2e4504f15d6c5",
       "scriptSha256": [
         "5ea01e5399c325431255fa3e4ec6a361a3985cc52a448568d576055c9592a206"
       ]
@@ -140,7 +140,7 @@
       "version": "v3 · 推理导读版",
       "chapters": 18,
       "sourceSha256": "b5c78af6d3d4c65dc67d1f6b73d14972d4d722b87db18c69e50b1bfbbe81811a",
-      "publishedSha256": "45078a3832b2ddba836812d8d5571237d79decfd6e20385a93878ac40e3dda46",
+      "publishedSha256": "a7ff376a937ee33b38029de4849aa574538e6cad1b85f933cf06b907298302a8",
       "scriptSha256": [
         "d759ed7392b874206367190c128325b8d80df4aee433b26df2998e0383a31df9"
       ]
@@ -151,7 +151,7 @@
       "version": "v1 · 推理导读版",
       "chapters": 15,
       "sourceSha256": "e4dec759a39f7566e3978015ce3977fc68c6896590e12356aae1dfb074eff212",
-      "publishedSha256": "63102e4afe9ba10fe077ec9154d196af61b1865b3e78497d83986a295f02be97",
+      "publishedSha256": "93080794d346984a9a44d101c15c5c601762df839f790b3677afada58859887d",
       "scriptSha256": [
         "49a3803681265d553c5afeb346ea26b45fc69beed05d48d91f0e6e0589fc7bac",
         "461de57d74febbcd38e2dd18a3b8346dfb7d9e5d410909154ee42b6914181d5b"
@@ -163,7 +163,7 @@
       "version": "v1 · 原文导读版",
       "chapters": 37,
       "sourceSha256": "d3eb5eca0b55ac260230ac86cd3ae928e7e5ed2da2f8e830d07acec097063e6e",
-      "publishedSha256": "f5d06d1fd81fb493bbc69dc1472d82b72bc67102cc190262e9e83f7dc7ac3e14",
+      "publishedSha256": "0a767ec32593f3c14e4755ffa17cebbb9064aaa0aeaf05b103cff7509e0003a9",
       "scriptSha256": [
         "b5a2c2199411a69c18c8bfcaf7ece3bbe879e331db5a32d1695d82769e267c02"
       ]

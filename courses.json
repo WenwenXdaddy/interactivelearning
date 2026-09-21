@@ -4,8 +4,13 @@
     "title": "黄金波动率实验室",
     "subtitle": "看多黄金，也能收波动率？先看你拿什么交换。",
     "description": "从期权的四个基本动作出发，把权利金、持有成本与尾部风险放到同一本账上；用收益曲线理解每一种结构的代价。",
-    "category": "策略与风险",
-    "tags": ["期权", "VRP", "Carry", "组合收益曲线"],
+    "category": "投资与决策",
+    "tags": [
+      "期权",
+      "VRP",
+      "Carry",
+      "组合收益曲线"
+    ],
     "chapters": 10,
     "terms": 65,
     "metric": "14 种结构",
@@ -14,7 +19,11 @@
     "firstTask": "先看四个基本动作，再用 30% 的叠加比例检查收益的分母。",
     "tone": "gold",
     "imageAlt": "黄金波动率实验室：核心、期权叠加和总组合的收益曲线界面",
-    "storage": "au-lab-"
+    "storage": "au-lab-",
+    "sourceAddedAt": "2026-09-15T10:00:13Z",
+    "sourceAddedCommit": "4e548c8",
+    "sourceUpdatedAt": "2026-09-15T10:00:13Z",
+    "sourceUpdatedCommit": "4e548c8"
   },
   {
     "slug": "unknown-unknowable",
@@ -22,7 +31,13 @@
     "subtitle": "连状态都列不出来时，怎样判断一笔投资值不值得做。",
     "description": "沿 Zeckhauser 2006 年论文的论证顺序分十五站：从风险、不确定到无知的三级阶梯，互补能力与挎斗投资，逆向选择与相对知识，直到八条格言与 Buffett 的地震再保险。每步先讲作者的前提与推演，英文原文整段可翻；四个可拖模型只放在文字说不清的地方。",
     "category": "投资与决策",
-    "tags": ["不确定性", "互补能力", "逆向选择", "相对知识", "八条格言"],
+    "tags": [
+      "不确定性",
+      "互补能力",
+      "逆向选择",
+      "相对知识",
+      "八条格言"
+    ],
     "chapters": 15,
     "terms": 48,
     "metric": "4 个可拖模型",
@@ -31,7 +46,11 @@
     "firstTask": "先到第 07 站拖动优势倍数，看出价的盈亏符号为什么只由它决定；再到第 13 站的八条格言表回查一条。",
     "tone": "green",
     "imageAlt": "课程第 07 站的可拖模型：优势倍数、出价与价值区间三个滑块，右侧显示乘上成交概率后的期望收益与曲线，左侧是 15 个学习站的导航",
-    "storage": "interactive-learning-lab:uu-investing:v1"
+    "storage": "interactive-learning-lab:uu-investing:v1",
+    "sourceAddedAt": "2026-09-15T10:00:13Z",
+    "sourceAddedCommit": "4e548c8",
+    "sourceUpdatedAt": "2026-09-19T01:54:55+08:00",
+    "sourceUpdatedCommit": "242088b"
   },
   {
     "slug": "us-data-center-buildout",
@@ -54,7 +73,11 @@
     "tone": "green",
     "imageAlt": "美国数据中心课程实际页面：容量地图、建设阶段切换和州容量比较",
     "storage": null,
-    "format": "dc-fieldguide"
+    "format": "dc-fieldguide",
+    "sourceAddedAt": "2026-09-15T18:48:22+08:00",
+    "sourceAddedCommit": "53f51f3",
+    "sourceUpdatedAt": "2026-09-15T18:48:22+08:00",
+    "sourceUpdatedCommit": "53f51f3"
   },
   {
     "slug": "pozsar-money-view",
@@ -77,7 +100,11 @@
     "firstTask": "先到第 05 站拖一级资本，看做市容量的上限怎么变；再到第 08 站拖 ON RRP 和 TGA，看准备金被冲销的顺序。",
     "tone": "gold",
     "imageAlt": "课程第 08 站的准备金模型：左侧是 ON RRP 余额、TGA 期初余额与这一轮 TGA 增加三条可拖滑块，右侧显示冲击后准备金读数和一条随 TGA 增加而下行的准备金曲线，下方是准备金恒等式，最左是学习站导航",
-    "storage": "pozsar-money-view:v1"
+    "storage": "pozsar-money-view:v1",
+    "sourceAddedAt": "2026-09-16T17:28:58+08:00",
+    "sourceAddedCommit": "f04e49a",
+    "sourceUpdatedAt": "2026-09-19T18:00:13+08:00",
+    "sourceUpdatedCommit": "ff274a5"
   },
   {
     "slug": "muscle-health-lyon",
@@ -100,7 +127,11 @@
     "firstTask": "先看站 00 的路线图，再到站 04 拖动蛋白质分配计算器：改理想体重和每天餐数，看“总量达标”为什么不等于“每餐达标”，再按一下“纯植物来源”。",
     "tone": "green",
     "imageAlt": "课程站 04 的蛋白质分配计算器：左边是理想体重与每日餐数两个滑块、年龄段门槛和“含动物性来源／纯植物来源”的切换，右边显示每餐 60.0 克，折线图把作者标准、官方推荐量和每餐门槛三条线摊在每日餐数上；最左侧是 17 个学习站的导航。",
-    "storage": "learning-lab:muscle-health-lyon:v1"
+    "storage": "learning-lab:muscle-health-lyon:v1",
+    "sourceAddedAt": "2026-09-16T19:11:00+08:00",
+    "sourceAddedCommit": "46ff0e2",
+    "sourceUpdatedAt": "2026-09-19T19:00:20+08:00",
+    "sourceUpdatedCommit": "e4d63e6"
   },
   {
     "slug": "cognitive-flexibility-langer",
@@ -123,7 +154,11 @@
     "firstTask": "先在站 00 看路线图，再进站 01：养老院的一盆植物，看“选择权”这一个变量如何被设计出来。",
     "tone": "gold",
     "imageAlt": "认知灵活性实际课程：站 11 速查表的“可操作的提问式”三栏表（用在哪里 / 问自己什么 / 出处），左侧是 13 个学习站的导航",
-    "storage": "learning:cognitive-flexibility-langer:v1"
+    "storage": "learning:cognitive-flexibility-langer:v1",
+    "sourceAddedAt": "2026-09-16T20:11:16+08:00",
+    "sourceAddedCommit": "480fa60",
+    "sourceUpdatedAt": "2026-09-19T18:17:20+08:00",
+    "sourceUpdatedCommit": "fa88245"
   },
   {
     "title": "重新掌控你的大脑 · 节律、注意与习惯",
@@ -146,7 +181,11 @@
     "category": "健康与科学",
     "version": "v2 · 推理导读版",
     "level": "曲线形状 → 日常判断",
-    "imageAlt": "课程第 07 站的示意图：「当年的头盔」与「今天的手机」两栏并排，各列出视野与认知空间两行读数——头盔两者同时缩小所以干扰真的减少了，手机只缩小了视野、认知空间仍然无限，左侧是 12 个学习站的导航"
+    "imageAlt": "课程第 07 站的示意图：「当年的头盔」与「今天的手机」两栏并排，各列出视野与认知空间两行读数——头盔两者同时缩小所以干扰真的减少了，手机只缩小了视野、认知空间仍然无限，左侧是 12 个学习站的导航",
+    "sourceAddedAt": "2026-09-16T20:11:16+08:00",
+    "sourceAddedCommit": "480fa60",
+    "sourceUpdatedAt": "2026-09-19T18:37:03+08:00",
+    "sourceUpdatedCommit": "7410b85"
   },
   {
     "title": "如何克服内心阻力 · 从想做到做成",
@@ -166,10 +205,14 @@
     "storage": "learning:overcome-inner-resistance:v1",
     "slug": "overcome-inner-resistance",
     "tone": "gold",
-    "category": "健康与科学",
+    "category": "学习与成长",
     "version": "v2 · 推理导读版",
     "level": "作者命题 → 日常做法",
-    "imageAlt": "课程第 11 站速查与自测：规则与比例表逐行列出规则和「站 XX · 第 N 步」回到正文的按钮，左侧是 13 个学习站的导航"
+    "imageAlt": "课程第 11 站速查与自测：规则与比例表逐行列出规则和「站 XX · 第 N 步」回到正文的按钮，左侧是 13 个学习站的导航",
+    "sourceAddedAt": "2026-09-16T20:11:16+08:00",
+    "sourceAddedCommit": "480fa60",
+    "sourceUpdatedAt": "2026-09-19T13:28:11+08:00",
+    "sourceUpdatedCommit": "9746053"
   },
   {
     "title": "健康的男性气质 · 坚定与联结",
@@ -192,7 +235,11 @@
     "category": "学习与成长",
     "version": "v2 · 推理导读版",
     "level": "概念辨析 → 日常实践",
-    "imageAlt": "课程第 12 站速查表“可照做的固定步骤”：负责任的疏离、关系正念、接住批评的两句台词、反馈卷轴等逐行列出，右列标着“站 XX · 第 N 步”的出处，左侧是 14 个学习站的导航"
+    "imageAlt": "课程第 12 站速查表“可照做的固定步骤”：负责任的疏离、关系正念、接住批评的两句台词、反馈卷轴等逐行列出，右列标着“站 XX · 第 N 步”的出处，左侧是 14 个学习站的导航",
+    "sourceAddedAt": "2026-09-16T20:39:26+08:00",
+    "sourceAddedCommit": "a258717",
+    "sourceUpdatedAt": "2026-09-19T17:29:55+08:00",
+    "sourceUpdatedCommit": "8d53de0"
   },
   {
     "title": "学习语言的科学 · 声音、经验与交流",
@@ -215,7 +262,11 @@
     "tone": "gold",
     "version": "v2 · 推理导读版",
     "level": "取证方法 → 机制与应用",
-    "imageAlt": "课程第 13 站速查表“定性结论”：每站一条不含数字的结论逐行列出，右列标着“站 XX · 第 N 步”的出处，下方接着关键数字表，左侧是 15 个学习站的导航"
+    "imageAlt": "课程第 13 站速查表“定性结论”：每站一条不含数字的结论逐行列出，右列标着“站 XX · 第 N 步”的出处，下方接着关键数字表，左侧是 15 个学习站的导航",
+    "sourceAddedAt": "2026-09-16T20:39:26+08:00",
+    "sourceAddedCommit": "a258717",
+    "sourceUpdatedAt": "2026-09-19T16:50:10+08:00",
+    "sourceUpdatedCommit": "13d97d3"
   },
   {
     "title": "大多数学习工具失败的原因 · 从读过到理解",
@@ -238,7 +289,11 @@
     "category": "学习与成长",
     "version": "v2 · 推理导读版",
     "level": "阅读与记忆 → 媒介与工具判断",
-    "imageAlt": "课程第 22 站速查表“定性结论”：每站一到两条不含数字的判断逐行列出，中列标着“嘉宾原话”或“本课提炼”，右列是“站 XX · 第 N 步”的出处按钮，左侧是 24 个学习站的导航"
+    "imageAlt": "课程第 22 站速查表“定性结论”：每站一到两条不含数字的判断逐行列出，中列标着“嘉宾原话”或“本课提炼”，右列是“站 XX · 第 N 步”的出处按钮，左侧是 24 个学习站的导航",
+    "sourceAddedAt": "2026-09-16T20:39:26+08:00",
+    "sourceAddedCommit": "a258717",
+    "sourceUpdatedAt": "2026-09-19T19:25:35+08:00",
+    "sourceUpdatedCommit": "8598e82"
   },
   {
     "slug": "huberman-health-qa",
@@ -261,7 +316,11 @@
     "firstTask": "先做第 03 站的“先猜再看”：朝西的阳台算不算早晨日光；再到第 16 站速查表的“定性结论”区回查一条。",
     "tone": "gold",
     "imageAlt": "课程第 16 站速查表：关键数字逐行列出条目、内容与“站 XX · 第 N 步”回到正文按钮，左侧是 18 个学习站的导航",
-    "storage": "interactive-learning-lab:huberman-health-qa:v1"
+    "storage": "interactive-learning-lab:huberman-health-qa:v1",
+    "sourceAddedAt": "2026-09-17T17:47:31+08:00",
+    "sourceAddedCommit": "d6cfaa6",
+    "sourceUpdatedAt": "2026-09-18T21:16:53+08:00",
+    "sourceUpdatedCommit": "2a4193c"
   },
   {
     "slug": "diet-health-gardner",
@@ -284,7 +343,11 @@
     "firstTask": "从站 00 看阅读路线，再到站 06 拖动体重，区分平均需求、推荐摄入量与个人最佳摄入。",
     "tone": "green",
     "imageAlt": "站 06 的蛋白质参考量模型：体重滑块与 EAR、RDA 读数及需求分布图。",
-    "storage": "interactive-learning-lab:diet-health-gardner:v3"
+    "storage": "interactive-learning-lab:diet-health-gardner:v3",
+    "sourceAddedAt": "2026-09-21T09:39:25+08:00",
+    "sourceAddedCommit": "e959cb8",
+    "sourceUpdatedAt": "2026-09-21T09:39:25+08:00",
+    "sourceUpdatedCommit": "e959cb8"
   },
   {
     "slug": "unconditional-parenting",
@@ -306,6 +369,10 @@
     "firstTask": "从站 01 追问养育的长期目标，再到站 02 读阿比盖尔的睡前故事，理解关爱与纵容的区别。",
     "tone": "gold",
     "imageAlt": "无条件养育课程实际页面：养育的长远目标与分步原文导读",
-    "storage": "interactive-learning-lab:unconditional-parenting:v1"
+    "storage": "interactive-learning-lab:unconditional-parenting:v1",
+    "sourceAddedAt": "2026-09-21T10:00:40+08:00",
+    "sourceAddedCommit": "ce54375",
+    "sourceUpdatedAt": "2026-09-21T10:00:40+08:00",
+    "sourceUpdatedCommit": "ce54375"
   }
 ]

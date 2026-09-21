@@ -3,7 +3,7 @@ import http from 'node:http';import fs from 'node:fs';import path from 'node:pat
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../public');
 const args=process.argv.slice(2);const pi=args.indexOf('--port');const port=Number(pi>=0?args[pi+1]:process.env.PORT||4173);
 if(!Number.isInteger(port)||port<1024||port>65535)throw new Error('Invalid port');
-const mime={'.html':'text/html; charset=utf-8','.md':'text/markdown; charset=utf-8','.json':'application/json; charset=utf-8','.webp':'image/webp','.svg':'image/svg+xml','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8'};
+const mime={'.html':'text/html; charset=utf-8','.md':'text/markdown; charset=utf-8','.json':'application/json; charset=utf-8','.webmanifest':'application/manifest+json; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8'};
 const lines=fs.readFileSync(path.join(root,'_headers'),'utf8').split(/\r?\n/);const rules=[];let rule;
 for(const line of lines){if(!line.trim())continue;if(!/^\s/.test(line)){rule={pattern:line.trim(),headers:{}};rules.push(rule)}else if(rule){const i=line.indexOf(':');if(i>0)rule.headers[line.slice(0,i).trim()]=line.slice(i+1).trim()}}
 const match=(pat,p)=>new RegExp('^'+pat.split('*').map(s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('.*')+'$').test(p);

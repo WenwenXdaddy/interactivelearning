@@ -262,5 +262,28 @@
     "tone": "gold",
     "imageAlt": "课程第 16 站速查表：关键数字逐行列出条目、内容与“站 XX · 第 N 步”回到正文按钮，左侧是 18 个学习站的导航",
     "storage": "interactive-learning-lab:huberman-health-qa:v1"
+  },
+  {
+    "slug": "diet-health-gardner",
+    "title": "不同饮食对健康的影响：Gardner 对话导读",
+    "subtitle": "先看比较对象与研究设计，再判断一条饮食结论能走多远。",
+    "description": "沿 Gardner 与 Huberman 的对话，从症状归因、加工食品和对照试验，读到蛋白质需求、食物替代、双胞胎与微生物组研究。正文逐步展开推理，配原文往返、术语查询、蛋白质参考量模型与自测。",
+    "category": "健康与科学",
+    "tags": [
+      "饮食研究",
+      "蛋白质",
+      "研究设计",
+      "微生物组",
+      "原文对照"
+    ],
+    "chapters": 15,
+    "terms": 44,
+    "metric": "1 个可拖模型",
+    "version": "v1 · 推理导读版",
+    "level": "研究设计 → 饮食证据判断",
+    "firstTask": "从站 00 看阅读路线，再到站 06 拖动体重，区分平均需求、推荐摄入量与个人最佳摄入。",
+    "tone": "green",
+    "imageAlt": "站 06 的蛋白质参考量模型：体重滑块与 EAR、RDA 读数及需求分布图。",
+    "storage": "interactive-learning-lab:diet-health-gardner:v3"
   }
 ]

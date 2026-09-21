@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 12,
+  "courseCount": 13,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -143,6 +143,18 @@
       "publishedSha256": "45078a3832b2ddba836812d8d5571237d79decfd6e20385a93878ac40e3dda46",
       "scriptSha256": [
         "d759ed7392b874206367190c128325b8d80df4aee433b26df2998e0383a31df9"
+      ]
+    },
+    {
+      "slug": "diet-health-gardner",
+      "title": "不同饮食对健康的影响：Gardner 对话导读",
+      "version": "v1 · 推理导读版",
+      "chapters": 15,
+      "sourceSha256": "e4dec759a39f7566e3978015ce3977fc68c6896590e12356aae1dfb074eff212",
+      "publishedSha256": "63102e4afe9ba10fe077ec9154d196af61b1865b3e78497d83986a295f02be97",
+      "scriptSha256": [
+        "49a3803681265d553c5afeb346ea26b45fc69beed05d48d91f0e6e0589fc7bac",
+        "461de57d74febbcd38e2dd18a3b8346dfb7d9e5d410909154ee42b6914181d5b"
       ]
     }
   ]

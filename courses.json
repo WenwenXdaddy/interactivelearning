@@ -285,5 +285,27 @@
     "tone": "green",
     "imageAlt": "站 06 的蛋白质参考量模型：体重滑块与 EAR、RDA 读数及需求分布图。",
     "storage": "interactive-learning-lab:diet-health-gardner:v3"
+  },
+  {
+    "slug": "unconditional-parenting",
+    "title": "无条件养育 · 一起读",
+    "subtitle": "先理解孩子，再一起想办法。",
+    "description": "沿着作者的故事、问题和推理，从长期目标读到奖励与惩罚、无条件关爱、共同决定和孩子的视角。完整原文分步展开，配合术语随查、出处往返和情境自测，把理解带回生活。",
+    "category": "学习与成长",
+    "tags": [
+      "亲子关系",
+      "无条件关爱",
+      "共同决定",
+      "原文导读"
+    ],
+    "chapters": 37,
+    "terms": 17,
+    "metric": "116 个阅读步骤",
+    "version": "v1 · 原文导读版",
+    "level": "长期目标 → 日常相处",
+    "firstTask": "从站 01 追问养育的长期目标，再到站 02 读阿比盖尔的睡前故事，理解关爱与纵容的区别。",
+    "tone": "gold",
+    "imageAlt": "无条件养育课程实际页面：养育的长远目标与分步原文导读",
+    "storage": "interactive-learning-lab:unconditional-parenting:v1"
   }
 ]

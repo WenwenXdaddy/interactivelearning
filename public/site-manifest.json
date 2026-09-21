@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 13,
+  "courseCount": 14,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -155,6 +155,17 @@
       "scriptSha256": [
         "49a3803681265d553c5afeb346ea26b45fc69beed05d48d91f0e6e0589fc7bac",
         "461de57d74febbcd38e2dd18a3b8346dfb7d9e5d410909154ee42b6914181d5b"
+      ]
+    },
+    {
+      "slug": "unconditional-parenting",
+      "title": "无条件养育 · 一起读",
+      "version": "v1 · 原文导读版",
+      "chapters": 37,
+      "sourceSha256": "d3eb5eca0b55ac260230ac86cd3ae928e7e5ed2da2f8e830d07acec097063e6e",
+      "publishedSha256": "f5d06d1fd81fb493bbc69dc1472d82b72bc67102cc190262e9e83f7dc7ac3e14",
+      "scriptSha256": [
+        "b5a2c2199411a69c18c8bfcaf7ece3bbe879e331db5a32d1695d82769e267c02"
       ]
     }
   ]

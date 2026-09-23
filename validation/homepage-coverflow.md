@@ -129,3 +129,11 @@ spec 撰写时主页仍是单文件内联架构。实施期间远端 main 合入
 - 屏幕阅读器实际朗读（NVDA/VoiceOver）：仅验证了 `role="status" aria-live="polite"` 结构与文本按 200ms 去抖写入。
 - 390 宽深色模式截图：只核对了计算样式，未单独出图。
 - 线上 HTTPS：PR #5 合并为 `7b163e5`（2026-09-21），Workers Builds: interactivelearning 检查 success；随后从本机普通网络运行 `npm run verify:live` 通过（Verified live at https://learning.jiadi.ai — homepage, 15 courses, hashes, downloads and 404，退出码 0）。
+
+## 第三轮：居中封面与两侧留白（2026-09-23）
+
+改动：仅 `content/portal/home.js` 的 `shelfStyle()` 与 `shelfRemeasure()`（新增 `shelfCoverW` 缓存与 `SHELF_*` 常量），见 spec §14。
+
+- `npm test` 全套通过（139 项静态检查 + 4 套运行时测试）；网格 HTML 未变（模板与 CSS 未动）。
+- 本地 HTTP + Chromium 实测：1440 宽第 7 门居中时 offCenter 0px，左右间距各 42px，相邻与次相邻封面倾斜均为 −55°，视口内可见 7 张封面；390 宽（移动仿真）offCenter 1px，左右间距 22 / 24px，shelf 区块高度 473px 不变。
+- 未覆盖：Safari / 真机触摸、reduced-motion 实测（该分支不受本次改动影响）、线上验证（待合并部署后运行 `npm run verify:live`）。

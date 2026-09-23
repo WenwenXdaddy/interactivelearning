@@ -134,7 +134,7 @@
   let shelfActive = null, shelfQueued = false, shelfQuiet = 0, shelfDetailTimer = 0, shelfDetailSlug = '';
   let shelfSuppressClick = false, shelfDrag = null, shelfResize = 0, shelfAnim = 0, shelfFocusing = false;
   // Untransformed geometry, cached so the per-frame loop never reads layout between style writes.
-  let shelfCentres = [], shelfView = 1;
+  let shelfCentres = [], shelfView = 1, shelfCoverW = 300;
   // Browser-native smooth scrollIntoView gets cancelled by the per-frame inline style writes below,
   // so programmatic centering runs its own rAF animation over instant jumps.
   function shelfCenter(item, mode) {
@@ -153,17 +153,26 @@
     shelfAnim = requestAnimationFrame(step);
   }
   function shelfCancelAnim() { cancelAnimationFrame(shelfAnim); shelfAnim = 0; }
+  // Classic cover-flow geometry: the tilt saturates by the first neighbour (SATURATE), so the centred
+  // cover stands flat while every side cover is already turned; side covers are pushed outward by a
+  // fixed share of the cover width (PUSH) to leave air around the centre, and the far stack is drawn
+  // slightly inward (SPREAD) so it stays compact. Both offsets scale with the cover width per breakpoint.
+  const SHELF_SATURATE = 0.3, SHELF_ROTATE = 55, SHELF_DEPTH = 120, SHELF_PUSH = 0.46, SHELF_SPREAD = 0.13;
   function shelfStyle(item, distance) {
     const clamped = Math.max(-1, Math.min(1, distance)), amount = Math.abs(clamped);
-    item.style.setProperty('--tx', (clamped * -36).toFixed(2) + 'px');
-    item.style.setProperty('--tz', ((1 - amount) * 120 - 120).toFixed(2) + 'px');
-    item.style.setProperty('--rot', (clamped * -42).toFixed(2) + 'deg');
+    const side = Math.sign(clamped), turned = Math.min(1, amount / SHELF_SATURATE);
+    const push = side * SHELF_PUSH * shelfCoverW * turned - SHELF_SPREAD * shelfCoverW * clamped;
+    item.style.setProperty('--tx', push.toFixed(2) + 'px');
+    item.style.setProperty('--tz', ((1 - turned) * SHELF_DEPTH - SHELF_DEPTH).toFixed(2) + 'px');
+    item.style.setProperty('--rot', (side * -SHELF_ROTATE * turned).toFixed(2) + 'deg');
     item.style.setProperty('--dim', (amount * 0.35).toFixed(3));
     item.style.setProperty('--zi', String(100 - Math.round(amount * 50)));
   }
   // Rebuilt on init, on resize and after every catalog update; layout is only read here.
   function shelfRemeasure() {
     shelfView = shelfTrack.clientWidth || 1;
+    const sample = shelfItems.find(item => !item.hidden);
+    shelfCoverW = sample ? sample.offsetWidth || shelfCoverW : shelfCoverW;
     shelfCentres = shelfItems.map(item => item.hidden ? null : item.offsetLeft + item.offsetWidth / 2);
   }
   function shelfMeasure() {

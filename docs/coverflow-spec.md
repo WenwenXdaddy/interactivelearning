@@ -305,3 +305,9 @@ z-index: calc(100 - round(abs(var(--d)) * 50));
 - **景深**：`--tz = −120px · turned`。
 - 实测间距：1440 宽（封面 300px）居中封面与左右相邻封面各留 **42px**；390 宽（封面 180px）各留 **22–24px**。居中偏移仍为 0px，shelf 高度不变（390 宽 473px）。
 - 无 HTML/CSS/模板改动，仅 `content/portal/home.js`；测试与网格字节不受影响。
+
+## 15. 第三轮修正：吸附点必须不受变换影响（2026-09-23）
+
+§14 上线后用户反馈：手机端按钮或滑动后封面不居中、常跳两张；桌面端「上一门」和点击左侧封面经常无效。本地复现确认根因：`scroll-snap-align` 的吸附区按元素**变换后**的盒子计算，而 §14 把两侧封面外推了 0.46·coverW，吸附点随之偏移；Chromium 对程序化 `scrollTo` 也会立即按这些吸附点重吸（实测 `scrollTo(1344)` 被瞬间拉回 1536）。
+
+修正：3D 变换（`--tx/--tz/--rot`）从吸附元素 `li.shelf-item` 移到其子元素 `a.cover`，`li` 只保留 `transform-style:preserve-3d` 与 `z-index`，压暗层由 `.shelf-item::after` 改为 `.cover::before`。吸附区因此回到布局位置，§14 的间距与倾斜完全不变（1440 宽仍为左右 42px）。只改 `content/portal/home.css`。

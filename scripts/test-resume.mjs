@@ -18,6 +18,7 @@ const cases = [
   ['huberman-health-qa', 18, /^step-\d+-\d+$/],
   ['language-learning-science', 15, /^step-\d+-\d+$/],
   ['unconditional-parenting', 37, /^s\d{2}-\d+$/],
+  ['brain-vitality', 17, /^s\d{2}-\d+$/],
   ['outlive-guided-full', 32, /^s\d+-\d+$/]
 ];
 const registeredSlugs = [...cases.map(([slug]) => slug), 'gold-volatility', 'us-data-center-buildout'];
@@ -31,7 +32,7 @@ for (const [slug, count, pattern] of cases) {
   assert.equal(lessons.length, count, `${slug}: lesson count`);
   assert.equal(new Set(ids).size, count, `${slug}: unique lessons`);
   const buttons = tags(html, 'button');
-  const nav = slug === 'unconditional-parenting'
+  const nav = ['unconditional-parenting', 'brain-vitality'].includes(slug)
     ? buttons.filter(tag => /\bnav-item\b/.test(attr(tag, 'class') || '')).map(tag => attr(tag, 'data-go'))
     : buttons.map(tag => attr(tag, 'data-lesson-button')).filter(x => x !== null);
   assert.deepEqual(nav, ids, `${slug}: every lesson has an existing control`);
@@ -162,7 +163,7 @@ const fullCatalog = JSON.stringify({ version: 1, items: registeredSlugs.map((slu
   label: '', capability: 'visit', adapterVersion: 1
 })) });
 result = harness(fullCatalog);
-assert.equal(result.current().length, 15, 'a new visit retains all 15 registered course records');
+assert.equal(result.current().length, registeredSlugs.length, 'a new visit retains all registered course records');
 assert.deepEqual(new Set(result.current().map(item => item.slug)), new Set(registeredSlugs));
 
-console.log('Resume adapter source contracts and bridge storage/restore tests passed (15 courses).');
+console.log('Resume adapter source contracts and bridge storage/restore tests passed (16 courses).');

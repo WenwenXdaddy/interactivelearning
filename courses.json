@@ -401,5 +401,31 @@
     "sourceAddedCommit": "a478c3b",
     "sourceUpdatedAt": "2026-09-21T11:35:34+08:00",
     "sourceUpdatedCommit": "a478c3b"
+  },
+  {
+    "slug": "brain-vitality",
+    "title": "衰老大脑与身体的活力 · 导读",
+    "subtitle": "从一滴血，重新理解衰老。",
+    "description": "沿年轻血液实验、器官时钟与生活方式读懂这场长对话。整理后的完整访谈配逐步引导、研究核查和术语随查，区分动物结果、人体指标与临床结论，支持原文回跳、自测与离线阅读。",
+    "category": "健康与科学",
+    "tags": [
+      "大脑健康",
+      "衰老研究",
+      "器官时钟",
+      "原文导读"
+    ],
+    "chapters": 17,
+    "terms": 20,
+    "metric": "41 个阅读步骤",
+    "version": "v1 · 原文导读版",
+    "level": "循环实验 → 器官与细胞",
+    "firstTask": "从站01区分血液读数与驱动因素，再到站02辨认临床转化的不同阶段。",
+    "tone": "green",
+    "imageAlt": "衰老大脑与身体的活力课程第一站：血液实验的分步引导、说话人标记与原文入口",
+    "storage": "interactive-learning-lab:brain-vitality:v1",
+    "sourceAddedAt": "2026-09-23T22:00:20+08:00",
+    "sourceAddedCommit": "ba59d1f",
+    "sourceUpdatedAt": "2026-09-23T22:00:20+08:00",
+    "sourceUpdatedCommit": "ba59d1f"
   }
 ]

@@ -19,6 +19,7 @@
     'huberman-health-qa': /^step-\d+-\d+$/,
     'language-learning-science': /^step-\d+-\d+$/,
     'unconditional-parenting': /^s\d{2}-\d+$/,
+    'brain-vitality': /^s\d{2}-\d+$/,
     'outlive-guided-full': /^s\d+-\d+$/
   };
   const KIND = {
@@ -165,11 +166,11 @@
     if (!/^\d{1,2}$/.test(id)) return null;
     const lesson = [...document.querySelectorAll('.lesson[data-lesson]')]
       .find(el => el.dataset.lesson === id);
-    const controls = slug === 'unconditional-parenting'
+    const controls = ['unconditional-parenting', 'brain-vitality'].includes(slug)
       ? [...document.querySelectorAll('.nav-item[data-go]')]
       : [...document.querySelectorAll('[data-lesson-button]')];
     const control = controls.find(el =>
-      (slug === 'unconditional-parenting' ? el.dataset.go : el.dataset.lessonButton) === id);
+      (['unconditional-parenting', 'brain-vitality'].includes(slug) ? el.dataset.go : el.dataset.lessonButton) === id);
     if (!lesson || !control) return null;
     let step = null;
     if (item.capability === 'step') {
@@ -190,7 +191,7 @@
     if (kind === 'dc') { location.hash = '#learn/1'; return; }
     const control = kind === 'gold'
       ? document.querySelector('#nav button[data-go="0"]')
-      : slug === 'unconditional-parenting'
+      : ['unconditional-parenting', 'brain-vitality'].includes(slug)
         ? document.querySelector('.nav-item[data-go="00"]')
         : document.querySelector('[data-lesson-button="0"]');
     control?.click();
@@ -266,7 +267,7 @@
     }
     const nav = kind === 'gold' ? target.closest('button[data-go],#prevBtn,#nextBtn')
       : kind === 'dc' ? target.closest('a[href^="#learn/"]')
-        : slug === 'unconditional-parenting' ? target.closest('.nav-item[data-go],.route button[data-go],.primary[data-go]')
+        : ['unconditional-parenting', 'brain-vitality'].includes(slug) ? target.closest('.nav-item[data-go],.route button[data-go],.primary[data-go]')
           : target.closest('[data-lesson-button],#previous-button,#next-button,.route button[data-go],.primary[data-go]');
     if (nav && event.isTrusted) {
       sourceJumpActive = false;

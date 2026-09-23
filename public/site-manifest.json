@@ -2,7 +2,7 @@
   "id": "jiadi-learning-lab",
   "version": "1.0.0",
   "domain": "learning.jiadi.ai",
-  "courseCount": 15,
+  "courseCount": 16,
   "courses": [
     {
       "slug": "gold-volatility",
@@ -10,7 +10,7 @@
       "version": "v2 · 讲解增强版",
       "chapters": 10,
       "sourceSha256": "dd37662966b694f7c169b74f9249428a2eca645edc0ed4aa1c15610c0101a004",
-      "publishedSha256": "dbc37bf3f95ab7938d67ebde9bc8fa4dd71c20944888eac3881dc31306bd4c8b",
+      "publishedSha256": "d525533b55479bdbb284b5c4b75c95aac1b51d3c5ca6f4fb5611ddcc3dbe10ca",
       "scriptSha256": [
         "f18b8cedd746eef59238c3d33c3c20ca2f8d5557175f95b3b0597538f6555ecd",
         "446c3d4a81fee8667c04491a72ddc54ecea3efa8af1c4ed40b1dfc145e1c14d2"
@@ -22,7 +22,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 15,
       "sourceSha256": "0c33be0e4cf2594ce474e9d29a26a2515f03a981409304e95600804f69ece4e0",
-      "publishedSha256": "741700ce8a85b097ddcf75ff9d2ffba2a7b4b7d04456ee54b7a30aec2b6a2afa",
+      "publishedSha256": "192ef41b7f752c5e2e4db635ce10b77a39c462d5f37b37857f6a88fa548aec89",
       "scriptSha256": [
         "76dab4c2706a7df240849732184565fa40a6fe5812eeda10db68be8fb81d3322",
         "64d4232fb84acd33a43e3a0a9e7eeb12f772e2cd7d9772361a0189a7062c2080"
@@ -34,7 +34,7 @@
       "version": "v2.18 · 引导学习版",
       "chapters": 5,
       "sourceSha256": "760c2235893ba4ee9f330e8474d51496177e2b64ed81578e473af52369d4ce66",
-      "publishedSha256": "8dfd2b4461333d68f5392f1f3854caf28dd9d42c3353901b82326156c0ecef3a",
+      "publishedSha256": "a23c049ee4e8d565775edb8f64a590718973fe301313bface30582a20a291391",
       "scriptSha256": [
         "9343238eaa6a671990ce8738a22d1d424ca8e885520a21e20ec9b129ffb721b8",
         "198fe0fcfdca2adc6b59c34dd5fdcff4fa1b78f2601d80ff8ee643eb22e8c63b",
@@ -50,7 +50,7 @@
       "version": "v3 · 推理导读版",
       "chapters": 22,
       "sourceSha256": "79011e1ce6413e4d790941d14b32c675ce077a90eba044bb5b22350f56282f21",
-      "publishedSha256": "f472d70a6a3eaccd3f4d3b18f05614f2953d0fac823cd7eebe969a1913a26a02",
+      "publishedSha256": "8d70476b116f6934cf0811f412aa0c0b27c4f7e3e21b519966965926d0fde545",
       "scriptSha256": [
         "edc54c3b85fc237f6145a0030887d377b2340e5fa2127138ecab15640d78987c",
         "2eda5f85a797b894d926c5f0dfeec6d3d348009e4840e3062514d157e7264a3e"
@@ -62,7 +62,7 @@
       "version": "v3 · 推理导读版",
       "chapters": 17,
       "sourceSha256": "b13186f1a0285a98e0e6c17630b7febe3bc8d95604805f256d827b9f1b6b9d4f",
-      "publishedSha256": "231fcad7277544f3bcff5d1c32aa6f2d613287271d59bc8af2b226d21e65a05c",
+      "publishedSha256": "f1806df5a8274394cdb1f90466942f35d0a090cf865e72d6ec6780eca1a15a96",
       "scriptSha256": [
         "5ac0d2130ecc00dba4cf1a1d69a8c15e3b2a27481a3f06eddd48be552c90f24a",
         "8a1696db92c067384d65e0d2288120135c00fedc9a9032e170a5c95bab0a27f9"
@@ -74,7 +74,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 13,
       "sourceSha256": "9aa8472549fbc07ef4162e395c04f9af12e0d1832e8eb7e461ada279c707d4ca",
-      "publishedSha256": "f2c2c60dc58e25e35241cebf2e93dc4c4973e06d0d305b2e4f099e957ed0f638",
+      "publishedSha256": "02081fb46d60893bc9454c545a64c04333e170338215e4b1ffd95642e72b3d48",
       "scriptSha256": [
         "d98a4e68a8ab4b298ee439ac3e22d30cfc6af5879f68a74d3a22ba2632d669ae"
       ]
@@ -85,7 +85,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 12,
       "sourceSha256": "f4c17138716be0f5a2f2999b4b886f605dfa5a91643c1ee536ce4a4d45bdc4bf",
-      "publishedSha256": "f5a7c0fd173868789e3482ebccec5ae546401232fe9f585ea3aca1f077058e13",
+      "publishedSha256": "ab6f868b394c9dea0db84b61bc6de4e1ead125f59a84d6d65f8bea85fb918ce2",
       "scriptSha256": [
         "5c9a9489eaa430f8eefa90267224ef2d58760915b9b1ff59afac14fbb1d03d6f"
       ]
@@ -96,7 +96,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 13,
       "sourceSha256": "4b32b147badbf6cb36b48c4b2b5926f4dc253a2f15acdc3f018ebffaa6434979",
-      "publishedSha256": "736a7e7b570814add4ed29d11d53b5428b0b61f67675384ef1c324cc47dd20e6",
+      "publishedSha256": "58675d002d61213648399e4790826a0bb2a6323eaa6dd5356b5d5d0397ac1754",
       "scriptSha256": [
         "39f410055d0fa4a9f607b165a84c59a36e336bca62c5155fe739642231a88ebd"
       ]
@@ -107,7 +107,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 14,
       "sourceSha256": "0aae4f320cf749028f176275a3120598efeb4500f9b84707cf44587371e0b188",
-      "publishedSha256": "13d2df05f7c520a48757dc2f8012e102a4894a21b687fab02d9c6636b1180137",
+      "publishedSha256": "ac4be3691d1aa23e79cd9e922f77dccf03a7b545a806aa09a41a713b76ccb901",
       "scriptSha256": [
         "140c8f3aafa572c0230de280fc55a7aeefa94d54189d8cee2b141cd073d0d1de"
       ]
@@ -118,7 +118,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 15,
       "sourceSha256": "d4883778dcdcd5fec6848587e6ebb0db6934b971be5b268846f5f5dcad115331",
-      "publishedSha256": "217c09a60a12a798f329c07cb70a55210277abb52b38cf85d3a1e5038e57c98d",
+      "publishedSha256": "ade1fc2f3d9a3f81714e2fcaa9adeabfcd36c24c1ced247356c868cfe886abb2",
       "scriptSha256": [
         "1353a097d6603f1ece905786c1881e6cd0b8a11a06d00cea902395a471a712b6"
       ]
@@ -129,7 +129,7 @@
       "version": "v2 · 推理导读版",
       "chapters": 24,
       "sourceSha256": "7e9dcc2a8d34ff823f659f627bce5c5b6f45106c74799015a418a268eaa58a8e",
-      "publishedSha256": "683c7acabe74dd27f3cdfcd630cd3bada0ed11e6397df19fd9ad21389472719e",
+      "publishedSha256": "38cda57d4b6c73f6f432c136c5fbbac34bc482e460731b7f9faee5538172b3c2",
       "scriptSha256": [
         "785c4160b27b8b85db0261ec49cfc3a13dc84b4b6e405367b01baab2754641d0"
       ]
@@ -140,7 +140,7 @@
       "version": "v3 · 推理导读版",
       "chapters": 18,
       "sourceSha256": "b5c78af6d3d4c65dc67d1f6b73d14972d4d722b87db18c69e50b1bfbbe81811a",
-      "publishedSha256": "888cd90bc841f2c8509061710ebf62cbf8d32e5447d0a7cc7a6376d03757d23e",
+      "publishedSha256": "876017647956f41a16c88413a42b70d52c7f24cc198eed65414fa6b5855c581a",
       "scriptSha256": [
         "d759ed7392b874206367190c128325b8d80df4aee433b26df2998e0383a31df9"
       ]
@@ -151,7 +151,7 @@
       "version": "v1 · 推理导读版",
       "chapters": 15,
       "sourceSha256": "6a83f57e75d816140bffd33049688c914bf0efb94cd24f6ebc764181ce9cb012",
-      "publishedSha256": "3a2a12c63b59b659fe0249e9583bd5e0225e4fe5374468f6e33c1be575f7a515",
+      "publishedSha256": "bebbe884aeb0367d1da33db4b2ce4ebe8b2f1a3c3cd06d65b2fb59f51a29062c",
       "scriptSha256": [
         "49a3803681265d553c5afeb346ea26b45fc69beed05d48d91f0e6e0589fc7bac",
         "666c67c85d27bb23a2b3cd59400152add8840f11dfd01431d3ec3404038415eb"
@@ -163,7 +163,7 @@
       "version": "v1 · 原文导读版",
       "chapters": 37,
       "sourceSha256": "d3eb5eca0b55ac260230ac86cd3ae928e7e5ed2da2f8e830d07acec097063e6e",
-      "publishedSha256": "ae1432edf8af59f610848680caa1204b79438febdf96fb5cbb6bad1bdf367d98",
+      "publishedSha256": "1adb9b3d885fcdf9738c8f4f48b88a7a2e2a8d1c49c546e3a70347b2084efd5c",
       "scriptSha256": [
         "b5a2c2199411a69c18c8bfcaf7ece3bbe879e331db5a32d1695d82769e267c02"
       ]
@@ -174,9 +174,20 @@
       "version": "v1 · 全书导读版",
       "chapters": 32,
       "sourceSha256": "c6567566cedfbf7635bfbc44edcf5aa18f7e19d7c9fceaad38d31357b96373eb",
-      "publishedSha256": "8ec278371e86433cd66e46d8dc5c85c725b70e9d034ae2f27b434fc6cfb5d2e5",
+      "publishedSha256": "d0d1083d24d5b438e987901412381789980cf55ea3470c4a55b7ca0aeac8a968",
       "scriptSha256": [
         "ac34ae4e5e0ba67aa3da1dc738635afb8a8ac1941dbf4746d09f54ae78fb31da"
+      ]
+    },
+    {
+      "slug": "brain-vitality",
+      "title": "衰老大脑与身体的活力 · 导读",
+      "version": "v1 · 原文导读版",
+      "chapters": 17,
+      "sourceSha256": "e0ab43657804358480dc9f413516abffc4c98fb24e1193cbac19ce3d71727948",
+      "publishedSha256": "3705b7b87fb2f7def770dd52500ad0bd3d6ed6dd218c1005e8b16feec2a37206",
+      "scriptSha256": [
+        "0d519800258078cf3a1fded1cf0b7ab08d5b2da2024933eb71f65beafabf4759"
       ]
     }
   ]

@@ -146,4 +146,4 @@ spec 撰写时主页仍是单文件内联架构。实施期间远端 main 合入
 - 改后 1440：连续 4 次「上一门」、2 次「下一门」、点击左侧第 1 与第 2 张封面，每次均切到相邻目标且 offCenter 0px；scrollTo 到相邻封面的布局中心后位置保持。间距仍为左右 42px，相邻封面倾斜 −55°。
 - 改后 390（移动仿真）：3 次「下一门」逐张前进（offCenter ±1px）；模拟滑动 70px、150px、−150px 各吸附到相邻一张，不再跳两张；「上一门」回退一张。真实触摸惯性未覆盖（无触摸设备）。
 - `npm test` 全套通过（139 项静态 + 4 套）。测试浏览器中 rAF 曾被节流到约 1 帧/秒，导致首次读数中 aria-current 滞后；页面置前后 rAF 恢复，重测结果如上。
-- 线上验证待合并部署后运行 `npm run verify:live`。
+- 线上验证：PR #8 合并为 `f68628d`（2026-09-23），Workers Builds: interactivelearning 检查 success；从本机普通网络运行 `npm run verify:live` 通过（Verified live at https://learning.jiadi.ai — homepage, 15 courses, hashes, downloads and 404，退出码 0）。线上 Chromium 1440 复测：`scrollTo` 到相邻封面布局中心后位置保持；连续 3 次「上一门」、1 次「下一门」、点击左侧封面均精确切到相邻目标（offCenter 0px），间距左右各 42px。
